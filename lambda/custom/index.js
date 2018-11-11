@@ -1,7 +1,7 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-const Alexa = require('ask-sdk-core');
+const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
@@ -12,6 +12,8 @@ const LaunchRequestHandler = {
   },
   async handle(handlerInput) {
 
+    let speechText = "";
+    let repromptText = "";
     //Each user will have corresponding persitent attributes storing info
     //about the game.
 
@@ -28,16 +30,16 @@ const LaunchRequestHandler = {
 
       //Initialize persistent attributes.
       persistentAttributes.localAlexaLeaderboard = [0, 0, 0, 0, 0, 0, 0]; //top 7 highest local scores
-      attributesManager.setPersistentAttributes(persistenAttributes);
+      attributesManager.setPersistentAttributes(persistentAttributes);
       await attributesManager.savePersistentAttributes();
 
       //Prompt the user for the first time.
-      speechText = "Welcome to Chase that Trend! The game where you try and guess which of two topics ";
+      speechText += "Welcome to Chase that Trend! The game where you try and guess which of two topics ";
       speechText += "are trending more than the other on the internet. ";
       speechText += GAME_MENU_PROMPT;
     }
     else {
-      speechText = getRandomGreeting() + GAME_MENU_PROMPT;
+      speechText += getRandomGreeting() + GAME_MENU_PROMPT;
     }
 
     //Initialize the session attributes.
@@ -46,12 +48,12 @@ const LaunchRequestHandler = {
     sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
     attributesManager.setSessionAttributes(sessionAttributes);
 
-    repromptSpeech = GAME_MENU_PROMPT;
+    repromptText += GAME_MENU_PROMPT;
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(repromptText)
-      .withSimpleCard('Chase that Trend!', GAME_MENU_PROMPT);
+      .withSimpleCard('Chase that Trend!', GAME_MENU_PROMPT)
       .getResponse();
   },
 };

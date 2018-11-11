@@ -5,9 +5,9 @@
         "en-US": {
           "summary": "Sample Short Description",
           "examplePhrases": [
-            "Alexa open hello world",
-            "Alexa tell hello world hello",
-            "Alexa ask hello world say hello"
+            "Alexa open chase that trend",
+            "Alexa sample phrase 1",
+            "Alexa sample phrase 2"
           ],
           "name": "Chase that Trend!",
           "description": "Sample Full Description"
@@ -15,7 +15,7 @@
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "EDUCATION_AND_REFERENCE",
+      "category": "GAMES",
       "distributionCountries": []
     },
     "apis": {
