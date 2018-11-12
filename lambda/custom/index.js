@@ -1,34 +1,59 @@
 /* eslint-disable  func-names */
 /* eslint-disable  no-console */
 
-const Alexa = require('ask-sdk-core');
+const Alexa = require('ask-sdk');
+const randomGreetings = require('./random_greetings.json');
+
+const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
-  handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+  async handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+    //Each user will have corresponding persitent attributes storing info
+    //about the game.
+
+    //store attributesManager in a variable so I don't have to keep calling it
+    const attributesManager = handlerInput.attributesManager;
+
+    //Retrieve the user data or initialize one if user data was not found.
+    const persistentAttributes = await attributesManager.getPersistentAttributes() || {};
+    const sessionAttributes = attributesManager.getSessionAttributes() || {};
+
+
+    //Check if it is the user's first time opening the skill.
+    if(Object.keys(persistentAttributes).length === 0) {
+
+      //Initialize persistent attributes.
+      persistentAttributes.localAlexaLeaderboard = [0, 0, 0, 0, 0, 0, 0]; //top 7 highest local scores
+      attributesManager.setPersistentAttributes(persistentAttributes);
+      await attributesManager.savePersistentAttributes();
+
+      //Prompt the user for the first time.
+      speechText += "Welcome to Chase that Trend! The game where you try and guess which of two topics ";
+      speechText += "are trending more than the other on the internet. ";
+      speechText += GAME_MENU_PROMPT;
+    }
+    else {
+      speechText += getRandomGreeting() + GAME_MENU_PROMPT;
+    }
+
+    //Initialize the session attributes.
+    sessionAttributes.currentScore = 0;
+    sessionAttributes.gameActive = false;
+    sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
+    attributesManager.setSessionAttributes(sessionAttributes);
+
+    repromptText += GAME_MENU_PROMPT;
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
-      .getResponse();
-  },
-};
-
-const HelloWorldIntentHandler = {
-  canHandle(handlerInput) {
-    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
-  },
-  handle(handlerInput) {
-    const speechText = 'Hello World!';
-
-    return handlerInput.responseBuilder
-      .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .reprompt(repromptText)
+      .withSimpleCard('Chase that Trend!', GAME_MENU_PROMPT)
       .getResponse();
   },
 };
@@ -90,15 +115,24 @@ const ErrorHandler = {
   },
 };
 
-const skillBuilder = Alexa.SkillBuilders.custom();
+
+
+//helper functions
+function getRandomGreeting() {
+  const greetings = randomGreetings.greetings; //array filled with random greetings
+  return greetings[Math.floor(Math.random()*(greetings.length))];
+}
+
+const skillBuilder = Alexa.SkillBuilders.standard();
 
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    HelloWorldIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
   )
   .addErrorHandlers(ErrorHandler)
+  .withTableName('chase-that-trend-user-data')
+  .withAutoCreateTable(true)
   .lambda();
