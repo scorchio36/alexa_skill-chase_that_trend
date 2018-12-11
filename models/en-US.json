@@ -25,14 +25,14 @@
           ]
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "PlayGameIntent",
           "slots": [
 
           ],
           "samples": [
-            "hello",
-            "say hello",
-            "say hello world"
+            "play the game",
+            "play",
+            "I want to play"
           ]
         }
       ]
