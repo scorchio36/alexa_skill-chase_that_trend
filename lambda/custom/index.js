@@ -3,6 +3,8 @@
 
 const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
+const SearchTermsGenerator = require('./search_terms_generator.js');
+let searchTermsGenerator = new SearchTermsGenerator();
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
 
@@ -10,12 +12,12 @@ const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
 
     let speechText = "";
     let repromptText = "";
 
-    setupSkill();
+    await setupSkill(handlerInput);
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
@@ -39,27 +41,44 @@ const LaunchRequestHandler = {
   },
 };
 
-const PlayGameHandler {
-
+const PlayGameHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-    && handlerInput.requestEnvelope.request.intent.name = 'PlayGameIntent';
+    && handlerInput.requestEnvelope.request.intent.name === 'PlayGameIntent';
   },
   async handle(handlerInput) {
 
     let speechText = "";
-    let responseText = "";
+    let repromptText = "";
 
-    setupSkill();
+    await setupSkill(handlerInput);
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.gameActive = true;
 
-    speechText += "Alright. Let's play the game!";
+    speechText += "Alright. Let's play the game! ";
     speechText += "I will give you two random things that were searched on the internet. ";
-    speechText += "All you have to do is tell me, over the past month, which of the ";
-    speechText += "things has been searched more?";
-  }
+    speechText += "All you have to do is tell me, over the past month, which of the two ";
+    speechText += "things has been searched more? ";
+
+    await searchTermsGenerator.shuffleSearchTerms();
+    let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+    let currentGrades = searchTermsGenerator.getCurrentGrades();
+
+    speechText += "Your two search terms are " + currentSearchTerms[0];
+    speechText += " and " + currentSearchTerms[1] + "Which of these terms has been searched more?";
+
+    repromptText += "Which of these two search terms have been searched more? ";
+    repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
+
+    let screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard('Which of these two have been searched more?', screenOptions)
+      .getResponse();
+  },
 };
 
 const HelpIntentHandler = {
@@ -167,6 +186,7 @@ const skillBuilder = Alexa.SkillBuilders.standard();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
+    PlayGameHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

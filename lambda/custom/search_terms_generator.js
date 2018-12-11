@@ -21,7 +21,7 @@ SearchTermsGenerator.prototype.getCurrentSearchTerms = function() {
 }
 
 SearchTermsGenerator.prototype.getCurrentGrades = function() {
-  return this.searchTerms;
+  return this.searchGrades;
 }
 
 SearchTermsGenerator.prototype.getWinningSearchTerm = function() {
@@ -83,3 +83,6 @@ async function getSearchTermGrades(searchTermsArray) {
 
   return [avg1, avg2];
 }
+
+
+module.exports = SearchTermsGenerator;
