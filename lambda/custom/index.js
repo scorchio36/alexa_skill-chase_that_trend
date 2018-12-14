@@ -4,7 +4,7 @@
 const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
 const SearchTermsGenerator = require('./search_terms_generator.js');
-let searchTermsGenerator = new SearchTermsGenerator();
+const searchTermsGenerator = new SearchTermsGenerator();
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
 
@@ -51,6 +51,7 @@ const PlayGameHandler = {
     let speechText = "";
     let repromptText = "";
 
+    //handles the case when user skips past Launch Handler
     await setupSkill(handlerInput);
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
@@ -73,14 +74,86 @@ const PlayGameHandler = {
 
     let screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
 
+    //save search terms and grades to the current session (so it can be used by other intents)
+
+    //save session changes
+    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
       .withSimpleCard('Which of these two have been searched more?', screenOptions)
+      .withShouldEndSession(false)
       .getResponse();
   },
 };
 
+const AnswerHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+    && handlerInput.requestEnvelope.request.intent.name === 'AnswerIntent'
+    && handlerInput.attributesManager.getSessionAttributes().gameActive; //shouldnt run if game is not active
+  },
+  async handle(handlerInput) {
+
+    //setup AnswerHandler text output
+    let speechText = "";
+    let repromptText = "";
+    let screenOptions = "";
+
+    //get the user's answer (slot value)
+    let userAnswer = handlerInput.requestEnvelope.request.intent.slots.userAnswer.value;
+
+    //get the variables stored in the current session
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+
+    //log results to double check that user answer is lining up with correct answer
+    console.log("UserAnswer:" + userAnswer);
+    console.log("Winning Answer:" + searchTermsGenerator.getWinningSearchTerm());
+
+    //check if the user's answer is correct
+    if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
+
+      //handler correct answer
+      speechText += "That is correct! Nice guess!"; //Update this later to be random congratz saying
+      sessionAttributes.currentScore += 100; //keep the added score at 100 for now
+
+      //ask the user the next question and update the search terms
+      await searchTermsGenerator.shuffleSearchTerms();
+      let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+      let currentGrades = searchTermsGenerator.getCurrentGrades();
+
+      speechText += "Your two search terms are " + currentSearchTerms[0];
+      speechText += " and " + currentSearchTerms[1] + "Which of these terms has been searched more?";
+
+      repromptText += "Which of these two search terms have been searched more? ";
+      repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
+
+      screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
+
+    }
+    else {
+
+      //handle incorrect answer
+      speechText += "That is incorrect. I'm sorry. Game Over. Your final score is " + sessionAttributes.currentScore;
+      repromptText += "I'm sorry. Game Over."
+      screenOptions += "Game Over."
+      sessionAttributes.gameActive = false;
+
+      //handle game over
+    }
+
+    //save session variable changes
+    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      //.withSimpleCard('Which of these two have been searched more?', screenOptions)
+      .getResponse();
+  }
+}
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -178,7 +251,12 @@ async function setupSkill(handlerInput) {
   attributesManager.setSessionAttributes(sessionAttributes);
 }
 
+//I want to move the code that asks users the question in PlayGameHandler and AnswerHandler into this
+//function to DRY up code. Haven't figured out a good way to organize it yet so putting a pin in it.
+//Leaving this here as a reminder to fix it later.
+/*async function askUserNewQuestion(searchTermsGenerator) {
 
+}*/
 
 
 const skillBuilder = Alexa.SkillBuilders.standard();
@@ -187,6 +265,7 @@ exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
     PlayGameHandler,
+    AnswerHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

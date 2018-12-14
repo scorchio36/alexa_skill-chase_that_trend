@@ -3,37 +3,37 @@
     "default": {
       "skill_id": "amzn1.ask.skill.6175bd47-e526-460f-a890-87cbb6139c03",
       "was_cloned": false,
-      "merge": {
-        "manifest": {
-          "apis": {
-            "custom": {
-              "endpoint": {
-                "uri": "ask-chase-that-trend-default"
-              }
-            }
-          }
-        }
-      },
       "resources": {
         "manifest": {
           "eTag": "c7aa86575dd5910fccb77177c94ab7d4"
         },
         "interactionModel": {
           "en-US": {
-            "eTag": "e1d1c09c7d1532f61cd21dee4b54fefb"
+            "eTag": "ca83c56a5071afa57ad5abae541c80a6"
           }
         },
         "lambda": [
           {
             "arn": "arn:aws:lambda:us-east-1:452047556756:function:ask-chase-that-trend-default",
-            "functionName": "arn:aws:lambda:us-east-1:452047556756:function:ask-chase-that-trend-default",
             "awsRegion": "us-east-1",
+            "functionName": "arn:aws:lambda:us-east-1:452047556756:function:ask-chase-that-trend-default",
             "alexaUsage": [
               "custom/default"
             ],
-            "revisionId": "9f6377a8-6b8f-41ce-a216-1d36987185ad"
+            "revisionId": "27566ae4-8fda-46fe-98ac-ba83dc09bf8d"
           }
         ]
+      },
+      "merge": {
+        "manifest": {
+          "apis": {
+            "custom": {
+              "endpoint": {
+                "uri": "arn:aws:lambda:us-east-1:452047556756:function:ask-chase-that-trend-default"
+              }
+            }
+          }
+        }
       }
     }
   }

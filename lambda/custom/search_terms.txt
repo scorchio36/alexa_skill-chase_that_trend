@@ -674,9 +674,9 @@ McDonald's
 MasterCard
 Sony
 Ralph Lauren Corporation
-Facebook, Inc.
+Facebook
 Panasonic Corporation
-Honda Motor Company, Ltd
+Honda Motor Company
 Amazon.com
 Corona
 Porsche
@@ -692,7 +692,7 @@ VISA
 Jack Daniel's
 Volkswagen Group
 Yahoo!
-Nike, Inc.
+Nike
 Nissan Motor Co
 MTV
 Nintendo
@@ -757,7 +757,7 @@ Gap Inc.
 Allianz
 PepsiCo
 Adidas
-Cisco Systems, Inc.
+Cisco Systems
 Whataburger
 Chick-fil-A
 Roy Rogers Restaurants
@@ -1086,7 +1086,7 @@ Zeus Greek God of the Sky
 Hermes Messenger of the Greek Gods
 Isis Egyptian God
 Tlaloc Aztec God
-Artemis Goddess of the Hunt, Forests and Hills, the Moon
+Artemis Goddess of the Hunt
 Nut Egyptian God
 Ptah Egyptian God
 Hephaestus Greek God of Technology
@@ -1336,7 +1336,6 @@ Justice League
 A Simple Favor
 Hotel Artemis
 Harry Potter and the Deathly Hallows: Part 2
-My Teacher, My Obsession
 A Delicious Flight
 Harry Potter and the Goblet of Fire
 Lifechanger
@@ -1884,7 +1883,7 @@ Marilyn Monroe
 Rush Limbaugh
 Johnny Cash
 Jerry Seinfeld
-Diana, Princess of Wales
+Diana Princess of Wales
 Moses
 Howard Stern
 Plato
@@ -1913,7 +1912,7 @@ Nicole Kidman
 David Copperfield
 Anne Hathaway
 James Patterson
-Robert F. Kennedy, Jr.
+Robert F. Kennedy
 Courteney Cox
 George S. Patton
 Jeff Gordon
@@ -1937,7 +1936,7 @@ Liv Tyler
 Alec Baldwin
 Eminem
 Stephenie Meyer
-Martin Luther King, Jr.
+Martin Luther King Junior
 James Stewart
 Bill Cosby
 Jeff Dunham
@@ -1956,7 +1955,7 @@ Adam Sandler
 Ellen DeGeneres
 Mark Burnett
 Bruce Springsteen
-Catherine, Duchess of Cambridge
+Catherine Duchess of Cambridge
 Leonardo DiCaprio
 Nikola Tesla
 Ben Stiller
@@ -2196,205 +2195,166 @@ Toronto FC
 Seattle Sounders FC
 New York City FC
 DC United
-everytime Ariana Grande
-Havana Camila Cabello
-HUMBLE Kendrick Lamar
-Yikes Kanye West
-Stairway to Heaven Led Zeppelin
-DNA Kendrick Lamar
-Electricity Silk City
-Somebody Told Me The Killers
-Nice For What Drake
-Rise Jonas Blue
-Feels Like Summer Childish Gambino
-Wake Up in the Sky Gucci Mane
-Back to Black Amy Winehouse
-TAPE BROCKHAMPTON
-WEIGHT BROCKHAMPTON
-breathin Ariana Grande
-Pumped Up Kicks Foster the People
-No Tears Left To Cry Ariana Grande
-Better Now Post Malone
-Uproar Lil' Wayne
-Fluorescent Adolescent Arctic Monkeys
-Everlong Foo Fighters
-Shape of You Ed Sheeran
-Ivy Frank Ocean
-Let It Fly Lil' Wayne
-HONEY BROCKHAMPTON
-Head Above Water Avril Lavigne
-FABRIC BROCKHAMPTON
-Sex on Fire Kings of Leon
-I'm a Mess Bebe Rexha
-Jocelyn Flores xxxtentacion
-Better Khalid
-Mona Lisa Lil' Wayne
-Killing in the Name Rage Against the Machine
-Reborn Kids See Ghosts
-Successful Ariana Grande
-The Dark Side Muse
-Paul - Skit Paul Rosenberg
-Happier Marshmello
-Thunder Imagine Dragons
-Royals Lorde
-Moonlight xxxtentacion
-The Less I Know the Better Tame Impala
-Want To Dua Lipa
-Natural Imagine Dragons
-Can't Be Broken Lil' Wayne
-Lucky Strike Troye Sivan
-Africa Toto
-I Love You Dwayne Lil' Wayne
-Thunderclouds Sia
-Normal Eminem
-R U Mine? Arctic Monkeys
-Karma Police Radiohead
-Billie Jean Michael Jackson
-Bloom Troye Sivan
-High Hopes Panic! at the Disco
-Animal Troye Sivan
-Taste (feat. Offset) Tyga
-Plum Troye Sivan
-This Is America Childish Gambino
-BERLIN BROCKHAMPTON
-nights Frank Ocean
-New Rules Dua Lipa
-Feel the Love Kids See Ghosts
-Green Light Lorde
-Seventeen Troye Sivan
-Sweet Child o' Mine Guns N' Roses
-Feel Good Inc. Gorillaz
-Can't Stop Red Hot Chili Peppers
-God's Plan Drake
-Flames David Guetta
-4th Dimension Kids See Ghosts
-SAN MARCOS BROCKHAMPTON
-New Orleans BROCKHAMPTON
-Stargazing Travi$ Scott
-Immigrant Song Led Zeppelin
-Kids MGMT
-Sultans of Swing Dire Straits
-Intro The xx
-Hurt Feelings Mac Miller
-THUG LIFE BROCKHAMPTON
-Youngblood 5 Seconds of Summer
-Sweetener Ariana Grande
-J'OUVERT BROCKHAMPTON
-Take on Me a-ha
-Fall Eminem
-Where Is My Mind? Pixies
-Nevermind Dennis Lloyd
-Be Alright Dean Lewis
-All The Stars (with SZA) Kendrick Lamar
-Don't Stop Me Now Queen
-Midnight City M83
-I Love It Kanye West
-Creep Radiohead
-Seven Nation Army The White Stripes
-Stepping Stone Eminem
-Last Nite The Strokes
-My Blood Twenty One Pilots
-What You Know Two Door Cinema Club
-Do I Wanna Know? Arctic Monkeys
-Better Off Ariana Grande
-Losing My Religion R.E.M.
-The Scientist Coldplay
-One Kiss Calvin Harris
-Praise The Lord ASAP Rocky
-Stressed Out Twenty One Pilots
-Suspirium Thom Yorke
-Look What You Made Me Do Taylor Swift
-R.E.M Ariana Grande
-Sweater Weather The Neighbourhood
-VIVID BROCKHAMPTON
-SOMETHING ABOUT HIM BROCKHAMPTON
-Mr. Brightside The Killers
-Nice Guy Eminem
-Not Alike Eminem
-Come as You Are Nirvana
-Radioactive Imagine Dragons
-Take Me Out Franz Ferdinand
-Delicate Taylor Swift
-The Light Is Coming Ariana Grande
-The Ringer Eminem
-Redbone Childish Gambino
-Mariners Apartment Complex Lana Del Rey
-Beautiful bazzi
-Zombie The Cranberries
-Greatest Eminem
-In the End Linkin Park
-Self Care Mac Miller
-IDOL BTS
-SICKO MODE Travis Scott
-SAD! xxxtentacion
-Smells Like Teen Spirit Nirvana
-Dance to This Troye Sivan
-Ladders Mac Miller
-Everybody Wants to Rule the World Tears for Fears
-Don't Cry Lil' Wayne
-Promises Calvin Harris
-Ghost Town Kanye West
-Bohemian Rhapsody Queen
-September Earth, Wind and Fire
-My My My! Troye Sivan
-Eastside Benny Blanco
-Solo Clean Bandit
-IDGAF Dua Lipa
-LOOPHOLE BROCKHAMPTON
-In My Feelings Drake
-WHERE THE CASH AT BROCKHAMPTON
-Under the Bridge Red Hot Chili Peppers
-FEFE Six Nine
-Kamikaze Eminem
-Riptide Vance Joy
-Numb Linkin Park
-Starboy The Weekend
-Breezeblocks alt J
-God is a Woman Ariana Grande
-rockstar Post Malone
-Shotgun George Ezra
-Em Calls Paul Eminem
-Slow dancing in the dark Joji
-Body Loud Luxury
-TONYA BROCKHAMPTON
-In My Mind Dynoro
-Feel It Still Portugal. The Man
-Believer Imagine Dragons
-Summertime Magic Childish Gambino
-Don't Stop Believin' Journey
-Say My Name David Guetta
-Chop Suey! System of a Down
-Lucky You (feat. Joyner Lucas) Eminem
-I Like It Cardi B
-Goodnight n Go Ariana Grande
-Venom
-Eminem
-Don't Leave Me Alone David Guetta
-Girls Like You Maroon 5
-Cardi B
-Falling Down LIL PEEP
-raindrops Ariana Grande
-Basket Case Green Day
-Why'd You Only Call Me When You're High? Arctic Monkeys
-All Mine Kanye West
-Venice Bitch Lana Del Rey
-Nonstop Drake
-Good Guy Eminem
-Toxic Britney Spears
-Happy Now Zedd
-Psycho Post Malone
-Into You Ariana Grande
-No Brainer DJ Khaled
-Take Me to Church Hozier
-DISTRICT BROCKHAMPTON
-Lucid Dreams Juice WRLD
-Californication Red Hot Chili Peppers
-See You Again Tyler, the Creator
-Dedicate Lil' Wayne
-Pete Davidson Ariana Grande
-Pink and White Frank Ocean
-The Good Side Troye Sivan
-Bitter Sweet Symphony The Verve
+everytime by Ariana Grande
+Havana by Camila Cabello
+HUMBLE by Kendrick Lamar
+Yikes by Kanye West
+Stairway to Heaven by Led Zeppelin
+DNA by Kendrick Lamar
+Electricity by Silk City
+Somebody Told Me by The Killers
+Nice For What by Drake
+Rise by Jonas Blue
+Feels Like Summer by Childish Gambino
+Wake Up in the Sky by Gucci Mane
+Back to Black by Amy Winehouse
+TAPE by BROCKHAMPTON
+WEIGHT by BROCKHAMPTON
+breathin by Ariana Grande
+Pumped Up Kicks by Foster the People
+No Tears Left To Cry by Ariana Grande
+Better Now by Post Malone
+Uproar by Lil' Wayne
+Fluorescent Adolescent by Arctic Monkeys
+Everlong by Foo Fighters
+Shape of You by Ed Sheeran
+Ivy by Frank Ocean
+Let It Fly by Lil' Wayne
+HONEY by BROCKHAMPTON
+Head Above Water by Avril Lavigne
+FABRIC by BROCKHAMPTON
+Sex on Fire by Kings of Leon
+I'm a Mess by Bebe Rexha
+Better by Khalid
+Mona Lisa by Lil' Wayne
+Killing in the Name Rage by Against the Machine
+Reborn by Kids See Ghosts
+Successful by Ariana Grande
+The Dark Side by Muse
+Happier by Marshmello
+Thunder by Imagine Dragons
+Royals by Lorde
+The Less I Know the Better by Tame Impala
+Want To by Dua Lipa
+Natural by Imagine Dragons
+Can't Be Broken by Lil' Wayne
+Lucky Strike by Troye Sivan
+Africa by Toto
+I Love You Dwayne by Lil' Wayne
+Thunderclouds by Sia
+Normal by Eminem
+R U Mine? by Arctic Monkeys
+Karma Police by Radiohead
+Billie Jean by Michael Jackson
+Bloom by Troye Sivan
+High Hopes by Panic! at the Disco
+Animal by Troye Sivan
+Taste (feat. Offset) by Tyga
+Plum by Troye Sivan
+This Is America by Childish Gambino
+BERLIN by BROCKHAMPTON
+nights by Frank Ocean
+New Rules by Dua Lipa
+Feel the Love by Kids See Ghosts
+Green Light by Lorde
+Seventeen by Troye Sivan
+Sweet Child o' Mine by Guns N' Roses
+Can't Stop by Red Hot Chili Peppers
+God's Plan by Drake
+Flames by David Guetta
+4th Dimension by Kids See Ghosts
+SAN MARCOS by BROCKHAMPTON
+New Orleans by BROCKHAMPTON
+Stargazing by Travis Scott
+Immigrant Song by Led Zeppelin
+Kids by MGMT
+Sultans of Swing by Dire Straits
+Hurt Feelings by Mac Miller
+Youngblood by 5 Seconds of Summer
+Sweetener by Ariana Grande
+Take on Me by a-ha
+Fall by Eminem
+Where Is My Mind? by Pixies
+Nevermind by Dennis Lloyd
+Be Alright by Dean Lewis
+All The Stars by Kendrick Lamar
+Don't Stop Me Now by Queen
+Midnight City by M83
+I Love It by Kanye West
+Creep by Radiohead
+Seven Nation Army by The White Stripes
+Stepping Stone by Eminem
+Last Nite by The Strokes
+My Blood by Twenty One Pilots
+Do I Wanna Know? by Arctic Monkeys
+Better Off by Ariana Grande
+Losing My Religion by R.E.M.
+The Scientist by Coldplay
+One Kiss by Calvin Harris
+Stressed Out by Twenty One Pilots
+Look What You Made Me Do by Taylor Swift
+Sweater Weather by The Neighbourhood
+Mr. Brightside by The Killers
+Nice Guy by Eminem
+Not Alike by Eminem
+Come as You Are by Nirvana
+Radioactive by Imagine Dragons
+Take Me Out by Franz Ferdinand
+Delicate by Taylor Swift
+The Light Is Coming by Ariana Grande
+The Ringer by Eminem
+Redbone by Childish Gambino
+Beautiful by bazzi
+Zombie by The Cranberries
+Greatest by Eminem
+In the End by Linkin Park
+Self Care by Mac Miller
+IDOL by BTS
+SICKO MODE by Travis Scott
+Smells Like Teen Spirit by Nirvana
+Dance to This by Troye Sivan
+Ladders by Mac Miller
+Don't Cry by Lil' Wayne
+Promises by Calvin Harris
+Ghost Town by Kanye West
+Bohemian Rhapsody by Queen
+September by Earth Wind and Fire
+My My My! by Troye Sivan
+Eastside by Benny Blanco
+Solo by Clean Bandit
+In My Feelings by Drake
+Under the Bridge by Red Hot Chili Peppers
+Numb by Linkin Park
+Starboy by The Weekend
+God is a Woman by Ariana Grande
+rockstar by Post Malone
+Shotgun by George Ezra
+Feel It Still by Portugal. The Man
+Believer by Imagine Dragons
+Summertime Magic by Childish Gambino
+Don't Stop Believin' by Journey
+Say My Name by David Guetta
+I Like It by Cardi B
+Goodnight n Go by Ariana Grande
+Don't Leave Me Alone by David Guetta
+Girls Like You by Maroon 5
+Falling Down by LIL PEEP
+raindrops by Ariana Grande
+Basket Case by Green Day
+All Mine by Kanye West
+Nonstop by Drake
+Toxic by Britney Spears
+Happy Now by Zedd
+Psycho by Post Malone
+Into You by Ariana Grande
+No Brainer by DJ Khaled
+Take Me to Church by Hozier
+Californication by Red Hot Chili Peppers
+Dedicate by Lil' Wayne
+Pete Davidson by Ariana Grande
+Pink and White by Frank Ocean
+The Good Side by Troye Sivan
+Bitter Sweet Symphony by The Verve
 Wiffleball
 Snowboarding
 Ice Hockey
@@ -2478,7 +2438,7 @@ How to Get Away with Murder
 Prison Break
 Chicago P.D.
 Hawaii Five-0
-Beverly Hills, 90210
+Beverly Hills
 The Expanse
 2 Broke Girls
 Lost
@@ -2686,24 +2646,24 @@ Maui
 Zimbabwe
 Croatia
 Las Vegas
-St. Petersburg, Russia
+St. Petersburg
 Dinosaur Valley State Park
-Niagara Falls, NY
+Niagara Falls
 Bali
 Virginia Beach
-Great Barrier Reef, Australia
-Fort Lauderdale, FL
+Great Barrier Reef
+Fort Lauderdale
 Walt Disney World
 San Francisco
 Cancun
-Bangkok, Thailand
+Bangkok
 Cape Cod
 Cairo
-Paris, France
+Paris
 Philadelphia
 Florence
-Rome, Italy
-Lake George, NY
+Rome
+Lake George
 Cabo
 Honolulu
 Montreal
@@ -2711,53 +2671,52 @@ Kenya
 Aruba
 Galápagos Islands
 Vermont
-Petrified Forest, AZ
+Petrified Forest Arizona
 Washington D.C.
 Great Barrier Reef
 Chicago
-Hong Kong, China
+Hong Kong
 Grand Cayman
 Napa Valley
 San Diego
 Budapest
-Cape Town, South Africa
+Cape Town South Africa
 Bora Bora
 Bioluminescent Bay
 Aspen
-Rio de Janeiro, Brazil
-Dublin, Ireland
+Rio de Janeiro
+Dublin Ireland
 Great Wolf Lodge
 Mount Rushmore
-Acapulco, Mexico
+Acapulco Mexico
 British Virgin Islands
 Amsterdam
-Tokyo, Japan
+Tokyo
 Cusco
 Boston
-Buenos Aires, Argentina
+Buenos Aires
 Virgin Islands
 Machu Picchu
-Austin, Texas
+Austin Texas
 London
 Daytona Beach
 Sesame Place
-San Antonio, Texas
+San Antonio Texas
 Anchorage
-Sanibel & Captiva Islands, FL
 Jamaica
-Glacier National Park, Montana
+Glacier National Park
 Madrid
-Myrtle Beach, SC
+Myrtle Beach
 Grand Canyon
 St. Maarten
 Disneyland
 Yellowstone National Park
-Dubai, United Arab Emirates
+Dubai
 Yosemite National Park
 Universal's Islands of Adventure
 Miami
-Barcelona, Spain
-Sydney, Australia
+Barcelona
+Sydney
 Rio de Janeiro
 New Orleans
 Left Alive
