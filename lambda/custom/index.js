@@ -5,8 +5,10 @@ const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
 const SearchTermsGenerator = require('./search_terms_generator.js');
 const searchTermsGenerator = new SearchTermsGenerator();
+const Leaderboard = require('./leaderboard.js');
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
+const LOCAL_LEADERBOARD_LENGTH = 10;
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -107,6 +109,9 @@ const AnswerHandler = {
     //get the variables stored in the current session
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
+    let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
+    localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
+    console.log("LEADERBOARD:" + localLeaderboard.constructor.name);
 
     //log results to double check that user answer is lining up with correct answer
     console.log("UserAnswer:" + userAnswer);
@@ -136,14 +141,29 @@ const AnswerHandler = {
     else {
 
       //handle incorrect answer
-      speechText += "That is incorrect. I'm sorry. Game Over. Your final score is " + sessionAttributes.currentScore;
-      repromptText += "I'm sorry. Game Over."
-      screenOptions += "Game Over."
-      sessionAttributes.gameActive = false;
+      speechText += "That is incorrect. I'm sorry. Game Over. Your final score is " + sessionAttributes.currentScore + ". ";
+      repromptText += "I'm sorry. Game Over.";
+      screenOptions += "Game Over.";
 
       //handle game over
+      let scorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+      if(scorePosition == -1) {
+        speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
+        speechText += GAME_MENU_PROMPT;
+
+        sessionAttributes.currentScore = 0;
+        sessionAttributes.gameActive = false;
+
+      }
+      else {
+        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, scorePosition);
+        localLeaderboard.addNameToPosition("name placeholder", scorePosition);
+        speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
+      }
+
     }
 
+    sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
     //save session variable changes
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
@@ -152,8 +172,48 @@ const AnswerHandler = {
       .reprompt(speechText)
       //.withSimpleCard('Which of these two have been searched more?', screenOptions)
       .getResponse();
-  }
-}
+  },
+};
+
+//After a user gets a high score, they should say a name to store the score under
+const GetUserNameHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+    && handlerInput.requestEnvelope.request.intent.name === 'GetUserNameIntent';
+  },
+  handle(handlerInput) {
+    //setup AnswerHandler text output
+    let speechText = "";
+    let repromptText = "";
+
+    //get the user's answer (slot value)
+    let userName = handlerInput.requestEnvelope.request.intent.slots.userName.value;
+
+    //get the variables stored in the current session
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+    let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
+    localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
+
+    let scorePosition = localLeaderboard.getPositionFromName("name placeholder");
+    localLeaderboard.addNameToPosition(userName, scorePosition);
+
+    speechText += "Great job " + userName + ". Your score made " + scorePosition + "th place";
+    speechText += " on your local Alexa leaderboard! I wish I was that cool. ";
+    speechText += GAME_MENU_PROMPT;
+
+    sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
+    //save session variable changes
+    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      //.withSimpleCard('Which of these two have been searched more?', screenOptions)
+      .getResponse();
+  },
+};
+
 const HelpIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -230,14 +290,16 @@ async function setupSkill(handlerInput) {
   const attributesManager = handlerInput.attributesManager;
 
   //Retrieve the user data or initialize one if user data was not found.
-  const persistentAttributes = await attributesManager.getPersistentAttributes() || {};
-  const sessionAttributes = attributesManager.getSessionAttributes() || {};
+  const persistentAttributes = //await attributesManager.getPersistentAttributes() ||
+  {};
+  const sessionAttributes = //attributesManager.getSessionAttributes() ||
+  {};
 
   //Check if it is the user's first time opening the skill.
   if(Object.keys(persistentAttributes).length === 0) {
 
     //Initialize persistent attributes.
-    persistentAttributes.localAlexaLeaderboard = [0, 0, 0, 0, 0, 0, 0]; //top 7 highest local scores
+    persistentAttributes.localAlexaLeaderboard = JSON.stringify(new Leaderboard(LOCAL_LEADERBOARD_LENGTH, undefined)); //top highest local scores
     persistentAttributes.firstTime = true; //user's first time opening the skill?
     attributesManager.setPersistentAttributes(persistentAttributes);
     await attributesManager.savePersistentAttributes();
@@ -247,6 +309,8 @@ async function setupSkill(handlerInput) {
   sessionAttributes.currentScore = 0;
   sessionAttributes.gameActive = false;
   sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
+  console.log("setupSkill Leaderboard:" + sessionAttributes.localAlexaLeaderboard);
+
   sessionAttributes.firstTime = persistentAttributes.firstTime;
   attributesManager.setSessionAttributes(sessionAttributes);
 }
@@ -266,6 +330,7 @@ exports.handler = skillBuilder
     LaunchRequestHandler,
     PlayGameHandler,
     AnswerHandler,
+    GetUserNameHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler

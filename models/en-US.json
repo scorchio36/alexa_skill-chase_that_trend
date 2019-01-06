@@ -35,6 +35,19 @@
           "samples": [
             "{userAnswer}"
           ]
+        },
+        {
+          "name": "GetUserNameIntent",
+          "slots": [
+            {
+              "name": "userName",
+              "type": "AMAZON.US_FIRST_NAME"
+            }
+          ],
+          "samples": [
+            "{userName}",
+            "my name is {userName}"
+          ]
         }
       ],
       "types": [
