@@ -60,6 +60,108 @@ const LaunchRequestHandler = {
   },
 };
 
+const ShowLeaderboardsToUserHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === "IntentRequest"
+    && handlerInput.requestEnvelope.request.intent.name === "ShowLeaderboardsToUserIntent"
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    speechText += "Would you like to view your local Alexa's leaderboard or ";
+    speechText += "the worldwide leaderboard? ";
+
+    speechText += "You can also say main menu if you don't want to look at ";
+    speechText += "leaderboards anymore. ";
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .getResponse();
+  },
+}
+
+const ShowLocalLeaderboardToUserHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === "IntentRequest"
+    && handlerInput.requestEnvelope.request.intent.name === "ShowLocalLeaderboardToUserIntent"
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    speechText += "To see a certain position on the board, say show me position ";
+    speechText += "followed by the place number. To see if a name is on the board, ";
+    speechText += "say show me the name followed by the name you want to look up. ";
+
+    speechText += "You can also say main menu if you don't want to look at ";
+    speechText += "leaderboards anymore. ";
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .getResponse();
+  },
+}
+
+const ShowWorldLeaderboardToUserHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === "IntentRequest"
+    && handlerInput.requestEnvelope.request.intent.name === "ShowWorldLeaderboardToUserIntent"
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    speechText += "To see a certain position on the board, say show me position ";
+    speechText += "followed by the place number. To see all names on this Alexa that ";
+    speechText += "have made it onto the worldwide leaderboard, say see all names. "
+
+    speechText += "You can also say main menu if you don't want to look at ";
+    speechText += "leaderboards anymore. ";
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .getResponse();
+  },
+}
+
+const HowToPlayHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === "IntentRequest"
+    && handlerInput.requestEnvelope.request.intent.name === "HowToPlayIntent";
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    speechText+= "Chase that Trend is a guessing game where you try to guess ";
+    speechText+= "which two topics are trending more on the internet. Each round, ";
+    speechText+= "you will be given two random search terms from a variety of categories. ";
+    speechText+= "All you have to do is say which search term you think has been searched ";
+    speechText+= "more times over the past month. If you guess correctly, you will increase ";
+    speechText+= "you score and receive another set of search terms. The game will end when ";
+    speechText+= "you guess incorrectly. If your score is high enough you will be able to ";
+    speechText+= "have your name on your Alexa's high score leaderboard. And if it's really good, ";
+    speechText+= "you might even be able to make it onto the global high score leaderboard. ";
+    speechText+= "That's all you need to know to play. Good luck! ";
+
+    speechText+= GAME_MENU_PROMPT;
+    repromptText+= GAME_MENU_PROMPT;
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .getResponse();
+  },
+}
+
 const PlayGameHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
@@ -406,6 +508,10 @@ const skillBuilder = Alexa.SkillBuilders.standard();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
+    HowToPlayHandler,
+    ShowLeaderboardsToUserHandler,
+    ShowLocalLeaderboardToUserHandler,
+    ShowWorldLeaderboardToUserHandler,
     PlayGameHandler,
     AnswerHandler,
     GetUserNameHandler,

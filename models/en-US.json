@@ -25,6 +25,52 @@
           ]
         },
         {
+          "name": "ShowLeaderboardsToUserIntent",
+          "slots": [],
+          "samples": [
+            "look at the leaderboards",
+            "view leaderboards",
+            "show me the leaderboards",
+            "leaderboards"
+          ]
+        },
+        {
+          "name": "ShowLocalLeaderboardToUserIntent",
+          "slots": [],
+          "samples": [
+            "view local leaderboard",
+            "view my leaderboard",
+            "view my local Alexa leaderboard",
+            "local leaderboard",
+            "local Alexa leaderboard"
+          ]
+        },
+        {
+          "name": "ShowWorldLeaderboardToUserIntent",
+          "slots": [],
+          "samples": [
+            "view world leaderboard",
+            "view global leaderboard",
+            "view worldwide leaderboard",
+            "world leaderboard",
+            "global leaderboard"
+          ]
+        },
+        {
+          "name": "HowToPlayIntent",
+          "slots": [],
+          "samples": [
+            "how to play",
+            "how to",
+            "how",
+            "tell me how to play",
+            "how do you play",
+            "rules",
+            "teach me",
+            "rules of the game"
+          ]
+        },
+        {
           "name": "AnswerIntent",
           "slots": [
             {
