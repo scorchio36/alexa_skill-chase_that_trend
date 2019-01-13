@@ -1,14 +1,27 @@
-/* eslint-disable  func-names */
-/* eslint-disable  no-console */
+/*
+
+Note:
+
+-World leaderboard must be grabbed everytime you want to use it so that the
+current user has the most fresh leaderboard (so there won't be any overlap
+problems since other Alexas will also be writing to this table).
+*/
 
 const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
 const SearchTermsGenerator = require('./search_terms_generator.js');
 const searchTermsGenerator = new SearchTermsGenerator();
 const Leaderboard = require('./leaderboard.js');
+const { DynamoDbPersistenceAdapter } = require('ask-sdk-dynamodb-persistence-adapter');
+
+//Create another DynamoDB persistence adapter object to get data from
+//the table storing the worldwide leaderboard scores.
+const dynamoDbPersistenceAdapter = new DynamoDbPersistenceAdapter({ tableName : 'chase_that_trend_US_leaderboard',
+                                                                    partitionKeyGenerator : () => "1" });
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
 const LOCAL_LEADERBOARD_LENGTH = 10;
+const WORLD_LEADERBOARD_LENGTH = 50;
 
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
@@ -34,6 +47,10 @@ const LaunchRequestHandler = {
     }
 
     repromptText += GAME_MENU_PROMPT;
+
+    let attribs = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+    console.log("Outputting World");
+    console.log("Worldwide leaderboard in DB: " + JSON.stringify(new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(attribs.leaderboard))));
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -113,6 +130,10 @@ const AnswerHandler = {
     localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
     console.log("LEADERBOARD:" + localLeaderboard.constructor.name);
 
+    //grab the World Leaderboard
+    let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+    let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+
     //log results to double check that user answer is lining up with correct answer
     console.log("UserAnswer:" + userAnswer);
     console.log("Winning Answer:" + searchTermsGenerator.getWinningSearchTerm());
@@ -146,26 +167,51 @@ const AnswerHandler = {
       screenOptions += "Game Over.";
 
       //handle game over
-      let scorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
-      if(scorePosition == -1) {
+
+      //check if the user made it on either score board
+      let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+      let isLocalScoreHighEnough = (localScorePosition != -1);
+
+      let worldScorePosition = worldLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+      let isWorldScoreHighEnough = (worldScorePosition != -1);
+
+      if(isLocalScoreHighEnough && isWorldScoreHighEnough) {
+        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+        speechText += "Congratulations! You got a high score on your Alexa leaderboard and made it on the Worldwide score board! What is your name? ";
+      }
+      else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
+        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+
+        speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
+      }
+      else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
+        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+        speechText += "Congratulations! You made it on the Worldwide score board! What is your name? ";
+      }
+      else {
         speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
         speechText += GAME_MENU_PROMPT;
 
         sessionAttributes.currentScore = 0;
         sessionAttributes.gameActive = false;
-
       }
-      else {
-        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, scorePosition);
-        localLeaderboard.addNameToPosition("name placeholder", scorePosition);
-        speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
-      }
-
     }
+
 
     sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
     //save session variable changes
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    //save DB changes
+    dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+    await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -181,7 +227,7 @@ const GetUserNameHandler = {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
     && handlerInput.requestEnvelope.request.intent.name === 'GetUserNameIntent';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     //setup AnswerHandler text output
     let speechText = "";
     let repromptText = "";
@@ -192,19 +238,51 @@ const GetUserNameHandler = {
     //get the variables stored in the current session
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
+    //get the leaderboards
     let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
     localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
 
-    let scorePosition = localLeaderboard.getPositionFromName("name placeholder");
-    localLeaderboard.addNameToPosition(userName, scorePosition);
+    let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+    let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
-    speechText += "Great job " + userName + ". Your score made " + scorePosition + "th place";
-    speechText += " on your local Alexa leaderboard! I wish I was that cool. ";
+    //check if the user made it on either score board
+    let localScorePosition = localLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
+    let isNameInLocalLeaderboard = (localScorePosition != -1);
+
+    let worldScorePosition = worldLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
+    let isNameInWorldLeaderboard = (worldScorePosition != -1);
+
+
+    if(isNameInLocalLeaderboard && isNameInWorldLeaderboard) {
+      localLeaderboard.addNameToPosition(userName, localScorePosition);
+      worldLeaderboard.addNameToPosition(userName, worldScorePosition);
+
+      speechText += "Great job " + userName + ". Your score made " + localScorePosition + "th place on your Alexa. ";
+      speechText += "and " + worldScorePosition + "th place in the world! ";
+    }
+    else if(isNameInLocalLeaderboard && !isNameInWorldLeaderboard) {
+      localLeaderboard.addNameToPosition(userName, localScorePosition);
+
+      speechText += "Great job " + userName + ". Your score made " + localScorePosition + "th place on your Alexa. ";
+    }
+    else if(!isNameInLocalLeaderboard && isNameInWorldLeaderboard) {
+      worldLeaderboard.addNameToPosition(userName, worldScorePosition);
+
+      speechText += "Great job " + userName + ". Your score made " + worldScorePosition + "th place in the world. ";
+    }
+
+
+
+    speechText += "I wish I was that cool. ";
     speechText += GAME_MENU_PROMPT;
 
     sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
     //save session variable changes
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    //save DB changes
+    dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+    await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
 
     return handlerInput.responseBuilder
       .speak(speechText)
