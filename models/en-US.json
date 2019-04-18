@@ -42,7 +42,8 @@
             "view my leaderboard",
             "view my local Alexa leaderboard",
             "local leaderboard",
-            "local Alexa leaderboard"
+            "local Alexa leaderboard",
+            "local"
           ]
         },
         {
@@ -53,7 +54,24 @@
             "view global leaderboard",
             "view worldwide leaderboard",
             "world leaderboard",
-            "global leaderboard"
+            "global leaderboard",
+            "worldwide leaderboard",
+            "worldwide",
+            "global",
+            "world"
+          ]
+        },
+        {
+          "name": "ViewLeaderboardPositionIntent",
+          "slots": [
+            {
+              "name": "leaderboardPosition",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "show me position {leaderboardPosition}",
+            "show position {leaderboardPosition}"
           ]
         },
         {

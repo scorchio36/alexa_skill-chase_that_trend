@@ -65,8 +65,8 @@ async function getSearchTermGrades(searchTermsArray) {
   //If no grade is available, then make both grades 0 for that day so they do
   //not contribute to the average.
   for(var i = 0; i<30; i++) {
-    //This if statment will run if either search term does not have data for that day
-    if(!(searchData.timelineData[i].hasData[0]) || !(searchData.timelineData[i].hasData[1])) {
+    //This if statment will run if either search term does not have data for that day (it protects against reading undefined data)
+    if(!(searchData.timelineData[i].hasData[0]) || !(searchData.timelineData[i].hasData[1]) || (searchData.timelineData[i] == undefined)) {
       gradePerDayList[0].push(0);
       gradePerDayList[1].push(0);
     }
