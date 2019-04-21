@@ -14,6 +14,10 @@ const searchTermsGenerator = new SearchTermsGenerator();
 const Leaderboard = require('./leaderboard.js');
 const { DynamoDbPersistenceAdapter } = require('ask-sdk-dynamodb-persistence-adapter');
 
+//Add an enum to keep track of states
+const StateEnum = {"MAIN_MENU":0, "LEADERBOARD_MENU":1, "LOCAL_LEADERBOARD":2, "WORLD_LEADERBOARD":3,
+                    "GAME_ACTIVE":4, "GAME_OVER":5};
+//StatesEnum = Object.freeze(StatesEnum); //it is common practice to freeze the enum object after it is defined
 
 
 //Create another DynamoDB persistence adapter object to get data from
@@ -21,7 +25,7 @@ const { DynamoDbPersistenceAdapter } = require('ask-sdk-dynamodb-persistence-ada
 const dynamoDbPersistenceAdapter = new DynamoDbPersistenceAdapter({ tableName : 'chase_that_trend_US_leaderboard',
                                                                     partitionKeyGenerator : () => "1" });
 
-const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play?";
+const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play? ";
 
 const LOCAL_LEADERBOARD_LENGTH = 10;
 const WORLD_LEADERBOARD_LENGTH = 50;
@@ -67,7 +71,8 @@ const LaunchRequestHandler = {
 const ShowLeaderboardsToUserHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === "IntentRequest"
-    && handlerInput.requestEnvelope.request.intent.name === "ShowLeaderboardsToUserIntent";
+    && handlerInput.requestEnvelope.request.intent.name === "ShowLeaderboardsToUserIntent"
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.MAIN_MENU;
   },
   handle(handlerInput) {
 
@@ -75,7 +80,7 @@ const ShowLeaderboardsToUserHandler = {
     let repromptText = "";
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.state = "showing leaderboards";
+    sessionAttributes.state = StateEnum.LEADERBOARD_MENU;
 
     speechText += "Would you like to view your local Alexa's leaderboard or ";
     speechText += "the worldwide leaderboard? ";
@@ -95,7 +100,8 @@ const ShowLeaderboardsToUserHandler = {
 const ShowLocalLeaderboardToUserHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === "IntentRequest"
-    && handlerInput.requestEnvelope.request.intent.name === "ShowLocalLeaderboardToUserIntent";
+    && handlerInput.requestEnvelope.request.intent.name === "ShowLocalLeaderboardToUserIntent"
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.LEADERBOARD_MENU;
   },
   handle(handlerInput) {
 
@@ -103,7 +109,7 @@ const ShowLocalLeaderboardToUserHandler = {
     let repromptText = "";
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.state = "showing local leaderboard";
+    sessionAttributes.state = StateEnum.LOCAL_LEADERBOARD;
 
     speechText += "To see a certain position on the board, say show me position ";
     speechText += "followed by the place number. To see if a name is on the board, ";
@@ -124,7 +130,8 @@ const ShowLocalLeaderboardToUserHandler = {
 const ShowWorldLeaderboardToUserHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === "IntentRequest"
-    && handlerInput.requestEnvelope.request.intent.name === "ShowWorldLeaderboardToUserIntent";
+    && handlerInput.requestEnvelope.request.intent.name === "ShowWorldLeaderboardToUserIntent"
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.LEADERBOARD_MENU;
   },
   handle(handlerInput) {
 
@@ -132,7 +139,7 @@ const ShowWorldLeaderboardToUserHandler = {
     let repromptText = "";
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.state = "showing world leaderboard";
+    sessionAttributes.state = StateEnum.WORLD_LEADERBOARD;
 
     speechText += "To see a certain position on the board, say show me position ";
     speechText += "followed by the place number. To see all names on this Alexa that ";
@@ -153,9 +160,17 @@ const ShowWorldLeaderboardToUserHandler = {
 const ViewLeaderboardPositionHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === "IntentRequest"
-    && handlerInput.requestEnvelope.request.intent.name === "ViewLeaderboardPositionIntent";
+    && handlerInput.requestEnvelope.request.intent.name === "ViewLeaderboardPositionIntent"
+    && (handlerInput.attributesManager.getSessionAttributes().state == StateEnum.LOCAL_LEADERBOARD ||
+        handlerInput.attributesManager.getSessionAttributes().state == StateEnum.WORLD_LEADERBOARD);
   },
   async handle(handlerInput) {
+
+    //shouldn't be able to call this handler in middle of game
+    let activeGameCheck = checkForActiveGame(handlerInput);
+    if(activeGameCheck) {
+      return activeGameCheck;
+    }
 
     let speechText = "";
     let repromptText = "";
@@ -168,13 +183,13 @@ const ViewLeaderboardPositionHandler = {
 
     //Check if the user wants to look at a position within the local or world
     //leaderboard by looking at the current state.
-    if(sessionAttributes.state == "showing local leaderboard") {
+    if(sessionAttributes.state == StateEnum.LOCAL_LEADERBOARD) {
       let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
       localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
 
       //handle out of bounds leaderboard position
       if(leaderboardPosition > LOCAL_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
-        speechText += " I am sorry. The local leaderboard only goes up to position 10, or ";
+        speechText += "I am sorry. The local leaderboard only goes up to position 10, or ";
         speechText += "10th place. ";
       }
       //Handle the case when no score has yet been achieved at the requested position
@@ -197,13 +212,13 @@ const ViewLeaderboardPositionHandler = {
       speechText += "leaderboards anymore. ";
 
     }
-    else if(sessionAttributes.state == "showing world leaderboard") {
+    else if(sessionAttributes.state == StateEnum.WORLD_LEADERBOARD) {
       let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
       let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
       //handle out of bounds leaderboard position
       if(leaderboardPosition > LOCAL_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
-        speechText += " I am sorry. The leaderboard only goes up to position 10, or ";
+        speechText += "I am sorry. The leaderboard only goes up to position 10, or ";
         speechText += "10th place. ";
       }
       //Handle the case when no score has yet been achieved at the requested position
@@ -236,7 +251,8 @@ const ViewLeaderboardPositionHandler = {
 const HowToPlayHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === "IntentRequest"
-    && handlerInput.requestEnvelope.request.intent.name === "HowToPlayIntent";
+    && handlerInput.requestEnvelope.request.intent.name === "HowToPlayIntent"
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.MAIN_MENU;
   },
   handle(handlerInput) {
 
@@ -267,7 +283,8 @@ const HowToPlayHandler = {
 const PlayGameHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-    && handlerInput.requestEnvelope.request.intent.name === 'PlayGameIntent';
+    && handlerInput.requestEnvelope.request.intent.name === 'PlayGameIntent'
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.MAIN_MENU;
   },
   async handle(handlerInput) {
 
@@ -279,6 +296,7 @@ const PlayGameHandler = {
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.gameActive = true;
+    sessionAttributes.state = StateEnum.GAME_ACTIVE;
 
     speechText += "Alright. Let's play the game! ";
     speechText += "I will give you two random things that were searched on the internet. ";
@@ -290,7 +308,7 @@ const PlayGameHandler = {
     let currentGrades = searchTermsGenerator.getCurrentGrades();
 
     speechText += "Your two search terms are " + currentSearchTerms[0];
-    speechText += " and " + currentSearchTerms[1] + "Which of these terms has been searched more?";
+    speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
     repromptText += "Which of these two search terms have been searched more? ";
     repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
@@ -315,7 +333,7 @@ const AnswerHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
     && handlerInput.requestEnvelope.request.intent.name === 'AnswerIntent'
-    && handlerInput.attributesManager.getSessionAttributes().gameActive; //shouldnt run if game is not active
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.GAME_ACTIVE; //shouldnt run if game is not active
   },
   async handle(handlerInput) {
 
@@ -349,7 +367,7 @@ const AnswerHandler = {
     if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
 
       //handler correct answer
-      speechText += "That is correct! Nice guess!"; //Update this later to be random congratz saying
+      speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
       sessionAttributes.currentScore += 100; //keep the added score at 100 for now
 
       //ask the user the next question and update the search terms
@@ -358,10 +376,10 @@ const AnswerHandler = {
       let currentGrades = searchTermsGenerator.getCurrentGrades();
 
       speechText += "Your two search terms are " + currentSearchTerms[0];
-      speechText += " and " + currentSearchTerms[1] + "Which of these terms has been searched more?";
+      speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
       repromptText += "Which of these two search terms have been searched more? ";
-      repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
+      repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
 
       screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
 
@@ -370,11 +388,11 @@ const AnswerHandler = {
 
       //handle incorrect answer
       speechText += "That is incorrect. I'm sorry. Game Over. Your final score is " + sessionAttributes.currentScore + ". ";
-      repromptText += "I'm sorry. Game Over.";
-      screenOptions += "Game Over.";
+      repromptText += "I'm sorry. Game Over. ";
+      screenOptions += "Game Over. ";
 
       //handle game over
-
+      sessionAttributes.state = StateEnum.GAME_OVER;
       //check if the user made it on either score board
       let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
       let isLocalScoreHighEnough = (localScorePosition != -1);
@@ -407,6 +425,7 @@ const AnswerHandler = {
         speechText += GAME_MENU_PROMPT;
 
         sessionAttributes.currentScore = 0;
+        sessionAttributes.state = StateEnum.MAIN_MENU;
         sessionAttributes.gameActive = false;
       }
     }
@@ -432,11 +451,42 @@ const AnswerHandler = {
   },
 };
 
+const MainMenuHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+    && handlerInput.requestEnvelope.request.intent.name === 'MainMenuIntent'
+    && handlerInput.attributesManager.getSessionAttributes().state != StateEnum.GAME_ACTIVE
+    && handlerInput.attributesManager.getSessionAttributes().state != StateEnum.GAME_OVER;
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    sessionAttributes.state = StateEnum.MAIN_MENU;
+
+    speechText += GAME_MENU_PROMPT;
+    repromptText += GAME_MENU_PROMPT;
+
+    //save session changes
+    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
+      .withSimpleCard("Chase that Trend!", GAME_MENU_PROMPT)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+}
+
 //After a user gets a high score, they should say a name to store the score under
 const GetUserNameHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-    && handlerInput.requestEnvelope.request.intent.name === 'GetUserNameIntent';
+    && handlerInput.requestEnvelope.request.intent.name === 'GetUserNameIntent'
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.GAME_OVER;
   },
   async handle(handlerInput) {
     //setup AnswerHandler text output
@@ -485,7 +535,7 @@ const GetUserNameHandler = {
     }
 
 
-
+    sessionAttributes.state = StateEnum.MAIN_MENU;
     speechText += "I wish I was that cool. ";
     speechText += GAME_MENU_PROMPT;
 
@@ -552,6 +602,24 @@ const SessionEndedRequestHandler = {
   },
 };
 
+const DefaultHandler = {
+
+  canHandle(handlerInput) {
+    return true;
+  },
+  handle(handlerInput) {
+
+    //If Alexa doesn't know what to do, then the other handlers might
+    //have failed a state protection check because a game is currently
+    //active. Check if the game is active here and respond accordingly.
+    let activeGameCheck = checkForActiveGame(handlerInput);
+    if(activeGameCheck) {
+      return activeGameCheck;
+    }
+  },
+
+}
+
 const ErrorHandler = {
   canHandle() {
     return true;
@@ -574,6 +642,40 @@ const ErrorHandler = {
 function getRandomGreeting() {
   const greetings = randomGreetings.greetings; //array filled with random greetings
   return greetings[Math.floor(Math.random()*(greetings.length))];
+}
+
+function checkForActiveGame(handlerInput) {
+
+  let speechText = "";
+  let repromptText = "";
+  let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+  let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms(); //reprompt the user with answer choices
+
+  if(sessionAttributes.state == StateEnum.GAME_ACTIVE) {
+
+    speechText += "I am sorry. You can not run this command when you are ";
+    speechText += "in the middle of a game. If you would like to exit the skill ";
+    speechText += "just say quit. Otherwise, your two search terms are ";
+    speechText += currentSearchTerms[0] + " and " + currentSearchTerms[1] + ". ";
+    speechText += "Which of these was searched the most? ";
+  }
+  else if(sessionAttributes.state == StateEnum.GAME_OVER) {
+    speechText += "I am sorry. You cannot run this command when you are ";
+    speechText += "in the middle of a game. If you would like to exit the skill ";
+    speechText += "just say quit. Otherwise, what is your name? ";
+  }
+  else {
+    return; //There is no active game so just return from this function
+  }
+
+  //There is currently an active game (or a score is being saved) so provide the
+  //user with the appropriate response.
+  return handlerInput.responseBuilder
+    .speak(speechText)
+    .reprompt(repromptText)
+    .withShouldEndSession(false)
+    .getResponse();
+
 }
 
 //This function will take care of anything that needs to happen before the user
@@ -604,7 +706,7 @@ async function setupSkill(handlerInput) {
   sessionAttributes.currentScore = 0;
   sessionAttributes.gameActive = false;
   sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
-  sessionAttributes.state = "main menu";
+  sessionAttributes.state = StateEnum.MAIN_MENU;
   console.log("setupSkill Leaderboard:" + sessionAttributes.localAlexaLeaderboard);
 
   sessionAttributes.firstTime = persistentAttributes.firstTime;
@@ -634,7 +736,9 @@ exports.handler = skillBuilder
     GetUserNameHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
-    SessionEndedRequestHandler
+    SessionEndedRequestHandler,
+    MainMenuHandler,
+    DefaultHandler
   )
   .addErrorHandlers(ErrorHandler)
   .withTableName('chase-that-trend-user-data')

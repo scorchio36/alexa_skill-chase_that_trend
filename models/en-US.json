@@ -101,6 +101,24 @@
           ]
         },
         {
+          "name": "MainMenuIntent",
+          "slots": [],
+          "samples": [
+            "main menu",
+            "menu",
+            "start screen",
+            "opening menu",
+            "start",
+            "beginning",
+            "start over"
+          ]
+        },
+        {
+          "name": "DefaultHandler",
+          "slots": [],
+          "samples": []
+        },
+        {
           "name": "GetUserNameIntent",
           "slots": [
             {
@@ -13025,11 +13043,6 @@
             {
               "name": {
                 "value": "CSI: Crime Scene Investigation"
-              }
-            },
-            {
-              "name": {
-                "value": "24"
               }
             },
             {
