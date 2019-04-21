@@ -25,6 +25,70 @@
           ]
         },
         {
+          "name": "ShowLeaderboardsToUserIntent",
+          "slots": [],
+          "samples": [
+            "look at the leaderboards",
+            "view leaderboards",
+            "show me the leaderboards",
+            "leaderboards"
+          ]
+        },
+        {
+          "name": "ShowLocalLeaderboardToUserIntent",
+          "slots": [],
+          "samples": [
+            "view local leaderboard",
+            "view my leaderboard",
+            "view my local Alexa leaderboard",
+            "local leaderboard",
+            "local Alexa leaderboard",
+            "local"
+          ]
+        },
+        {
+          "name": "ShowWorldLeaderboardToUserIntent",
+          "slots": [],
+          "samples": [
+            "view world leaderboard",
+            "view global leaderboard",
+            "view worldwide leaderboard",
+            "world leaderboard",
+            "global leaderboard",
+            "worldwide leaderboard",
+            "worldwide",
+            "global",
+            "world"
+          ]
+        },
+        {
+          "name": "ViewLeaderboardPositionIntent",
+          "slots": [
+            {
+              "name": "leaderboardPosition",
+              "type": "AMAZON.NUMBER"
+            }
+          ],
+          "samples": [
+            "show me position {leaderboardPosition}",
+            "show position {leaderboardPosition}"
+          ]
+        },
+        {
+          "name": "HowToPlayIntent",
+          "slots": [],
+          "samples": [
+            "how to play",
+            "how to",
+            "how",
+            "tell me how to play",
+            "how do you play",
+            "rules",
+            "teach me",
+            "rules of the game"
+          ]
+        },
+        {
           "name": "AnswerIntent",
           "slots": [
             {
@@ -35,6 +99,24 @@
           "samples": [
             "{userAnswer}"
           ]
+        },
+        {
+          "name": "MainMenuIntent",
+          "slots": [],
+          "samples": [
+            "main menu",
+            "menu",
+            "start screen",
+            "opening menu",
+            "start",
+            "beginning",
+            "start over"
+          ]
+        },
+        {
+          "name": "DefaultHandler",
+          "slots": [],
+          "samples": []
         },
         {
           "name": "GetUserNameIntent",
@@ -12961,11 +13043,6 @@
             {
               "name": {
                 "value": "CSI: Crime Scene Investigation"
-              }
-            },
-            {
-              "name": {
-                "value": "24"
               }
             },
             {
