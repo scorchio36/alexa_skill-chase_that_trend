@@ -1,0 +1,9 @@
+{
+  "intro_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/intro.mp3\" /> ",
+  "new_game_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/new_game.mp3\" /> ",
+  "correct_answer_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/correct_answer.mp3\" /> ",
+  "wrong_answer_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/wrong_answer.mp3\" /> ",
+  "game_over_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/game_over.mp3\" /> ",
+  "high_score_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/high_score.mp3\" /> ",
+  "congratulations_sound": "<audio src=\"https://s3.amazonaws.com/christianheckerlambda/chase-that-trend/sounds/congratulations.mp3\" /> "
+}

@@ -9,6 +9,7 @@ problems since other Alexas will also be writing to this table).
 
 const Alexa = require('ask-sdk');
 const randomGreetings = require('./random_greetings.json');
+const sounds = require('./sounds.json');
 const SearchTermsGenerator = require('./search_terms_generator.js');
 const searchTermsGenerator = new SearchTermsGenerator();
 const Leaderboard = require('./leaderboard.js');
@@ -39,6 +40,9 @@ const LaunchRequestHandler = {
 
     let speechText = "";
     let repromptText = "";
+
+    //cute intro sound for when user opens game up
+    speechText += sounds.intro_sound;
 
     await setupSkill(handlerInput);
 
@@ -299,6 +303,7 @@ const PlayGameHandler = {
     sessionAttributes.state = StateEnum.GAME_ACTIVE;
 
     speechText += "Alright. Let's play the game! ";
+    speechText += sounds.new_game_sound;
     speechText += "I will give you two random things that were searched on the internet. ";
     speechText += "All you have to do is tell me, over the past month, which of the two ";
     speechText += "things has been searched more? ";
@@ -367,6 +372,7 @@ const AnswerHandler = {
     if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
 
       //handler correct answer
+      speechText += sounds.correct_answer_sound;
       speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
       sessionAttributes.currentScore += 100; //keep the added score at 100 for now
 
@@ -387,7 +393,10 @@ const AnswerHandler = {
     else {
 
       //handle incorrect answer
-      speechText += "That is incorrect. I'm sorry. Game Over. Your final score is " + sessionAttributes.currentScore + ". ";
+      speechText += sounds.wrong_answer_sound;
+      speechText += "That is incorrect. I'm sorry. Game Over. ";
+      speechText += sounds.game_over_sound;
+      speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
       repromptText += "I'm sorry. Game Over. ";
       screenOptions += "Game Over. ";
 
@@ -406,18 +415,21 @@ const AnswerHandler = {
         worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
         worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
 
+        speechText += sounds.high_score_sound;
         speechText += "Congratulations! You got a high score on your Alexa leaderboard and made it on the Worldwide score board! What is your name? ";
       }
       else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
         localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
         localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
 
+        speechText += sounds.high_score_sound;
         speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
       }
       else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
         worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
         worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
 
+        speechText += sounds.high_score_sound;
         speechText += "Congratulations! You made it on the Worldwide score board! What is your name? ";
       }
       else {
@@ -522,16 +534,19 @@ const GetUserNameHandler = {
 
       speechText += "Great job " + userName + ". Your score made " + (+localScorePosition+1) + "th place on your Alexa. ";
       speechText += "and " + (+worldScorePosition+1) + "th place in the world! ";
+      speechText += sounds.congratulations_sound;
     }
     else if(isNameInLocalLeaderboard && !isNameInWorldLeaderboard) {
       localLeaderboard.addNameToPosition(userName, localScorePosition);
 
       speechText += "Great job " + userName + ". Your score made " + (+localScorePosition+1) + "th place on your Alexa. ";
+      speechText += sounds.congratulations_sound;
     }
     else if(!isNameInLocalLeaderboard && isNameInWorldLeaderboard) {
       worldLeaderboard.addNameToPosition(userName, worldScorePosition);
 
       speechText += "Great job " + userName + ". Your score made " + (+worldScorePosition+1) + "th place in the world. ";
+      speechText += sounds.congratulations_sound;
     }
 
 
