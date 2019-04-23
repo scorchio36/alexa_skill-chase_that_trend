@@ -51,7 +51,6 @@ Leaderboard.prototype.addNameToPosition = function(name, position) {
 Leaderboard.prototype.addScoreToPosition = function(score, position) {
   //this.board[position][SCORE_INDEX] = score;
   this.board.splice(position, 0, [this.board[position][NAME_INDEX], score]);
-  this.board.pop(); //We want to maintain the desired length of the board
 }
 
 Leaderboard.prototype.getNameFromPosition = function(position) {
@@ -60,6 +59,15 @@ Leaderboard.prototype.getNameFromPosition = function(position) {
 
 Leaderboard.prototype.getScoreFromPosition = function(position) {
   return this.board[position][SCORE_INDEX];
+}
+
+//remove an entire entry from this position
+Leaderboard.prototype.removeEntryAtPosition = function(position) {
+  this.board.splice(position, 1);
+}
+
+Leaderboard.prototype.removeLastEntry = function(position) {
+  this.board.pop();
 }
 
 Leaderboard.prototype.getBoard = function() {

@@ -549,6 +549,12 @@ const GetUserNameHandler = {
       speechText += sounds.congratulations_sound;
     }
 
+    //Once the names have been officially added a new entry saved, delete the last
+    //entry in order to maintain the length of the leaderboard at LOCAL_LEADERBOARD_LENGTH
+    //or WORLD_LEADERBOARD_LENGTH. (When a new entry is added it is spliced into the middle
+    //of the array, so the size of the array increases by 1)
+    localLeaderboard.removeLastEntry();
+    worldLeaderboard.removeLastEntry();
 
     sessionAttributes.state = StateEnum.MAIN_MENU;
     speechText += "I wish I was that cool. ";
@@ -596,8 +602,11 @@ const CancelAndStopIntentHandler = {
       && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
         || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     const speechText = 'Goodbye!';
+
+    //make sure that a userId is not saved in either of the leaderboards
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -610,8 +619,10 @@ const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder.getResponse();
   },
@@ -639,8 +650,10 @@ const ErrorHandler = {
   canHandle() {
     return true;
   },
-  handle(handlerInput, error) {
+  async handle(handlerInput, error) {
     console.log(`Error handled: ${error.message}`);
+
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder
       .speak('Sorry, I can\'t understand the command. Please say again.')
@@ -735,6 +748,46 @@ async function setupSkill(handlerInput) {
 
 }*/
 
+async function cleanupLeaderboards(handlerInput) {
+
+  let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+  let persistentAttributes = handlerInput.attributesManager.getPersistentAttributes();
+  let currentUserId = handlerInput.requestEnvelope.session.user.userId;
+
+  //grab local leaderboard
+  let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
+  localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
+
+  for(var i = 0; i<LOCAL_LEADERBOARD_LENGTH; i++) {
+    let name = localLeaderboard.getNameFromPosition(i);
+    if(name == currentUserId) {
+      localLeaderboard.removeEntryAtPosition(i);
+    }
+  }
+
+  //grab the World Leaderboard
+  let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+  let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+
+  for(var i = 0; i<LOCAL_LEADERBOARD_LENGTH; i++) {
+    let name = worldLeaderboard.getNameFromPosition(i);
+    if(name == currentUserId) {
+      worldLeaderboard.removeEntryAtPosition(i);
+    }
+  }
+
+  sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
+  //save the boards
+  handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+  //save DB changes
+  dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+  await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
+
+  persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
+  handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
+  await handlerInput.attributesManager.savePersistentAttributes();
+}
 
 const skillBuilder = Alexa.SkillBuilders.standard();
 
