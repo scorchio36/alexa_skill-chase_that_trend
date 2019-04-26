@@ -20,7 +20,8 @@ elk
 gorilla
 antelope
 whale
-eagle owl
+eagle
+owl
 gila monster
 silver fox
 mongoose
@@ -30,7 +31,7 @@ skunk
 aardvark
 chicken
 guinea pig
-duckbill platypus
+platypus
 starfish
 coyote
 polar bear
@@ -64,7 +65,6 @@ rat
 chinchilla
 reindeer
 monkey
-grizzly bear
 muskrat
 chipmunk
 panther
@@ -76,7 +76,6 @@ rooster
 goat
 lamb
 porcupine
-bighorn
 toad
 salamander
 mustang
@@ -101,11 +100,10 @@ puma
 squirrel
 wildcat
 ape
-blue crab
+crab
 lovebird
 koala
 prairie dog
-snowy owl
 lion
 puppy
 badger
@@ -122,206 +120,46 @@ iguana
 snake
 bison
 cat
-Carolina Klüft
 Maria Antonelli
-Martina Hingis
-Tatiana Grigorieva
 Jesse Owens
-Astrid Kumbernuss
-Ilona Slupianek
-Hana Klapalová
-Hella Jurich
-Grete Waitz
 Bo Jackson
-Bart Starr
-Wilt Chamberlain
-Mario Lemieux
-Annie Thorisdottir
-Jelena Dokic
-Daniela Hantuchová
 Lindsey Vonn
-Kimberley Smith
-Natalie Gulbis
-Maggie Vessey
-Szilveszter Csollány
-Libby Lenton
 Jackie Robinson
-Sofia Mattsson
 David Pearson
-Kari Traa
-Anna Chakvetadze
-Tanja Frieden
 Xavi
 Ronda Rousey
-Jerry Rice
-Bart Conner
-Andreas Thorkildsen
-Gro Marit Istad Kristiansen
 Kerri Walsh
 Ekaterina Khomyakova
-Kareem Abdul-Jabbar
-Ana Paula Connelly
-Angelique Kerber
-Marrit Leenstra
-Ricky Henderson
-Heike Henkel
 Babe Ruth
-Paula Radcliffe
-Cy Young
-Ariane Friedrich
 Joe Montana
-Talita Antunes
-Alyona Bondarenko
 Maria Sharapova
 Usain Bolt
-Roger Federer
 Brett Favre
-Vera Zvonareva
-Stan Musial
-Lisa Raymond
 Michael Jordan
 April Ross
 Charles Austin
-Martina Navratilova
 Wayne Gretzky
-Ágnes Szávay
-Mary Pierce
-Pete Rose
 Mike Tyson
-Nadine Broersen
-Stefanie Graf
 Ichiro Suzuki
-Sanne Keizer
-Rieke Brink-Abeler
-Ted Williams
-Paul Hamm
-Vanessa Atkinson
-Yelena Davydova
-Anni Friesinger
 Peyton Manning
-Bethanie Mattek
-Elena Vesnina
-Elena Dementieva
-Pelé
 Anna Kournikova
 Kobe Bryant
 Wayne Rooney
-Claudia Künzel
-Chrissie Wellington
-Therese Johaug
-Nikolai Andrianov
-John Mc Enroe
-Albert Pujols
-Betty Heidler
-Sabine Lisicki
-Julia Mancuso
-Lionel Messi
 Lou Gehrig
-Virpi Kuitunen
 Joe Di Maggio
-Vera Dushevina
-Nadia Comanec
 Tom Brady
-Nicole Vaidisova
-Zinedine Zidane
-Anke Huber
-Steven Hooker
-Michael Schuhmacher
 Serena Williams
-Jennifer Kessy
-Simona Amânar
 Boris Becker
-Amy Acuff
-Monica Seles
-Sally Mc Lellan
-Ivan Lendl
 Andre Agassi
-Romy Müller
-Tatiana Gutsu
-Barry Sanders
 Michael Phelps
-Tamsyn Lewis
-Miroslav Klose
-Britta Steffen
 David Beckham
-Darya Klishina
-Michael Schumacher
-Bobby Orr
-Gene Tunney
-Kajsa Bergqvist
-Yuliya Krevsun
-Alexandr Karelin
-Matthew Mitcham
-Carrie Tollefson
-Lilli Schwarzkopf
-Vitali Klitschko
-Desiree Ficker
-Alison Williamson
-Ilka Semmler
-Barbara Rittner
-Caroline Wozniacki
-Oliver Kahn
-Kathrine Maaseide
-Ana Ivanovic
-Marina Lobatch
 Larry Bird
-Martina Glagow
-Marit Bjørgen
-Katarina Witt
-Niki Gudex
-Conny Wassmuth
-Victoria Azarenka
-Emma Johansson
-Sergey Litvinov
-Melissa Breen
-Susanne Glesnes
-Chris Evert
-Alice Schmidt
-Evgenia Ukolova
-Bill Russell
-Nicole Sanderson
-Yelena Isinbayeva
 Muhammad Ali
-Yelena Soboleva
-Suzy Favor-Hamilton
-Shawn Johnson
-Svetlana Khorkina
-Mia Hamm
-Sergei Kharkov
-Kacie Mac Tavish
-Mickey Mantle
-Misty May-Treanor
-Willie Mays
-Edward Hennig
-Sara Goller
-Katrin Mattscherodt
-Björn Borg
-Jim Brown
-Hannah Teter
-Rebekka Kadijk
 Tony Hawk
-Julie Krone
-Dan Marino
-Adriana Behar
-Ty Cobb
-Larissa França
 Magic Johnson
-Rebecca Adlington
-Alexander Karelin
-Kelly Slater
 Jim Thorpe
-Laura Ludwig
-Johnny Unitas
-Katarina Witt
-Wladimir Klitschko
 Nastia Liukin
 Bruce Lee
-Tatyana Ledovskaya
-Evi Sachenbacher-Stehle
-Walter Payton
-Lauren Jackson
-Nikolai Andrianov
-Sarah Bäckman
 York Peppermint Patties
 Smarties
 Candy cigarettes
@@ -332,12 +170,11 @@ Toblerone
 Twizzlers
 Peeps
 Twix
-M&Ms
 Cotton candy
 Milky Way
 Junior Mints
 Hershey Bar
-Salt water taffy
+Saltwater taffy
 Payday
 Swedish Fish
 Blow Pops
@@ -346,22 +183,18 @@ Jelly Belly
 Sour Patch Kids
 Baby Ruth
 Cadbury eggs
-Gummi Bears
 Skittles
 Starburst
 Reese's Peanut Butter Cups
 Circus peanuts
 Tootsie Roll Pops
 Three Musketeers
-Mr. Goodbar
 Sugar Daddy
 Red Vines
 Jawbreakers
 Candy corn
 Snickers
 Tootsie Rolls
-Gummi Worms
-Kit-Kat
 Pocky
 Nerds
 Werther's Original
@@ -413,13 +246,11 @@ Tim McGraw
 Vanessa Hudgens
 Shah Rukh Khan
 Scarlett Johansson
-Maria Sharapova
 Harry Styles
 Anna Gunn
 George W Bush
 William Shatner
 Mickey Rourke
-Gabriel Macht
 Christopher Nolan
 Viola Davis
 Kelly Lynch
@@ -431,10 +262,8 @@ Robert Redford
 Lil Wayne
 Rita Ora
 Martin Sheen
-Macaulay Culkin
 Christian Bale
 Jet Li
-Marisa Tomei
 Rowan Atkinson
 Emma Thompson
 Dave Matthews
@@ -449,7 +278,6 @@ Howard Stern
 Keanu Reeves
 Jeff Gordon
 LeBron James
-Scott Disick
 Sigourney Weaver
 Oprah Winfrey
 Brad Paisley
@@ -481,24 +309,17 @@ Chace Crawford
 Ashley Tisdale
 Alexa Chung
 Tom Hiddleston
-Cara Delevingne
-Catherine Zeta-Jones
 Bradley Cooper
 Tiger Woods
 Lamar Odom
 Marilyn Monroe
-Justin Theroux
-Patricia Arquette
 Miley Cyrus
 Jay Leno
-Amitabh Bachchan
 Jim Parsons
 Emily Mortimer
-Ethan Hawke
 Jane Fonda
 Rush Limbaugh
 Elton John
-Michael Jordan
 Tobey Maguire
 John Malkovich
 Robert Downey Jr.
@@ -506,8 +327,6 @@ Daniel Craig
 Harrison Ford
 Katharine Hepburn
 Emma Watson
-Bruce Lee
-Ian Somerhalder
 Derek Jeter
 James Earl Jones
 Pierce Brosnan
@@ -524,13 +343,11 @@ Kim Kardashian
 Eminem
 Chris Brown
 Keith Richards
-Ed Westwick
 Bruce Willis
 Jennifer Aniston
 Tommy Lee Jones
 Wolfgang Puck
 Kathleen Turner
-Maksim Vitorgan
 Phil Mickelson
 Ashton Kutcher
 Halle Berry
@@ -548,15 +365,12 @@ Leonardo DiCaprio
 Jack Nicholson
 Zac Efron
 Ben Affleck
-Perrie Edwards
 Daniel Radcliffe
-Richard Gere
 Zooey Deschanel
 Bruce Springsteen
 Meryl Streep
 Freddie Mercury
 Heidi Klum
-Mark Burnett
 Neil Diamond
 Queen Latifah
 Charles Chaplin
@@ -566,7 +380,6 @@ Roger Moore
 Clint Eastwood
 Robin Thicke
 Usher
-50 Cent
 Michael Douglas
 Kate Moss
 Jennifer Love Hewitt
@@ -581,7 +394,6 @@ Johnny Depp
 Kristen Stewart
 Edward Norton
 Katy Perry
-Jay-Z
 Kanye West
 Dustin Hoffman
 Rihanna
@@ -593,27 +405,19 @@ Sarah Shahi
 Morgan Freeman
 Kris Jenner
 Tom Cruise
-Vincent D'Onofrio
 Orlando Bloom
 Will Smith
-Gemma Arterton
 Jerry Seinfeld
-Kris Humphries
-Skylar Astin
 Will Ferrell
 Liam Hemsworth
 Hugh Jackman
 Kevin Garnett
-Famke Janssen
 Leona Lewis
 Barbra Streisand
 Dwayne Wade
-George Pal
 Taylor Swift
 Jake Gyllenhaal
 Danica Patrick
-Beyonce Knowles
-David Beckham
 Kenny Chesney
 Sydney Liebes
 Bruce Jenner
@@ -624,26 +428,20 @@ Tina Fey
 Larry David
 Melissa Joan Hart
 Audrey Hepburn
-Serena Williams
 Zayn Malik
 Carrie Underwood
 Rachel Zoe
-Natalya Rudakova
 Stacey Dash
-Cory Monteith
 Nicole Richie
 Justin Bieber
 Larry the Cable Guy
 Jessica Biel
 Simon Cowell
-Kobe Bryant
 Reese Witherspoon
 Al Pacino
-Roman Coppola
 Paul Newman
 Paris Hilton
 Julia Roberts
-Golshifteh Farahani
 Sienna Miller
 Vince Vaughn
 Nicolas Cage
@@ -651,7 +449,6 @@ Mark Harmon
 Ellen DeGeneres
 Jackie Chan
 Brendan Fraser
-James Caviezel
 Kourtney Kardashian
 Madonna
 Keira Knightley
@@ -666,34 +463,31 @@ Russell Crowe
 Mila Kunis
 Kristen Bell
 Ryan Reynolds
-Seann William Scott
 Charlie Hunnam
 Sandra Bullock
 Sean Penn
 McDonald's
 MasterCard
 Sony
-Ralph Lauren Corporation
+Ralph Lauren
 Facebook
-Panasonic Corporation
+Panasonic
 Honda Motor Company
-Amazon.com
+Amazon
 Corona
 Porsche
-Tiffany & Co.
 IBM
 BlackBerry
-Johnson & Johnson
 Audi
 General Electric
 Morgan Stanley
-Mercedes-Benz
+Mercedes
 VISA
 Jack Daniel's
 Volkswagen Group
-Yahoo!
+Yahoo
 Nike
-Nissan Motor Co
+Nissan Motor Company
 MTV
 Nintendo
 Kia Motors
@@ -705,10 +499,10 @@ Heineken
 Citigroup
 Verizon
 Canon
-Kellogg Company
+Kelloggs
 Pizza Hut
-Samsung Group
-Shell Oil Company
+Samsung
+Shell Oil
 Microsoft
 eBay
 Chase Bank
@@ -716,54 +510,39 @@ American Express
 Oracle Corporation
 Adobe
 Mitsubishi
-Hewlett-Packard
-Burberry
-Harley-Davidson
-Deere & Company
+Hewlett Packard
+Harley Davidson
 Zara
 Home Depot
-H&M
 Smirnoff
-AT&T
 IKEA
-Siemens AG
+Siemens
 Ferrari
-KFC
 Starbucks
 Toyota
 Kleenex
-Johnnie Walker
 Xerox
-L'Oréal
-Coca-Cola
-Nescafé
+Coca Cola
 The Walt Disney Company
 BMW
 Prada
 Nokia
-United Parcel Service
 Pampers
-Apple Inc.
+Apple
 Avon
-Tesco Corporation
+Tesco
 Sprite
-Intel Corporation
+Intel
 Google
 Bank of America
 Louis Vuitton
-Wal-Mart
+Walmart
 Hyundai
-Gap Inc.
-Allianz
-PepsiCo
+Gap
+Pepsi
 Adidas
-Cisco Systems
+Cisco
 Whataburger
-Chick-fil-A
-Roy Rogers Restaurants
-Kenny Rogers Roasters
-McDonald's
-Red Rooster
 Nathan's Famous
 Tim Hortons
 Moe's Southwest Grill
@@ -771,172 +550,57 @@ Wingstop
 Boston Market
 Little Caesars
 El Pollo Loco
-Bojangles'
 Arby's
 Jamba Juice
 Burger King
 Church's Chicken
 Smoothie King
-Hardee's
 Del Taco
-Culver's
 White Castle
 Panera Bread
 Jimmy John's
 Fatburger
-Starbucks
-Steak 'n Shake
 Papa Murphy's
 Taco Cabana
 Dairy Queen
-In-N-Out Burger
-Pizza Hut
 Chipotle Mexican Grill
 CiCi's Pizza
-Five Guys Burgers & Fries
-Baskin-Robbins
+Five Guys Burgers and Fries
+Baskin Robbins
 Jack in the Box
 Panda Express
 Wendy's
 Papa John's
 Quiznos
 Subway
-Sonic Drive-In
+Sonic
 Qdoba Mexican Grill
 Popeyes Louisiana Kitchen
-Captain D's
 Domino's Pizza
 Krispy Kreme
 Long John Silver's
 Taco Bell
-Carl's Jr.
 Taco Bueno
 Popeyes Chicken
-Dunkin' Donuts
+Dunkin Donuts
 Checkers
 Jason's Deli
 Zaxby's
 Marisa Tomei
-Kate Upton
-Anna Gunn
-Viola Davis
 Bella Thorne
-Claire Danes
-Amanda Seyfried
-Cameron Diaz
 Kate Winslet
 Anne Hathaway
-Marilyn Monroe
-Audrey Hepburn
-Coco Chanel
-Emma Watson
-Barbra Streisand
-Tina Fey
-Katy Perry
-Sydney Liebes
-Selena Gomez
-Amanda Bynes
 Nina Dobrev
-Adriana Lima
-Natalya Rudakova
-Lady Gaga
-Julianne Hough
-Sofia Vergara
-Kelly Lynch
-Maria Sharapova
 Pink
-Stacey Dash
-Ariana Grande
 Famke Janssen
-Sienna Miller
-Angelina Jolie
-Rihanna
-Sarah Jessica Parker
-Ashley Judd
-Perrie Edwards
-Emily Mortimer
-Bethenny Frankel
 Drew Barrymore
-Megan Fox
-Khloe Kardashian
-Keira Knightley
-Snooki
-Cara Delevingne
-Mary-Louise Parker
-Christina Aguilera
-Jessica Alba
-Katharine Hepburn
-Rachael Ray
-Danica Patrick
 Liv Tyler
-Eva Longoria
-Queen Latifah
-Rita Ora
-Reese Witherspoon
-Kathleen Turner
-Kim Kardashian
-Jennifer Lopez
-Jane Fonda
-Emma Thompson
-Melissa Joan Hart
-Oprah Winfrey
-Natalie Portman
-Britney Spears
-Madonna
-Demi Lovato
-Golshifteh Farahani
-Kate Moss
 Lea Michele
-Nicole Kidman
-Jennifer Aniston
-Ellen DeGeneres
-Jeananne Goossen
-Laura Whitmore
-Miley Cyrus
-Kristen Stewart
 Beyonce Knowles
-Meryl Streep
-Rachel Zoe
-Miranda Kerr
-Zooey Deschanel
-Ashley Tisdale
-Sarah Shahi
-Alexa Chung
-Jennifer Garner
-Jennifer Lawrence
-Kourtney Kardashian
-Leona Lewis
-Carrie Underwood
-Katherine Heigl
-Kristen Bell
-Victoria Beckham
-Emma Stone
-Halle Berry
-Patricia Arquette
-Taylor Swift
-Vanessa Hudgens
-Nicole Richie
-Sigourney Weaver
-Paris Hilton
-Jessica Biel
-Naomi Watts
-Serena Williams
-Mila Kunis
 Jessica Chastain
-Courteney Cox
-Jennifer Love Hewitt
-Julia Roberts
-Teri Hatcher
-Catherine Zeta-Jones
-Sandra Bullock
 Stephanie Meyer
-Julia Louis-Dreyfus
-Scarlett Johansson
-Lindsay Lohan
-Heidi Klum
 anchovies
 rice
-Worcestershire sauce
 swordfish
 potato chips
 bruschetta
@@ -947,7 +611,6 @@ poultry seasoning
 milk
 lettuce
 sausages
-turtle
 condensed milk
 tomato juice
 pickles
@@ -968,18 +631,17 @@ tea
 baking soda
 croutons
 blue cheese
-black-eyed peas
 sour cream
 curry leaves
-wine vinegar
-Cappuccino Latte
+Cappuccino
+Latte
 jelly beans
 broccoli
 kale
 sweet potatoes
-brazil nuts
+nuts
 monkfish
-unsweetened chocolate
+chocolate
 spinach
 capers
 pears
@@ -1011,14 +673,13 @@ brussels sprouts
 powdered sugar
 peaches
 coffee
-pig's feet
+pigs feet
 artichokes
 french fries
 sugar
 pistachios
 truffles
 parsley
-octopus
 Marsala
 borscht
 green beans
@@ -1056,98 +717,43 @@ mango
 dragonfruit
 star fruit
 guava
-Neptune Roman God of the Sea
-Cupid Roman God of Love
-Ra Egyptian God
-Amun Egyptian God
-Cronus Greek God of Time
-Juno Queen of the Roman Gods
-Anubis Egyptian God
-Hades Greek God of the Underworld
-Apollo Roman God of the Sun
-Ceres Roman Goddess of the Earth
-Nemesis Greek Goddess of Revenge
-Flora Roman Goddess of Flowers
-Selene Greek Godess of the Moon
-Khonsu Egyptian God
-Vesta Roman Goddess of the Hearth
-Tezcatlipoca Aztec God
-Lakshmi Hindu Goddess
-Gaia Greek Goddess of the Earth
-Aphrodite Greek Goddess of Love and Beauty
-Christian God
-Jewish God
-Kali Hindu Goddess
-Allah Islamic God
-Maat Egyptian God
-Eris Goddess of Strife and Rivalry
-Persephone Greek Goddess of Vegetation
-Zeus Greek God of the Sky
-Hermes Messenger of the Greek Gods
-Isis Egyptian God
-Tlaloc Aztec God
-Artemis Goddess of the Hunt
-Nut Egyptian God
-Ptah Egyptian God
-Hephaestus Greek God of Technology
-Ehecatl Aztec God
-Diana Roman Goddess of the Moon
-Thanatos Greek God of Death
-Jupiter Roman King of Gods
-Horus Egyptian God
-Hathor Egyptian God
-Vulcan Roman God of Blacksmithing
-Parvati Hindu Goddess
-Saraswati Hindu Goddess
-Hypnos Greek God of Sleep
-Hera Greek Goddess of Women
-Poseidon Greek God of the Sea
-Thoth Egyptian God
-Mictecacihuatl Aztec God
-Saturn Roman God of Time
-Eros Greek God of Love
-Durga Hindu Goddess
-Apollo Greek God of Light
-Pomona Roman Goddess of Orchards
-Heqet Egyptian God
-Aether Greek God of Light
-Morpheus Greek God of Dreams
-Faunus Roman God of the Forest
-Venus Roman Goddess of Love and Beauty
-Set Egyptian God
-Sati Hindu Goddess
-Coatlicue Aztec God
-Geb Egyptian God
-Mars Roman God of War
-Akhlys Greek Goddess of Misery
-Osiris Egyptian God
-Bhuvaneswari Hindu Goddess
-Ares Greek God of War
-Jehovah Mormonism
-Helios Greek God of the Sun
-Nephthys Egyptian God
-Dionysus Greek God of Wine
-Demeter Greek Goddess of Agriculture
-Quetzalcoatl Aztec God
-Nyx Greek Goddess of the Night
-Tlaltecuhtli Aztec God
-Chaos Greek Goddess of Air
-Bast Egyptian God
-Bacchus Roman God of Wine
-Geras Greek God of Old Age
-Minerva Roman Goddess of Wisdom
-Nike Greek Goddess of Victory
-Eris Greek Goddess of Discord
-Athena Greek Goddess of Wisdom
-Pan Greek God of Nature
-Bes Egyptian God
-Sobek Egyptian God
-Mercury Messenger of the Roman Gods
-Pluto Roman God of the Underworld
+Neptune
+Cupid
+Ra
+Anubis
+Hades
+Apollo
+Lakshmi
+Gaia
+Aphrodite
+Jewish
+Kali
+Allah
+Zeus
+Hermes
+Jupiter
+Horus
+Parvati
+Saraswati
+Hera
+Poseidon
+Thoth
+Saturn
+Morpheus
+Venus
+Mars
+Osiris
+Ares
+Jehovah
+Mormonism
+Helios
+Athena
+Pan
+Mercury
+Pluto
 Drums
-Snare Drum
-Crystal Glasses
-Symbols
+Glasses
+Cymbals
 Wooden Flute
 The Voice
 Steel Drums
@@ -1197,7 +803,6 @@ The Royals
 The White Sox
 The Tigers
 The Orioles
-The Athletics
 The Mariners
 The Phillies
 The Reds
@@ -1205,7 +810,6 @@ The Marlins
 The Padres
 The Rockies
 The Rays
-The D-backs
 The Giants
 The Rangers
 The Astros
@@ -1221,30 +825,27 @@ The Angels
 The Cardinals
 The Pirates
 The Nun
-Harry Potter and the Half-Blood Prince
-Avengers: Age of Ultron
+Harry Potter and the Half Blood Prince
+Avengers Age of Ultron
 Cinderella
 Venom
-Kingsman: The Secret Service
-X-Men: Days of Future Past
-The Hobbit: An Unexpected Journey
+Kingsman
+Days of Future Past
+The Hobbit
 Den of Thieves
 Tag
 Nightcrawler
 Blade Runner
-Solo: A Star Wars Story
+Solo A Star Wars Story
 Logan
 Death Wish
-Mission: Impossible
-BlacKkKlansman
-Gotti
+Mission Impossible
 Shrek
 Uncle Drew
 Halloween
 Harry Potter and the Philosopher's Stone
-The Amazing Spider-Man
-Gulebakavali
-Hotel Transylvania 2
+The Amazing SpiderMan
+Hotel Transylvania
 I'll Take Your Dead
 Game Night
 The Dark Knight Rises
@@ -1257,103 +858,77 @@ Doctor Strange
 Guardians of the Galaxy
 Gone Girl
 Iron Man
-The Hobbit: The Battle of the Five Armies
-Mission: Impossible - Fallout
-The Lord of the Rings: The Fellowship of the Ring
-X-Men: Apocalypse
-Avengers: Infinity War
-Spectre
+Mission Impossible
+The Lord of the Rings
+Avengers Infinity War
+Avengers Endgame
 Titanic
-Detective Conan: Zero the Enforcer
-Captain America: Civil War
+Captain America Civil War
 Deadpool
 A Star Is Born
 War for the Planet of the Apes
 Pixels
 Anon
-Hart Beat
-Iron Man 3
-Black 47
 Leave No Trace
 San Andreas
-John Wick: Chapter 2
-Thor: The Dark World
+John Wick
+Thor The Dark World
 Call Me by Your Name
-Blade Runner 2049
-Hotel Transylvania 3: Summer Vacation
-Incredibles 2
+Incredibles
 The Avengers
-Spider-Man: Homecoming
-The Hunger Games: Mockingjay - Part 1
-The Seven Deadly Sins: Prisoners of the Sky
+SpiderMan Homecoming
+The Hunger Games
+The Seven Deadly Sins
 Coco
 Fifty Shades of Grey
 Upgrade
 Black Panther
 Finding Nemo
 Night School
-Spider-Man
 The Girl in the Fog
-Maquia: When the Promised Flower Blooms
 Rampage
 Fifty Shades Freed
 Nappily Ever After
 Man of Steel
-Pirates of the Caribbean: The Curse of the Black Pearl
-Crayon Shin-chan: Burst Serving! Kung Fu Boys ~Ramen Rebellion~
+Pirates of the Caribbean
 The Shawshank Redemption
-Mamma Mia! Here We Go Again
-Iron Man 2
-Pacific Rim: Uprising
+Pacific Rim Uprising
 Dark Phoenix
-Terminator Genisys
+Terminator
 Apostle
 The Maze Runner
 The Imitation Game
-Batman v Superman: Dawn of Justice
 You Were Never Really Here
 Despicable Me
-Demon Covered in Scars
-Mission: Impossible - Ghost Protocol
 Hold the Dark
 Ocean's Eight
 The Matrix
 Insurgent
-Furious 7
-Sicario: Day of the Soldado
-Guardians of the Galaxy Vol. 2
 The Equalizer
 Inception
 Get Out
 Rebel
-The Lord of the Rings: The Return of the King
 Johnny English Strikes Again
 Annihilation
-The Purge: Election Year
-Mad Max: Fury Road
+Mad Max Fury Road
 Future World
 Justice League
 A Simple Favor
 Hotel Artemis
-Harry Potter and the Deathly Hallows: Part 2
+Harry Potter and the Deathly Hallows
 A Delicious Flight
 Harry Potter and the Goblet of Fire
 Lifechanger
 Twilight
 The House with a Clock in Its Walls
 Sierra Burgess Is a Loser
-Deadpool 2
-Maze Runner: The Death Cure
 The Shape of Water
-The Purge: Anarchy
-Star Wars
 The First Purge
-John Wick
 Bad Samaritan
-Star Wars: The Last Jedi
+Star Wars The Last Jedi
 Ready Player One
 Dunkirk
-Alien: Covenant
+Alien Covenant
 Jurassic World
 Whiplash
 Fantastic Beasts and Where to Find Them
@@ -1364,29 +939,21 @@ Split
 Fight Club
 Harry Potter and the Prisoner of Azkaban
 Tomb Raider
-Harry Potter and the Deathly Hallows: Part 1
-Thor
-Mission: Impossible - Rogue Nation
 Zootopia
-Cam
-Nekrotronic
 The Black Book
-Jurassic World: Fallen Kingdom
-Escape Plan 2: Hades
 Crazy Rich Asians
 Edge of Tomorrow
 Avatar
 Wonder Woman
 Back to the Future
 The Meg
-Ausgerechnet Sylt
 Ice Age
 Teenage Mutant Ninja Turtles
-Ant-Man
+Ant Man
 Pulp Fiction
 The Predator
 Searching
-Thor: Ragnarok
+Thor Ragnarok
 Arrival
 Raiders of the Lost Ark
 The Kissing Booth
@@ -1395,15 +962,13 @@ A Quiet Place
 Scandal in the Family
 The Martian
 Smallfoot
-Chuck Steel : Night of the Trampires
 Baby Driver
-Ant-Man and the Wasp
+Ant Man and the Wasp
 Interstellar
 Hereditary
-Star Wars: The Force Awakens
-The Lord of the Rings: The Two Towers
+Star Wars The Force Awakens
 The Mountain II
-Now You See Me 2
+Now You See Me
 Forrest Gump
 Harry Potter and the Chamber of Secrets
 The Matrix Reloaded
@@ -1413,12 +978,11 @@ Skyfall
 To All the Boys I've Loved Before
 The Golden State Warriors
 The Chicago Bulls
-The Philadelphia 76 ers
 The Portland Trail Blazers
-The OKC Thunder
+The Oklahoma City Thunder
 The Dallas Mavericks
 The Toronto Raptors
-The L.A. Clippers
+The Los Angeles Clippers
 The Houston Rockets
 The Phoenix Suns
 The Milwaukee Bucks
@@ -1433,9 +997,9 @@ The Brooklyn Nets
 The Washington Wizards
 The San Antonio Spurs
 The Orlando Magic
-The L.A. Lakers
+The Los Angeles Lakers
 The Charlotte Hornets
-The MIN Timberwolves
+The Timberwolves
 The Boston Celtics
 The Sacramento Kings
 The Detroit Pistons
@@ -1443,304 +1007,18 @@ The Atlanta Hawks
 The New York Knicks
 The Alabama State Hornets
 The Marshall Thundering Herd
-The Illinois-Chicago Flames
-The Saint Joseph's Hawks
-The UCF Knights
-The Howard Bison
-The Sacramento State Hornets
-The Furman Paladins
-The Northwestern Wildcats
-The Texas A&M Aggies
-The Monmouth Hawks
-The Minnesota Golden Gophers
-The Coppin State Eagles
-The Stephen F. Austin Lumberjacks
-The Brown Bears
-The Saint Mary's Gaels
-The Youngstown State Penguins
-The Dayton Flyers
-The Fairleigh Dickinson Knights
-The Virginia Military Institute Keydets
-The McNeese State Cowboys
-The Princeton Tigers
-The Eastern Michigan Eagles
-The Southern University Jaguars
-The St. John's Red Storm
-The Mercer Bears
-The Texas-Arlington Mavericks
-The Nevada Wolf Pack
-The Robert Morris Colonials
-The Miami Hurricanes
-The Southern Methodist Mustangs
+The Texas Aggies
 The Notre Dame Fighting Irish
-The Eastern Illinois Panthers
-The Hampton Pirates
-The Ohio Bobcats
-The Mississippi Rebels
-The Manhattan Jaspers
-The UMKC Kangaroos
-The Evansville Aces
-The Morehead State Eagles
-The Stony Brook Seawolves
-The New Hampshire Wildcats
-The Bryant University Bulldogs
-The Georgetown Hoyas
-The Albany Great Danes
-The North Carolina State Wolfpack
 The Texas Longhorns
 The Georgia Tech Yellow Jackets
 The Portland State Vikings
-The East Tennessee State Buccaneers
 The Oregon Ducks
-The Coastal Carolina Chanticleers
-The Denver Pioneers
-The Wichita State Shockers
-The Montana State Bobcats
-The Stanford Cardinal
-The Idaho State Bengals
-The Illinois Fighting Illini
-The UC Irvine Anteaters
-The Western Kentucky Hilltoppers
-The UC Davis Aggies
-The Appalachian State Mountaineers
-The North Texas Mean Green
-The South Dakota State Jackrabbits
-The Nebraska Cornhuskers
-The Dartmouth Big Green
-The Arizona Wildcats
-The North Carolina-Asheville Bulldogs
-The Saint Louis Billikens
-The Indiana State Sycamores
-The Florida A&M Rattlers
-The LSU Tigers
-The Chattanooga Mocs
-The Pittsburgh Panthers
-The Ball State Cardinals
-The San Diego Toreros
-The Tennessee-Martin Skyhawks
-The Alcorn State Braves
-The Northeastern Huskies
-The Iona Gaels
-The Holy Cross Crusaders
-The Colgate Raiders
-The Boise State Broncos
-The Georgia State Panthers
-The DePaul Blue Demons
-The Lafayette Leopards
-The Virginia Tech Hokies
-The Kennesaw State Owls
 The Florida Gators
-The Bradley Braves
-The Richmond Spiders
-The Colorado Buffaloes
-The San Diego State Aztecs
-The Nicholls State Colonels
-The Portland Pilots
-The Illinois State Redbirds
-The George Mason Patriots
-The Rider Broncs
-The California Golden Bears
-The St. Francis Terriers
-The Cornell Big Red
-The Southeast Missouri State Redhawks
-The Centenary Gentlemen
-The Kent State Golden Flashes
-The Mount St. Mary's Mountaineers
-The Maryland Terrapins
-The Belmont Bruins
-The Oklahoma State Cowboys
-The Texas Southern Tigers
-The Winthrop Eagles
-The Charlotte 49ers
-The Sacred Heart Pioneers
-The West Virginia Mountaineers
-The Lipscomb Bisons
-The Oklahoma Sooners
 The Miami RedHawks
-The Elon Phoenix
-The Central Michigan Chippewas
-The Presbyterian Blue Hose
-The Radford Highlanders
-The Temple Owls
-The Duke Blue Devils
-The Toledo Rockets
-The San Jose State Spartans
-The Longwood Lancers
-The Tennessee Volunteers
-The Eastern Washington Eagles
-The Navy Midshipmen
-The Tennessee State Tigers
-The North Carolina-Wilmington Seahawks
-The Eastern Kentucky Colonels
-The Delaware State Hornets
-The Utah Utes
-The Detroit Titans
-The Southern Utah Thunderbirds
-The Wake Forest Demon Deacons
-The Charleston Southern Buccaneers
-The Virginia Commonwealth Rams
-The North Dakota State Bison
-The Weber State Wildcats
-The UMBC Retrievers
-The Texas Tech Red Raiders
-The Vermont Catamounts
-The Ohio State Buckeyes
-The Prairie View A&M Panthers
 The Florida State Seminoles
-The Canisius Golden Griffins
-The Boston College Eagles
-The Loyola Marymount Lions
-The Alabama Crimson Tide
-The UTEP Miners
-The Wagner Seahawks
-The Milwaukee Panthers
-The Wofford Terriers
-The James Madison Dukes
-The Northern Colorado Bears
-The Maine Black Bears
-The USC Trojans
-The Green Bay Phoenix
-The Michigan Wolverines
-The Drexel Dragons
-The Virginia Cavaliers
-The SIU-Edwardsville Cougars
-The Towson Tigers
-The Tulsa Golden Hurricane
-The Long Island Blackbirds
-The Arizona State Sun Devils
-The Oregon State Beavers
-The Washington Huskies
-The Long Beach State 49ers
-The Michigan State Spartans
-The USC Upstate Spartans
-The Western Michigan Broncos
-The Grambling State Tigers
-The Drake Bulldogs
-The Niagara Purple Eagles
-The Pepperdine Waves
-The Norfolk State Spartans
-The Wyoming Cowboys
-The High Point Panthers
-The Cal State Fullerton Titans
-The TCU Horned Frogs
-The Oral Roberts Golden Eagles
-The North Carolina A&T Aggies
-The Arkansas State Red Wolves
-The Yale Bulldogs
-The Delaware Fightin Blue Hens
-The George Washington Colonials
-The Wright State Raiders
-The San Francisco Dons
-The Northern Illinois Huskies
-The Kansas State Wildcats
 The Houston Cougars
-The Samford Bulldogs
-The UC Santa Barbara Gauchos
-The Columbia Lions
-The South Carolina Gamecocks
-The Georgia Southern Eagles
-The Jacksonville State Gamecocks
-The Murray State Racers
-The Southern Illinois Salukis
-The Hofstra Pride
-The Houston Baptist Huskies
-The Florida International Golden Panthers
-The Army Black Knights
-The Loyola (MD) Greyhounds
-The St. Peter's Peacocks
-The Middle Tennessee Blue Raiders
-The Rutgers Scarlet Knights
-The Valparaiso Crusaders
-The UCLA Bruins
-The Bethune-Cookman Wildcats
-The Butler Bulldogs
-The Marquette Golden Eagles
-The Cleveland State Vikings
-The South Dakota Coyotes
-The Arkansas Pine-Bluff Golden Lions
-The Xavier Musketeers
-The North Florida Ospreys
-The Louisiana Tech Bulldogs
-The IUPUI Jaguars
-The Binghamton Bearcats
-The Boston University Terriers
-The Memphis Tigers
-The Air Force Falcons
-The Maryland-Eastern Shore Hawks
-The South Alabama Jaguars
-The Texas-San Antonio Roadrunners
-The Davidson Wildcats
-The Missouri State Bears
-The Loyola (IL) Ramblers
-The Stetson Hatters
-The UNLV Rebels
-The St. Bonaventure Bonnies
-The Santa Clara Broncos
-The Savannah State Tigers
-The Central Connecticut State Blue Devils
-The Tulane Green Wave
-The Bucknell Bison
-The Southern Miss Golden Eagles
 The Brigham Young Cougars
-The Gardner-Webb Runnin' Bulldogs
-The Troy Trojans
-The La Salle Explorers
-The Iowa State Cyclones
-The Connecticut Huskies
-The Louisiana-Lafayette Ragin' Cajuns
-The North Carolina Tar Heels
-The Florida Atlantic Owls
-The Liberty Flames
-The Western Carolina Catamounts
-The Pacific Tigers
-The Wisconsin Badgers
-The North Carolina Central Eagles
-The Hartford Hawks
-The Syracuse Orange
-The Penn State Nittany Lions
-The Tennessee Tech Golden Eagles
-The Creighton Bluejays
-The Montana Grizzlies
-The Jackson State Tigers
-The Cal State Bakersfield Roadrunners
-The St. Francis Red Flash
-The Fresno State Bulldogs
-The Utah Valley Wolverines
-The Fordham Rams
-The Chicago State Cougars
-The Morgan State Bears
-The Utah State Aggies
-The Seton Hall Pirates
-The UAB Blazers
 The Seattle Redhawks
-The American University Eagles
-The Cincinnati Bearcats
-The UC Riverside Highlanders
-The Vanderbilt Commodores
-The William & Mary Tribe
-The South Florida Bulls
-The Arkansas-Little Rock Trojans
-The Missouri Tigers
-The Florida Gulf Coast Eagles
-The Old Dominion Monarchs
-The Washington State Cougars
-The Cal State Northridge Matadors
-The Hawaii Warriors
-The Campbell Fighting Camels
-The Baylor Bears
-The Georgia Bulldogs
-The Western Illinois Leathernecks
-The Harvard Crimson
-The Akron Zips
-The Northern Iowa Panthers
-The Southeastern Louisiana Lions
-The Indiana Hoosiers
-The Iowa Hawkeyes
-The N.J.I.T Highlanders
-The Kansas Jayhawks
-The Texas-Pan American Broncs
-The Louisville Cardinals
-The Idaho Vandals
 The New York Jets
 The San Diego Chargers
 The Green Bay Packers
@@ -1798,165 +1076,67 @@ The Ottawa Senators
 The Boston Bruins
 The Minnesota Wild
 The Toronto Maple Leafs
-The St Louis Blues
 The Montreal Canadiens
 The Vancouver Canucks
 The Pittsburgh Penguins
 The Tampa Bay Lightning
 The Buffalo Sabres
-Kate Moss
-Muhammad Ali
-Pope John Paul II
 George Harrison
-Paul McCartney
-Kristen Stewart
 John F. Kennedy
-Katharine Hepburn
 Bill Gates
 Aristotle
-Eva Longoria
 James Cameron
-Carrie Underwood
-Michael Jordan
-Denzel Washington
-Dave Matthews
-Joe Montana
-Scarlett Johansson
-Babe Ruth
 Leonardo da Vinci
-Brad Paisley
 Mahatma Gandhi
 Glenn Beck
-Jim Carrey
-Cameron Diaz
-Barbra Streisand
-Jay Leno
 Meriwether Lewis
 Julius Caesar
-Demi Lovato
-Angelina Jolie
 Mark Twain
-Emeril Lagasse
 Franklin D. Roosevelt
-Danica Patrick
 Buddha
 Edgar Allan Poe
-Taylor Swift
 Charles Darwin
-Oprah Winfrey
 Winston Churchill
-Meryl Streep
 Henry Kissinger
-Reese Witherspoon
-Paul Newman
-Mark Wahlberg
-Mariska Hargitay
-William Shatner
-Katy Perry
 Fidel Castro
 Carl Sagan
-Tiger Woods
-Justin Bieber
-Elvis Presley
-Kate Upton
-Maria Sharapova
-Jennifer Lopez
 Che Guevara
-Freddie Mercury
 Albert Einstein
-Bob Dylan
-Steven Spielberg
 Maya Angelou
-Johnny Depp
-Sean Combs
-George Lucas
 Ernest Hemingway
 Matthew McConaughey
 Summer Glau
 Helen Keller
-Dwight Howard
-Tim McGraw
-Ryan Reynolds
 Roald Dahl
-Tom Cruise
-Marilyn Monroe
-Rush Limbaugh
 Johnny Cash
-Jerry Seinfeld
 Diana Princess of Wales
 Moses
-Howard Stern
 Plato
-Usher
-Kanye West
+Socrates
 Booker T. Washington
-Larry the Cable Guy
 Bob Marley
 John the Baptist
 Abraham
-Tina Fey
-Rachael Ray
-Ryan Seacrest
-Mel Blanc
-Neil Diamond
-Ray Romano
-Bethenny Frankel
 Steve Jobs
-Jon Stewart
-Julia Roberts
-Drew Barrymore
 Anne Frank
-Beyoncé
-Brad Pitt
-Nicole Kidman
-David Copperfield
-Anne Hathaway
-James Patterson
-Robert F. Kennedy
-Courteney Cox
 George S. Patton
-Jeff Gordon
 Rafael Nadal
-Jennifer Love Hewitt
 George Washington
-Raoul Wallenberg
 Frederick Douglass
-Bob Hope
 Thomas Edison
-Miley Cyrus
 Frank Zappa
-Phil Mickelson
 Chris Rock
-Socrates
-Hugh Laurie
-Madonna
 Alexander the Great
-Dwayne Wade
-Liv Tyler
-Alec Baldwin
-Eminem
 Stephenie Meyer
-Martin Luther King Junior
+Martin Luther King Jr.
 James Stewart
-Bill Cosby
-Jeff Dunham
-Alex Rodriguez
-Catherine Zeta-Jones
-David Letterman
-Audrey Hepburn
 Amelia Earhart
 Robin Hood
 Pete Rose
-Serena Williams
 King Arthur
 Cristiano Ronaldo
-Prophet Muhammed
-Adam Sandler
-Ellen DeGeneres
 Mark Burnett
-Bruce Springsteen
 Catherine Duchess of Cambridge
-Leonardo DiCaprio
 Nikola Tesla
 Ben Stiller
 Ronald Reagan
@@ -1965,166 +1145,83 @@ John Lennon
 Karl Marx
 Jerry Bruckheimer
 Walt Disney
-Steve Carell
 Eleanor Roosevelt
-Jay-Z
-Morgan Freeman
-50 Cent
-Coco Chanel
-Kareem Abdul-Jabbar
-Jennifer Aniston
-Eddie Murphy
 Augustus
-Teri Hatcher
-Brian Grazer
 Ulysses S. Grant
 William Shakespeare
-Toby Keith
-Kristen Bell
-C. S. Lewis
-Tyler Perry
-Lil Wayne
-Usain Bolt
-Mark Harmon
 Pablo Picasso
-Thomas Jefferson
-Peyton Manning
-Kevin Garnett
 Venus Williams
-Larry David
-Elton John
 Jesse Jackson
-Tom Hanks
 Chief Sitting Bull
 George Bush
-Simon Cowell
 Dick Wolf
-Robert Downey Jr.
 James Madison
 Benjamin Franklin
 Jesus Christ
-Tom Brady
 The Rock
-Britney Spears
 Napoleon Bonaparte
-Manny Pacquiáo
-Kenny Chesney
-Donald Trump
-Derek Jeter
 Barack Obama
 Stephen Hawking
 Stephen King
 Robin Williams
 William Wallace
-Robert De Niro
 Neil Armstrong
-Emma Watson
-Charlie Sheen
 Noah
-Queen Latifah
 John Wayne
-Nicolas Cage
-Arnold Schwarzenegger
 Vince Lombardi
-Heidi Klum
 Mother Teresa
 Abraham Lincoln
-Clint Eastwood
-Will Smith
-Sarah Jessica Parker
 Colin Powell
 Nostradamus
-Kobe Bryant
-James Dean
-Natalie Portman
-Katherine Heigl
 Theodore Roosevelt
 Ron Paul
-James Earl Jones
-Harrison Ford
-John Bon Jovi
 Danielle Steel
 Harry Houdini
-Bruce Lee
 Homer
-Lady Gaga
 Harriet Tubman
 Confucius
 Oscar Wilde
-Justin Timberlake
 Harry S. Truman
 Roger Federer
 Walt Whitman
-Sandra Bullock
 Chuck Lorre
 Hunter S. Thompson
-Hulk Hogan
 Marie Antoinette
-LeBron James
-Keith Richards
-Phil McGraw
-David Beckham
-Christopher Nolan
 Galileo Galilei
 Voltaire
 Daniel Boone
-Wolfgang Puck
-George Clooney
-Daniel Radcliffe
 Caprica
 Battlestar Galactica
 Uranus
 Pandora
-Avatar
-Neptune
-Jupiter
-Saturn
 Hoth
-Star Wars
 Dagobah
-Romulus
 Star Trek
-Mercury
 Vulcan
 Tatooine
 Endor
 Kobol
-Battlestar Galactica
-Gallifrey
 Doctor Who
 Krypton
 Superman
 Earth
-Mars
-Venus
 Cybertron
 Transformers
 Thundera
-ThunderCats
 New Caprica
-Battlestar Galactica
-Nirn
 The Elder Scrolls
 Bluepoint Sage Cafe
-Café Rouge
-BJ's Restaurant & Brewery
-Chipotle Mexican Grill
 The Original Pancake House
 Denny's
 The Old Spaghetti Factory
 Applebee's
-Boston Market
-Uno Chicago Grill
-Cheddar's Casual Café
 California Pizza Kitchen
 Heart Attack Grill
 Bennigan's
 Cracker Barrel Old Country Store
-Baja Fresh
 Red Lobster
 Cheese Burger in Paradise
 Waffle House
-Qdoba Mexican Grill
 Chili's
 Charlie Brown's Steakhouse
 The Cheesecake Factory
@@ -2135,50 +1232,36 @@ Outback Steakhouse
 Boston Pizza
 Old Country Buffet
 Hard Rock Cafe
-Señor Frog's
-P. F. Chang's China Bistro
 Dick's Last Resort
 Carrabba's Italian Grill
-Lone Star Steakhouse & Saloon
-Bubba Gump Shrimp Company
+Lone Star Steakhouse
+Bubba Gump
 Buffalo Wild Wings
-Steak 'n Shake
-Bertucci's
 Black Angus Steakhouse
 Ruby Tuesday
 Famous Dave's
 LongHorn Steakhouse
 Bahama Breeze
 Chiquito
-Friendly's
 Johnny Rockets
 Joe's Crab Shack
 Sizzler
 Rainforest Cafe
 Big Boy
-Black-eyed Pea
-Hoss's Steak and Sea House
-T.G.I. Friday's
 Smokey Bones
-Quaker Steak & Lube
-Pei Wei Asian Diner
-Islands Fine Burgers & Drinks
-Perkins Restaurant and Bakery
+Pei Wei
+Perkins Restaurant
 Benihana
 IHOP
-Ground Round
-Dave & Buster's
+Dave and Buster's
 Tony Roma's
 Red Robin
-On the Border Mexican Grill & Cantina
+On the Border Mexican Grill
 Texas Roadhouse
 Golden Corral
 Bob Evans Restaurants
 Hooters
-LA Galaxy
 Chicago Fire
-NE Revolution
-FC Dallas
 Vancouver Whitecaps
 Real Salt Lake
 Montreal Impact
@@ -2191,170 +1274,91 @@ Portland Timbers
 Columbus Crew
 San Jose Earthquakes
 Colorado Rapids
-Toronto FC
-Seattle Sounders FC
-New York City FC
-DC United
-everytime by Ariana Grande
-Havana by Camila Cabello
-HUMBLE by Kendrick Lamar
-Yikes by Kanye West
-Stairway to Heaven by Led Zeppelin
-DNA by Kendrick Lamar
-Electricity by Silk City
-Somebody Told Me by The Killers
-Nice For What by Drake
-Rise by Jonas Blue
-Feels Like Summer by Childish Gambino
-Wake Up in the Sky by Gucci Mane
-Back to Black by Amy Winehouse
-TAPE by BROCKHAMPTON
-WEIGHT by BROCKHAMPTON
-breathin by Ariana Grande
-Pumped Up Kicks by Foster the People
-No Tears Left To Cry by Ariana Grande
-Better Now by Post Malone
-Uproar by Lil' Wayne
-Fluorescent Adolescent by Arctic Monkeys
-Everlong by Foo Fighters
-Shape of You by Ed Sheeran
-Ivy by Frank Ocean
-Let It Fly by Lil' Wayne
-HONEY by BROCKHAMPTON
-Head Above Water by Avril Lavigne
-FABRIC by BROCKHAMPTON
-Sex on Fire by Kings of Leon
-I'm a Mess by Bebe Rexha
-Better by Khalid
-Mona Lisa by Lil' Wayne
-Killing in the Name Rage by Against the Machine
-Reborn by Kids See Ghosts
-Successful by Ariana Grande
-The Dark Side by Muse
-Happier by Marshmello
-Thunder by Imagine Dragons
-Royals by Lorde
-The Less I Know the Better by Tame Impala
-Want To by Dua Lipa
-Natural by Imagine Dragons
-Can't Be Broken by Lil' Wayne
-Lucky Strike by Troye Sivan
-Africa by Toto
-I Love You Dwayne by Lil' Wayne
-Thunderclouds by Sia
-Normal by Eminem
-R U Mine? by Arctic Monkeys
-Karma Police by Radiohead
-Billie Jean by Michael Jackson
-Bloom by Troye Sivan
-High Hopes by Panic! at the Disco
-Animal by Troye Sivan
-Taste (feat. Offset) by Tyga
+Havana
+Stairway to Heaven
+Pumped Up Kicks
+No Tears Left To Cry
+Better Now
+Shape of You
+Head Above Water
+BROCKHAMPTON
+Kings of Leon
+Bebe Rexha
+Khalid
+Against the Machine
+Kids See Ghosts
+Muse
+Marshmello
+Imagine Dragons
+Royals
+Lorde
+Tame Impala
+Dua Lipa
+Troye Sivan
+Africa
+Toto
+Sia
+Arctic Monkeys
+Radiohead
+Michael Jackson
+Panic at the Disco
+Tyga
 Plum by Troye Sivan
-This Is America by Childish Gambino
-BERLIN by BROCKHAMPTON
-nights by Frank Ocean
-New Rules by Dua Lipa
-Feel the Love by Kids See Ghosts
-Green Light by Lorde
-Seventeen by Troye Sivan
-Sweet Child o' Mine by Guns N' Roses
-Can't Stop by Red Hot Chili Peppers
-God's Plan by Drake
-Flames by David Guetta
-4th Dimension by Kids See Ghosts
-SAN MARCOS by BROCKHAMPTON
-New Orleans by BROCKHAMPTON
-Stargazing by Travis Scott
-Immigrant Song by Led Zeppelin
-Kids by MGMT
-Sultans of Swing by Dire Straits
-Hurt Feelings by Mac Miller
-Youngblood by 5 Seconds of Summer
-Sweetener by Ariana Grande
-Take on Me by a-ha
-Fall by Eminem
-Where Is My Mind? by Pixies
-Nevermind by Dennis Lloyd
-Be Alright by Dean Lewis
-All The Stars by Kendrick Lamar
-Don't Stop Me Now by Queen
-Midnight City by M83
-I Love It by Kanye West
-Creep by Radiohead
-Seven Nation Army by The White Stripes
-Stepping Stone by Eminem
-Last Nite by The Strokes
-My Blood by Twenty One Pilots
-Do I Wanna Know? by Arctic Monkeys
-Better Off by Ariana Grande
-Losing My Religion by R.E.M.
-The Scientist by Coldplay
-One Kiss by Calvin Harris
-Stressed Out by Twenty One Pilots
-Look What You Made Me Do by Taylor Swift
-Sweater Weather by The Neighbourhood
-Mr. Brightside by The Killers
-Nice Guy by Eminem
-Not Alike by Eminem
-Come as You Are by Nirvana
-Radioactive by Imagine Dragons
-Take Me Out by Franz Ferdinand
-Delicate by Taylor Swift
-The Light Is Coming by Ariana Grande
-The Ringer by Eminem
-Redbone by Childish Gambino
-Beautiful by bazzi
-Zombie by The Cranberries
-Greatest by Eminem
-In the End by Linkin Park
-Self Care by Mac Miller
-IDOL by BTS
-SICKO MODE by Travis Scott
-Smells Like Teen Spirit by Nirvana
-Dance to This by Troye Sivan
-Ladders by Mac Miller
-Don't Cry by Lil' Wayne
-Promises by Calvin Harris
-Ghost Town by Kanye West
-Bohemian Rhapsody by Queen
-September by Earth Wind and Fire
-My My My! by Troye Sivan
-Eastside by Benny Blanco
-Solo by Clean Bandit
-In My Feelings by Drake
-Under the Bridge by Red Hot Chili Peppers
-Numb by Linkin Park
-Starboy by The Weekend
-God is a Woman by Ariana Grande
-rockstar by Post Malone
-Shotgun by George Ezra
-Feel It Still by Portugal. The Man
-Believer by Imagine Dragons
-Summertime Magic by Childish Gambino
-Don't Stop Believin' by Journey
-Say My Name by David Guetta
-I Like It by Cardi B
-Goodnight n Go by Ariana Grande
-Don't Leave Me Alone by David Guetta
-Girls Like You by Maroon 5
-Falling Down by LIL PEEP
-raindrops by Ariana Grande
-Basket Case by Green Day
-All Mine by Kanye West
-Nonstop by Drake
-Toxic by Britney Spears
-Happy Now by Zedd
-Psycho by Post Malone
-Into You by Ariana Grande
-No Brainer by DJ Khaled
-Take Me to Church by Hozier
-Californication by Red Hot Chili Peppers
-Dedicate by Lil' Wayne
-Pete Davidson by Ariana Grande
-Pink and White by Frank Ocean
-The Good Side by Troye Sivan
-Bitter Sweet Symphony by The Verve
+This Is America
+Frank Ocean
+New Rules
+Can't Stop
+Red Hot Chili Peppers
+God's Plan
+David Guetta
+Travis Scott
+Immigrant Song
+Led Zeppelin
+Sultans of Swing
+Dire Straits
+Mac Miller
+Take on MePixies
+Dennis Lloyd
+Dean Lewis
+Kendrick Lamar
+Don't Stop Me Now
+Queen
+Midnight City
+Seven Nation Army
+The White Stripes
+The Strokes
+Twenty One Pilots
+The Scientist
+Coldplay
+Calvin Harris
+Stressed Out
+Look What You Made Me Do
+Sweater Weather
+The Killers
+Come as You Are
+Nirvana
+Radioactive
+The Cranberries
+Linkin Park
+SICKO MODE
+Smells Like Teen Spirit
+Bohemian Rhapsody
+Earth Wind and Fire
+Clean Bandit
+Starboy
+The Weekend
+God is a Woman
+rockstar
+George Ezra
+Summertime Magic
+Journey
+Green Day
+Toxic
+Zedd
+Take Me to Church
+Hozier
+Californication
+The Verve
 Wiffleball
 Snowboarding
 Ice Hockey
@@ -2370,10 +1374,10 @@ Boxing
 Competitive Swimming
 Fencing
 Pool
-Gynastics
+Gymnastics
 Soccer
 Bowling
-Endurance Running
+Running
 Tennis
 Skateboarding
 Roller derby
@@ -2405,18 +1409,17 @@ Shameless
 Family Guy
 BoJack Horseman
 The Last Ship
-American Dad!
+American Dad
 NCIS
 The Vampire Diaries
 The Good Wife
 Gotham
-Marvel's Agents of S.H.I.E.L.D.
+Marvel's Agents of Shield
 Narcos
 The Middle
 Homeland
 Desperate Housewives
 Big Brother
-NCIS: New Orleans
 Two and a Half Men
 Madam Secretary
 Coronation Street
@@ -2432,15 +1435,12 @@ The Gifted
 The Daily Show with Trevor Noah
 Top Gear
 Supernatural
-CSI: NY
 The Blacklist
 How to Get Away with Murder
 Prison Break
-Chicago P.D.
-Hawaii Five-0
 Beverly Hills
 The Expanse
-2 Broke Girls
+Two Broke Girls
 Lost
 The Graham Norton Show
 Young Sheldon
@@ -2448,7 +1448,6 @@ The Handmaid's Tale
 American Horror Story
 Archer
 The Smurfs
-Chicago Fire
 My Hero Academia
 Sherlock
 Orange Is the New Black
@@ -2460,16 +1459,13 @@ Salvation
 Blue Bloods
 Sesame Street
 The Mentalist
-Doctor Who
 Teen Wolf
 Mr. Robot
 Last Man Standing
-DC's Legends of Tomorrow
 Sword Art Online
 The Office
 How I Met Your Mother
 The Fairly OddParents
-Star Trek
 The Walking Dead
 The Wire
 Scene of the Crime
@@ -2477,10 +1473,8 @@ Ray Donovan
 The Deuce
 The Good Doctor
 Full House
-NCIS: Los Angeles
 Mom
 Arrow
-13 Reasons Why
 Mindhunter
 The Rosenheim Cops
 Tokyo Ghoul
@@ -2490,25 +1484,20 @@ Lost in Space
 Supergirl
 Sons of Anarchy
 Person of Interest
-Karenjit Kaur
 The Sopranos
-Brooklyn Nine-Nine
 Dexter's Laboratory
 SEAL Team
 Baywatch
 Kamen Rider
 The Simpsons
-Batman: The Animated Series
+Batman
 America's Funniest Home Videos
 Into the Badlands
 Bob's Burgers
 Spartacus
 Arctic Circle
-Fear the Walking Dead
 House
 Lucifer
-Bull
-NOVA
 The Man in the High Castle
 American Idol
 Breaking Bad
@@ -2520,24 +1509,20 @@ The Flash
 New Girl
 Tom and Jerry
 Game of Thrones
-Dupur Thakurpo
 Lethal Weapon
 Adventure Time
 Monk
 Mayday
-Law & Order
+Law and Order
 Futurama
 Criminal Minds
 The Neighborhood
-Doctor Who
 Sex and the City
 House of Cards
 Chronicles of the Sun
-The X-Files
 Better Call Saul
 It's Always Sunny in Philadelphia
 Grimm
-Star Trek: The Next Generation
 Casualty
 Where Stars Land
 Grey's Anatomy
@@ -2549,37 +1534,26 @@ Pretty Little Liars
 The Good Place
 The Originals
 The Colbert Report
-CSI: Miami
 Maniac
 South Park
 Scorpion
 Twin Peaks
 Charmed
-MacGyver
 Late Show with David Letterman
-Interny
-The 100
 Blindspot
 Emmerdale
 Bad Papa
 Modern Family
 Elementary
-That '70s Show
 Smallville
-Stargate SG-1
 Money Heist
-Law & Order: Special Victims Unit
-Z Nation
 Black Mirror
 Seinfeld
 Empire
 The Big Bang Theory
 Scrubs
-Istanbullu Gelin
-Agatha Christie's Poirot
 Saturday Night Live
 The Beauty Inside
-CSI: Crime Scene Investigation
 Curb Your Enthusiasm
 Stranger Things
 Ballers
@@ -2587,14 +1561,10 @@ Cops
 Marvel's Iron Fist
 Dragon Ball
 Community
-Mystery Science Theater 3000
 Castle
 Bones
 This Is Us
-George Washington
 John Adams
-Thomas Jefferson
-James Madison
 James Monroe
 John Quincy Adams
 Andrew Jackson
@@ -2606,38 +1576,29 @@ Zachary Taylor
 Millard Fillmore
 Franklin Pierce
 James Buchanan
-Abraham Lincoln
 Andrew Johnson
-Ulysses S. Grant
 Rutherford B. Hayes
 James A. Garfield
 Chester A. Arthur
 Grover Cleveland
 Benjamin Harrison
-Grover Cleveland
 William McKinley
-Theodore Roosevelt
 William H. Taft
 Woodrow Wilson
 Warren G. Harding
 Calvin Coolidge
 Herbert Hoover
-Franklin D. Roosevelt
-Harry S. Truman
 Dwight D. Eisenhower
-John F. Kennedy
 Lyndon B. Johnson
 Richard M. Nixon
 Gerald R. Ford
 Jimmy Carter
-Ronald Reagan
-George H. W. Bush
 Bill Clinton
 George W. Bush
 Barack Hussein Obama
 Donald J. Trump
 New York City
-Rock & Roll Hall of Fame
+Rock and Roll Hall of Fame
 French Riviera
 Portland
 Lake Tahoe
@@ -2668,11 +1629,10 @@ Honolulu
 Montreal
 Kenya
 Aruba
-Galápagos Islands
+Galapagos Islands
 Vermont
 Petrified Forest Arizona
 Washington D.C.
-Great Barrier Reef
 Chicago
 Hong Kong
 Grand Cayman
@@ -2696,18 +1656,17 @@ Boston
 Buenos Aires
 Virgin Islands
 Machu Picchu
-Austin Texas
+Austin
 London
 Daytona Beach
 Sesame Place
-San Antonio Texas
+San Antonio
 Anchorage
 Jamaica
 Glacier National Park
 Madrid
 Myrtle Beach
 Grand Canyon
-St. Maarten
 Disneyland
 Yellowstone National Park
 Dubai
@@ -2716,253 +1675,145 @@ Universal's Islands of Adventure
 Miami
 Barcelona
 Sydney
-Rio de Janeiro
 New Orleans
 Left Alive
-The Elder Scrolls V: Skyrim
+The Elder Scrolls Skyrim
 Horizon Zero Dawn
 Darkest Dungeon
-Xenoblade Chronicles 2: Torna - The Golden Country
+Xenoblade Chronicles
 Hollow Knight
-Fallout 4
-Grand Theft Auto IV
-Pro Evolution Soccer 2018
-Marvel's Spider-Man
-The Legend of Zelda: Ocarina of Time
-Batman: Arkham Knight
+Fallout
+Grand Theft Auto
+Pro Evolution Soccer
+The Legend of Zelda
+Ocarina of Time
+Arkham Knight
 Use Your Words
 God of War
 Virginia
-Dragon Ball FighterZ
-Toby: The Secret Mine
-Rise of the Tomb Raider
+Dragon Ball Fighter
 Jurassic World Evolution
 Secret of Mana
-Enter the Gungeon
-Just Cause 3
-Assassin's Creed: Unity
-Masochisia
-007 Legends
-Call of Duty 4: Modern Warfare
+Just Cause
+Assassin's Creed
+Call of Duty Modern Warfare
 Figment
 Jump Force
-Hunt: Showdown
-Call of Duty: Black Ops III
-The Witcher 2: Assassins of Kings
-Tom Clancy's Rainbow Six: Siege
+Call of Duty Black Ops
+The Witcher
+Rainbow Six Siege
 Titan Souls
-Mass Effect 2
-Mass Effect 3
+Mass Effect
 The Persistence
 Hyper Light Drifter
-Detroit: Become Human
+Detroit Become Human
 Heretic Gods
 The Last of Us
-The Walking Dead: The Final Season
 Tales of Zestiria
-Sniper: Ghost Warrior 3
 Metal Gear Solid
-Hob
-The Legend of Zelda: A Link to the Past
-Gene Rain
-Atelier Firis: The Alchemist and the Mysterious Journey
-Hellblade: Senua's Sacrifice
+A Link to the Past
 Necropolis
-Forza Horizon 4
+Forza Horizon
 Prey
-Red Dead Redemption 2
+Red Dead Redemption
 Moonlighter
-Grandpa - The Horror Game
+Grandpa The Horror Game
 Contradiction
-Ancient Wars: Sparta
+Sparta
 Portal
-The Room: Old Sins
-Counter-Strike: Global Offensive
+The Room
+Counter Strike
 The Wolf Among Us
-The Bloody 1'st | WWII FPS/RTS Hybrid
 Ori and the Blind Forest
-NBA 2K19
-Owlboy
-Madden NFL 19
+Madden NFL
 For Honor
 Bioshock Infinite
-Red Dead Redemption
-Wolfenstein: The New Order
-Need for Speed: Most Wanted
-Star Wars Battlefront II: Elite Trooper Deluxe Edition
+Wolfenstein
+Need for Speed
+Star Wars Battlefront
 Super Mario Odyssey
-Battlefield 4
-Final Fantasy XV
-Borderlands 2
+Battlefield
+Final Fantasy
+Borderlands
 DOOM
-Fallout 76
-Black Clover: Quartet Knights
+Black Clover
 Firewatch
 Hello Neighbor
 Clash of Clans
-DOOM GTS
-Dark Souls III
-Batman: Arkham City
+Dark Souls
 Overwatch
 BioShock
-Rime
-Life is Strange: Before the Storm
-Atelier Rorona: The Alchemist of Arland
-Armello
-Far Cry 4
-Assassin's Creed: Origins
 Minecraft
-The Crew 2
 Life is Strange
 Totally Accurate Battle Simulator
-Leisure Suit Larry: Love for Sail!
-Fallout: New Vegas
+New Vegas
 Sword of the Guardian
-Crazy CarToon
-Grand Theft Auto: San Andreas
-Flipping Death
 Destiny
-Bubsy: The Woolies Strike Back
 Dying Light
-Far Cry 3
 Night in the Woods
-Assassin's Creed III
-Battlefield 1
 Fable Fortune
 Overlord
-Assassin's Creed II
-Naruto to Boruto: Shinobi Striker
-FIFA 18
-The Witcher 3: Wild Hunt
-Tekken 3
-Resident Evil 7 biohazard
-Space Empires IV Deluxe
-Black Mirror
-Portal 2
+Naruto
+FIFA
+Tekken
+Resident Evil
+Space Empires
 Gone Home
-Persona 5
-Deus Ex: Mankind Divided
-Fire Emblem: Three Houses
-Overcooked! 2
-Super Mario 64
-Super Mario Bros. 3
-Call of Duty: WWII
-ARK: Survival Evolved
+Fire Emblem
+Overcooked
+Super Mario
 Planetbase
-WWE Survivor Series
-NBA 2K18
-Quiplash
 Anthem
-Assassin's Creed: Odyssey
-Homeworld: Remastered Collection
-Firewall Zero Hour
+Odyssey
 Subnautica
 League of Legends
-Metal Gear Solid V: The Phantom Pain
 Absolver
-Dragon Age: Inquisition
-Shadow of the Tomb Raider
-Anno 2205
 Octopath Traveler
-Batman: Arkham Asylum
 Fortnite
 Planet Nomads
 The Witness
-How to Survive 2
 We Happy Few
 Don't Knock Twice
 Timespinner
 Wandersong
-World of Warcraft: Battle for Azeroth
-Journey
-H1Z1
-Half-Life
+World of Warcraft
+Half Life
 Until Dawn
 Undertale
-Last Day on Earth: Survival
-Immortal: Unchained
+Last Day on Earth
 Sundered
-Vigor
-Monster Hunter: World
-Adventure Time: Pirates Of The Enchiridion
-Sword Art Online: Lost Song
+Monster Hunter
 Dishonored
 Chrono Trigger
 Immortal Redneck
 Cuphead
 Knights of Honor
-Deus Ex: Human Revolution
 Stardew Valley
-Vampire: The Masquerade - Redemption
-Truth or Lies
-Ace Combat 7: Skies Unknown
-Super Mario Party
+Mario Party
 Bastion
-Ys VIII: Lacrimosa of Dana
-Destiny 2
-The Walking Dead: Season One
-Bloodborne
-The Legend of Zelda: Breath of the Wild
-PUBG Mobile
+Breath of the Wild
 Tanzia
 Wo Yao Da
 Chasm
-Divinity: Original Sin II
-Mafia III
-DanMachi: Memoria Freeze
-ATOMEGA
-Mega Man 11
-Assassin's Creed
-Uncharted 2: Among Thieves
-What Remains of Edith Finch
-Far Cry 5
+Mega Man
+Uncharted
 Conan Exiles
-Madden NFL 18
-Dark Souls: Remastered
-Tom Clancy's Ghost Recon: Wildlands
-Insurgency: Sandstorm
-Wolfenstein II: The New Colossus
-Assassin's Creed: Syndicate
-Drawful 2
-Super Smash Bros. Ultimate
-ANIMA: GATE OF MEMORIES - THE NAMELESS CHRONICLES
-Tom Clancy's The Division
-Narcosis
-Dragon Age: Origins
-Titanfall 2
+Insurgency
+Smash Ultimate
+Dragon Age Origins
+Titanfall
 Pool Panic
-Detective Case and Clown Bot in: The Express Killer
-Cyberpunk 2077
-The Jackbox Party Pack 3
-Mass Effect: Andromeda
+Cyberpunk
 PLANET ALPHA
 Celeste
 Pillars of Eternity
-Final Fantasy VII
-Saya no Uta
-Assassin's Creed IV: Black Flag
-OVERKILL's The Walking Dead
-NieR:Automata BECOME AS GODS Edition
-Spyro Reignited Trilogy
-Grand Theft Auto V
-Dark Souls
-Dishonored 2
-Shadows: Awakening
-Valkyria Chronicles 4
-Resident Evil 2
-Tomb Raider
-Paper Mario: The Thousand-Year Door
-The Technomancer
-Uncharted 4: A Thief's End
-Club Penguin 3D
-Semblance
-Middle-earth: Shadow of Mordor
+Black Flag
+Spyro
+Paper Mario
+Club Penguin
 Oxenfree
-My Hero One's Justice
-Resident Evil 4
 Beagle
 Golden Retriever
-Chow Chow
 Akita
 Rottweiler
 Great Dane
@@ -2973,7 +1824,6 @@ Chihuahua
 American Pit Bull Terrier
 Old English Sheepdog
 French Bulldog
-Rottweiler
 Australian Shepherd
 Dachshund
 Labrador Retriever
@@ -2982,38 +1832,520 @@ Shiba Inu
 Jack Russell Terrier
 German Shepherd
 Havanese
-Golden Retriever
 Bichon Frise
 Siberian Husky
-J.K Rowling
-Stephen King
-Mark Twain
+J. K. Rowling
 Jane Austen
-William Shakespeare
 Margaret Atwood
 Charles Dickens
-Ernest Hemingway
 Leo Tolstoy
-J. R. R. Tolkien
+Tolkien
 F. Scott Fitzgerald
 Edgar Allen Poe
-James Patterson
 Lewis Carroll
 Virginia Woolf
 Neil Gaiman
-Maya Angelou
 Herman Melville
 Agatha Christie
 John Green
 Arthur Conan Doyle
 George Orwell
-Oscar Wilde
 Eleanor Hibbert
 Jules Verne
 Alexandre Dumas
 C. S. Lewis
 John Steinbeck
-Roald Dahl
 Dan Brown
 James Joyce
 William Faulkner
+Elmo
+Big Bird
+Cookie Monster
+Count Von Count
+Grover
+Bert
+Oscar the Grouch
+Ernie
+Kermit the Frog
+Fozzie Bear
+Beaker
+Miss Piggy
+Swedish Chef
+Sam Eagle
+Rizzo the Rat
+Animal
+Doctor Bunsen Honeydew
+Mickey Mouse
+Donald Duck
+Goofy
+Minnie Mouse
+The Little Mermaid
+The Princess and the Frog
+Tangled
+Princess Aurora
+Captain Hook
+Princess Jasmine
+Daisy Duck
+Winnie the Pooh
+Jafar
+Flynn Rider
+Prince Charming
+Tinker Bell
+Ursula
+Scar
+Simba
+Genie
+Scrooge McDuck
+Baloo
+Stitch
+Prince Eric
+Sheriff Woody
+Buzz Lightyear
+The Mad Hatter
+Mulan
+Jiminy Cricket
+Princess Belle
+Princess Elsa
+Princess Anna
+Mufasa
+King Triton
+Beauty and The Beast
+Olaf
+Sven
+Snow White
+The Jungle Book
+Bambi
+Mary Poppins
+Sleeping Beauty
+Alice in Wonderland
+Dumbo
+Lady and the Tramp
+Peter Pan
+Pinocchio
+Fantasia
+Bayonetta
+Bowser
+Bowser Jr.
+Captain Falcon
+Cloud
+Daisy
+Diddy Kong
+Donkey Kong
+Dr. Mario
+Duck Hunt
+Falco
+Fox
+Ganondorf
+The Ice Climbers
+Inkling
+Isabelle
+Jigglypuff
+King Dedede
+King K. Rool
+Kirby
+Link
+Little Mac
+Lucario
+Luigi
+Marth
+Meta Knight
+Mewtwo
+Ness
+Captain Olimar
+PacMan
+Peach
+Pikachu
+Pokemon Trainer
+Squirtle
+Samus Aran
+Sheik
+Sonic the Hedgehog
+Toon Link
+Villager
+Wario
+Wolf
+Yoshi
+Princess Zelda
+Spongebob Squarepants
+Victorious
+Henry Danger
+The Loud House
+Avatar the Last Airbender
+All That
+Hey Arnold
+Drake and Josh
+Doug
+Big Time Rush
+Danny Phantom
+The Wild Thornberries
+Jimmy Neutron
+Kenan and Kel
+The Amanda Show
+Rocket Power
+Invader Zim
+The Amazing World of Gumball
+Teen Titans
+The Powerpuff Girls
+Chowder
+Steven Universe
+We Bare Bears
+Kids Next Door
+Total Drama Island
+Cow and Chicken
+Camp Lazlo
+Peppa Pig
+Go Diego Go
+Dora the Explorer
+Bob the Builder
+Jake and the Neverland Pirates
+Ni Hao Kai Lan
+Mickey Mouse Clubhouse
+Little Einsteins
+Chris Evans
+Brie Larson
+Mark Ruffalo
+Tom Holland
+Josh Brolin
+Karen Gillan
+Benedict Cumberbatch
+Chris Pratt
+Gwyneth Paltrow
+Danai Gurira
+Evangeline Lilly
+Don Cheadle
+Jon Favreau
+Katherine Langford
+Vin Diesel
+Anthony Mackie
+Ty Simpkins
+Michelle Pfeiffer
+Benedict Wong
+Tilda Swinton
+Akihiro Haga
+Margot Robbie
+Jared Leto
+Cara Delevingne
+Jai Courtney
+Joel Kinnaman
+Karen Fukuhara
+Michael Richards
+Jason Alexander
+Jerry Stiller
+Kelsey Grammer
+John Mahoney
+David Hyde Pierce
+Jane Leeves
+John Krasinski
+Jenna Fischer
+Rainn Wilson
+Angela Kinsey
+Ed Helms
+Mindy Kaling
+Brian Baumgartner
+B. J. Novak
+Leslie David Baker
+Phyllis Smith
+Creed Bratton
+Kate Flannery
+Oscar Nunez
+Paul Lieberstein
+Ellie Kemper
+Craig Robinson
+Melora Hardin
+Catherine Tate
+James Spader
+Zach Woods
+Idris Elba
+Amy Adams
+Amy Ryan
+Kathy Bates
+Rashida Jones
+Amy Poehler
+Aubrey Plaza
+Nick Offerman
+Adam Scott
+Aziz Ansari
+Retta
+Jerry Gergich
+Rob Lowe
+Brian May
+John Deacon
+Roger Taylor
+Mike Grose
+Doug Bogie
+Barry Mitchel
+Slash
+Axl Rose
+Duff McKagan
+Steven Adler
+Robert Plant
+Jimmy Page
+John Bonham
+John Paul Jones
+Phil Collins
+Jason Bonham
+Ringo Starr
+Pete Best
+Stuart Sutcliffe
+Jimmie Nicol
+Tommy Moore
+Steven Tyler
+Joe Perry
+Brad Whitford
+Tom Hamilton
+Joey Kramer
+Ray Tabano
+Jimmy Crespo
+Rick Dufay
+Gene Simmons
+Paul Stanley
+Ace Frehley
+Peter Criss
+Tommy Thayer
+Kurt Cobain
+Dave Grohl
+Krist Novoselic
+Pink Floyd
+Stevie Nicks
+Fleetwood Mac
+Tupac Shakur
+Dr. Dre
+Snoop Dogg
+Ice Cube
+Nicki Minaj
+Future
+Chance the Rapper
+Busta Rhymes
+Lil Uzi Vert
+Cardi B.
+Ludacris
+Wiz Khalifa
+Gucci Mane
+Kodak Black
+Slick Rick
+Ice T.
+Logic
+Bjergsen
+Biofrost
+Team Solo Mid
+Cloud Nine
+Echo Fox
+Clutch Gaming
+Team Liquid
+Optic Gaming
+Counter Logic Gaming
+Flyquest
+Golden Guardians
+Faker
+Griffin
+S. K. Telcom
+Sandbox Gaming
+Afreeca Freecs
+K. T. Rolster
+Jin Air Green Wings
+Hanwha Life
+DAMWON Gaming
+Tarzan
+Edward Gaming
+Invictus Gaming
+Royal Never Give Up
+Chadwick Boseman
+Michael B. Jordan
+Letitia Wright
+Daniel Kaluuya
+Angela Bassett
+Winston Duke
+Andy Serkis
+Martin Freeman
+Sterling K. Brown
+Trevor Noah
+Peter Dinklage
+Emilia Clarke
+Aiden Gillen
+Sophie Turner
+Kit Harington
+Jon Snow
+Jason Mamoa
+Diana Rigg
+Maisie Williams
+Arya Stark
+Khal Drogo
+Sansa Stark
+Lena Headey
+Cersei Lannister
+Bran Stark
+Tyrion Lannister
+Hermione Granger
+Lord Voldemort
+Albus Dumbledore
+Severus Snape
+Draco Malfoy
+Ron Weasley
+Rubeus Hagrid
+Dobby the Elf
+Ginny Weasley
+Bellatrix Lestrange
+Sirius Black
+Luna Lovegood
+Neville Longbottom
+Berkshire Hathaway
+General Motors
+Ford Motors
+Chevron
+Costco
+Kroger
+Boeing
+Valero Energy
+Comcast
+State Farm Insurance
+Target
+Proctor and Gamble
+Aetna
+FedEx
+Disney
+Lockheed Martin
+Best Buy
+Cigna
+Honeywell
+Oracle
+Publix
+Progressive
+Time Warner
+Dollar General
+Duke Energy
+Qualcomm
+Dollar Tree
+Micron Technology
+Kohl's
+Visa
+General Mills
+Nordstrom
+Sherwin Williams
+Goodyear Tires
+Texas Instruments
+Aramark
+PayPal
+Netflix
+Office Depot
+Staples
+Norfolk Southern
+SunTrust Banks
+Campbell Soup
+Foot Locker
+Alliance Data Systems
+Adobe Systems
+Harris Corporation
+Discovery Channel
+History Channel
+Nickelodeon
+Cartoon Network
+Dillard's
+Motorola
+Clorox
+ON Semiconductor
+Hasbro
+Analog Devices
+Mattel
+Brunswick
+Electronic Arts
+Hyatt Hotels
+Agilent Technologies
+Nasdaq
+Barnes and Noble
+Abercrombie and Fitch
+Cinemark
+Citrix
+Little Caesar's Pizza
+Kentucky Fried Chicken
+Spirit Airlines
+Frontier Airlines
+Continental Airlines
+Delta Airlines
+United Emirates
+Vishay Intertechnology
+Twitter
+Instagram
+Snapchat
+Reddit
+Maxim
+Universal Studios
+Autodesk
+Matlab
+Altium Designer
+Cadence
+Microsoft Office
+Google Chrome
+Internet Explorer
+Firefox
+Safari
+Finish Line
+Nascar
+Mariott Hotels
+Roadrunner
+Daffy Duck
+Bugs Bunny
+Porky Pig
+Tweety Bird
+Tasmanian
+Elmer Fudd
+Marvin the Martian
+Sylvester
+Speedy Gonzales
+Yosemite Sam
+The Flintstones
+Looney Tunes
+Woody Woodpecker
+Regular Show
+The Legend of Korra
+Garfield
+Alvin and the Chipmunks
+Animaniacs
+Inspector Gadget
+Darkwing Duck
+The Jetsons
+The Ren and Stimpy Show
+Pinky Brain
+Popeye the Sailor
+Samurai Jack
+Dennis the Menace
+Gravity Falls
+Recess
+Digimon
+Beyblade
+Bakugan
+Yogi Bear
+Phineas and Ferb
+Chuck Norris
+Courage the Cowardly Dog
+Johnny Bravo
+Robocop
+The Addams Family
+Ace Ventura
+Back at the Barnyard
+Kim Possible
+Speed Racer
+Fat Albert
+Static Shock
+Foster's Home for Imaginary Friends
+The Grim Adventures of Billy and Mandy
+The Bullwinkle Show
+Men in Black
+Casper the Friendly Ghost
+Aquaman
+My Little Pony
+Green Lantern
+Mr. Potato Head
+Square Cash
+Angry Birds
+Fruit Ninja
+Flappy Bird
+Jetpack Joyride
+Android
+Revlon
+Warner Brothers
+Time Warner Cable
+American Eagle
+Ulta Beauty
+Apache
+Macy's
+Sears

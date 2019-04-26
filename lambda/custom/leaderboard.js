@@ -1,5 +1,5 @@
-const NAME_INDEX = 0;
-const SCORE_INDEX = 1;
+const NAME_INDEX = 0; //name is stored in index 0 in the board array
+const SCORE_INDEX = 1; //score is stored in index 1 of the board array
 
 function Leaderboard(length, object) {
 
@@ -38,13 +38,19 @@ Leaderboard.prototype.isScoreHighEnough = function(score) {
 }
 
 //add a name to a certain position
+//Do not call this before addScoreToPosition has been called. This method
+//must be called after because it depends on the splice done in the
+//addScoreToPosition method.
 Leaderboard.prototype.addNameToPosition = function(name, position) {
   this.board[position][NAME_INDEX] = name;
 }
 
 //add a score to a certain position
+//Splice is used to insert a new entry in between the current entries
+//rather than just writing over past entries.
 Leaderboard.prototype.addScoreToPosition = function(score, position) {
-  this.board[position][SCORE_INDEX] = score;
+  //this.board[position][SCORE_INDEX] = score;
+  this.board.splice(position, 0, [this.board[position][NAME_INDEX], score]);
 }
 
 Leaderboard.prototype.getNameFromPosition = function(position) {
@@ -53,6 +59,15 @@ Leaderboard.prototype.getNameFromPosition = function(position) {
 
 Leaderboard.prototype.getScoreFromPosition = function(position) {
   return this.board[position][SCORE_INDEX];
+}
+
+//remove an entire entry from this position
+Leaderboard.prototype.removeEntryAtPosition = function(position) {
+  this.board.splice(position, 1);
+}
+
+Leaderboard.prototype.removeLastEntry = function(position) {
+  this.board.pop();
 }
 
 Leaderboard.prototype.getBoard = function() {

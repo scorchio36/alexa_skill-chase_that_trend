@@ -27,11 +27,18 @@ const dynamoDbPersistenceAdapter = new DynamoDbPersistenceAdapter({ tableName : 
                                                                     partitionKeyGenerator : () => "1" });
 
 const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboards, or learn how to play? ";
+const LEADERBOARD_SEARCH_PROMPT = `To see a certain position on the board, say show me position
+                                   followed by the place number. To see if a name is on the board,
+                                   say show me the name followed by the name you want to look up.
+                                   You can also say main menu if you don't want to look at leaderboards anymore. `
 
 const LOCAL_LEADERBOARD_LENGTH = 10;
-const WORLD_LEADERBOARD_LENGTH = 50;
+const WORLD_LEADERBOARD_LENGTH = 10;
+const POINTS_FOR_CORRECT_ANSWER = 100;
 
 
+
+/*************Handlers****************/
 const LaunchRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
@@ -40,13 +47,13 @@ const LaunchRequestHandler = {
 
     let speechText = "";
     let repromptText = "";
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
 
     //cute intro sound for when user opens game up
     speechText += sounds.intro_sound;
 
     await setupSkill(handlerInput);
-
-    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
     if(sessionAttributes.firstTime) {
       //Prompt the user for the first time.
@@ -60,14 +67,10 @@ const LaunchRequestHandler = {
 
     repromptText += GAME_MENU_PROMPT;
 
-    let attribs = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
-    console.log("Outputting World");
-    console.log("Worldwide leaderboard in DB: " + JSON.stringify(new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(attribs.leaderboard))));
-
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(repromptText)
-      .withSimpleCard('Chase that Trend!', GAME_MENU_PROMPT)
+      //.withSimpleCard('Chase that Trend!', GAME_MENU_PROMPT)
       .getResponse();
   },
 };
@@ -88,7 +91,6 @@ const ShowLeaderboardsToUserHandler = {
 
     speechText += "Would you like to view your local Alexa's leaderboard or ";
     speechText += "the worldwide leaderboard? ";
-
     speechText += "You can also say main menu if you don't want to look at ";
     speechText += "leaderboards anymore. ";
 
@@ -115,12 +117,7 @@ const ShowLocalLeaderboardToUserHandler = {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.state = StateEnum.LOCAL_LEADERBOARD;
 
-    speechText += "To see a certain position on the board, say show me position ";
-    speechText += "followed by the place number. To see if a name is on the board, ";
-    speechText += "say show me the name followed by the name you want to look up. ";
-
-    speechText += "You can also say main menu if you don't want to look at ";
-    speechText += "leaderboards anymore. ";
+    speechText += LEADERBOARD_SEARCH_PROMPT;
 
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
@@ -145,12 +142,7 @@ const ShowWorldLeaderboardToUserHandler = {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.state = StateEnum.WORLD_LEADERBOARD;
 
-    speechText += "To see a certain position on the board, say show me position ";
-    speechText += "followed by the place number. To see all names on this Alexa that ";
-    speechText += "have made it onto the worldwide leaderboard, say see all names. "
-
-    speechText += "You can also say main menu if you don't want to look at ";
-    speechText += "leaderboards anymore. ";
+    speechText += LEADERBOARD_SEARCH_PROMPT;
 
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
@@ -170,12 +162,6 @@ const ViewLeaderboardPositionHandler = {
   },
   async handle(handlerInput) {
 
-    //shouldn't be able to call this handler in middle of game
-    let activeGameCheck = checkForActiveGame(handlerInput);
-    if(activeGameCheck) {
-      return activeGameCheck;
-    }
-
     let speechText = "";
     let repromptText = "";
 
@@ -183,7 +169,6 @@ const ViewLeaderboardPositionHandler = {
 
     //get the position that the user wants to see (slot value)
     let leaderboardPosition = handlerInput.requestEnvelope.request.intent.slots.leaderboardPosition.value;
-
 
     //Check if the user wants to look at a position within the local or world
     //leaderboard by looking at the current state.
@@ -193,10 +178,11 @@ const ViewLeaderboardPositionHandler = {
 
       //handle out of bounds leaderboard position
       if(leaderboardPosition > LOCAL_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
-        speechText += "I am sorry. The local leaderboard only goes up to position 10, or ";
-        speechText += "10th place. ";
+        speechText += "I am sorry. The local leaderboard only goes up to position ";
+        speechText += LOCAL_LEADERBOARD_LENGTH + ", or 10th place. ";
       }
       //Handle the case when no score has yet been achieved at the requested position
+      //The 1s in these conditionals handle the fact that leadeboardPosition is a place/position not an array index
       else if(localLeaderboard.getScoreFromPosition(leaderboardPosition-1) == 0) {
         speechText += "There is currently no high score at that position. ";
       }
@@ -208,22 +194,17 @@ const ViewLeaderboardPositionHandler = {
       }
 
 
-      speechText += "To see a certain position on the board, say show me position ";
-      speechText += "followed by the place number. To see if a name is on the board, ";
-      speechText += "say show me the name followed by the name you want to look up. ";
-
-      speechText += "You can also say main menu if you don't want to look at ";
-      speechText += "leaderboards anymore. ";
+      speechText += LEADERBOARD_SEARCH_PROMPT;
 
     }
     else if(sessionAttributes.state == StateEnum.WORLD_LEADERBOARD) {
       let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
-      let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+      let worldLeaderboard = new Leaderboard(WORLD_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
       //handle out of bounds leaderboard position
-      if(leaderboardPosition > LOCAL_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
-        speechText += "I am sorry. The leaderboard only goes up to position 10, or ";
-        speechText += "10th place. ";
+      if(leaderboardPosition > WORLD_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
+        speechText += "I am sorry. The world leaderboard only goes up to position ";
+        speechText += WORLD_LEADERBOARD_LENGTH + ", or 10th place. ";
       }
       //Handle the case when no score has yet been achieved at the requested position
       else if(worldLeaderboard.getScoreFromPosition(leaderboardPosition-1) == 0) {
@@ -237,12 +218,7 @@ const ViewLeaderboardPositionHandler = {
       }
 
 
-      speechText += "To see a certain position on the board, say show me position ";
-      speechText += "followed by the place number. To see all names on this Alexa that ";
-      speechText += "have made it onto the worldwide leaderboard, say see all names. "
-
-      speechText += "You can also say main menu if you don't want to look at ";
-      speechText += "leaderboards anymore. ";
+      speechText += LEADERBOARD_SEARCH_PROMPT;
     }
 
     return handlerInput.responseBuilder
@@ -299,7 +275,6 @@ const PlayGameHandler = {
     await setupSkill(handlerInput);
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-    sessionAttributes.gameActive = true;
     sessionAttributes.state = StateEnum.GAME_ACTIVE;
 
     speechText += "Alright. Let's play the game! ";
@@ -308,9 +283,9 @@ const PlayGameHandler = {
     speechText += "All you have to do is tell me, over the past month, which of the two ";
     speechText += "things has been searched more? ";
 
+    //Get the new search terms that will be provided to the user
     await searchTermsGenerator.shuffleSearchTerms();
     let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
-    let currentGrades = searchTermsGenerator.getCurrentGrades();
 
     speechText += "Your two search terms are " + currentSearchTerms[0];
     speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
@@ -318,17 +293,12 @@ const PlayGameHandler = {
     repromptText += "Which of these two search terms have been searched more? ";
     repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
 
-    let screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
-
-    //save search terms and grades to the current session (so it can be used by other intents)
-
     //save session changes
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Which of these two have been searched more?', screenOptions)
       .withShouldEndSession(false)
       .getResponse();
   },
@@ -345,120 +315,123 @@ const AnswerHandler = {
     //setup AnswerHandler text output
     let speechText = "";
     let repromptText = "";
-    let screenOptions = "";
 
     //get the user's answer (slot value)
     let userAnswer = handlerInput.requestEnvelope.request.intent.slots.userAnswer.value;
 
     //get the variables stored in the current session
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-
     //get the persistent attributes since we need to save the local leaderboard at the end of the game
     const persistentAttributes = handlerInput.attributesManager.getPersistentAttributes();
 
     let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
     localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
-    console.log("LEADERBOARD:" + localLeaderboard.constructor.name);
 
     //grab the World Leaderboard
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
     let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
-    //log results to double check that user answer is lining up with correct answer
-    console.log("UserAnswer:" + userAnswer);
-    console.log("Winning Answer:" + searchTermsGenerator.getWinningSearchTerm());
+    //The user has provided one of the valid answer choices
+    if(validateUserAnswer(userAnswer)) {
 
-    //check if the user's answer is correct
-    if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
+      //check if the user's answer is correct
+      if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
 
-      //handler correct answer
-      speechText += sounds.correct_answer_sound;
-      speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
-      sessionAttributes.currentScore += 100; //keep the added score at 100 for now
+        //handler correct answer
+        speechText += sounds.correct_answer_sound;
+        speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
+        sessionAttributes.currentScore += POINTS_FOR_CORRECT_ANSWER;
 
-      //ask the user the next question and update the search terms
-      await searchTermsGenerator.shuffleSearchTerms();
-      let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
-      let currentGrades = searchTermsGenerator.getCurrentGrades();
+        //update the search terms and ask the user the next question
+        await searchTermsGenerator.shuffleSearchTerms();
+        let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-      speechText += "Your two search terms are " + currentSearchTerms[0];
-      speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
+        speechText += "Your two search terms are " + currentSearchTerms[0];
+        speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
-      repromptText += "Which of these two search terms have been searched more? ";
-      repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
+        repromptText += "Which of these two search terms have been searched more? ";
+        repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
 
-      screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
-
-    }
-    else {
-
-      //handle incorrect answer
-      speechText += sounds.wrong_answer_sound;
-      speechText += "That is incorrect. I'm sorry. Game Over. ";
-      speechText += sounds.game_over_sound;
-      speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
-      repromptText += "I'm sorry. Game Over. ";
-      screenOptions += "Game Over. ";
-
-      //handle game over
-      sessionAttributes.state = StateEnum.GAME_OVER;
-      //check if the user made it on either score board
-      let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
-      let isLocalScoreHighEnough = (localScorePosition != -1);
-
-      let worldScorePosition = worldLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
-      let isWorldScoreHighEnough = (worldScorePosition != -1);
-
-      if(isLocalScoreHighEnough && isWorldScoreHighEnough) {
-        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
-        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
-        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
-        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You got a high score on your Alexa leaderboard and made it on the Worldwide score board! What is your name? ";
-      }
-      else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
-        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
-        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
-      }
-      else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
-        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
-        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You made it on the Worldwide score board! What is your name? ";
       }
       else {
-        speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
-        speechText += GAME_MENU_PROMPT;
 
-        sessionAttributes.currentScore = 0;
-        sessionAttributes.state = StateEnum.MAIN_MENU;
-        sessionAttributes.gameActive = false;
+        //handle incorrect answer
+        speechText += sounds.wrong_answer_sound;
+        speechText += "That is incorrect. I'm sorry. Game Over. ";
+        speechText += sounds.game_over_sound;
+        speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
+        repromptText += "I'm sorry. Game Over. ";
+
+        //handle game over
+        sessionAttributes.state = StateEnum.GAME_OVER;
+        //check if the user made it on either score board
+        let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+        let isLocalScoreHighEnough = (localScorePosition != -1);
+
+        let worldScorePosition = worldLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+        let isWorldScoreHighEnough = (worldScorePosition != -1);
+
+        if(isLocalScoreHighEnough && isWorldScoreHighEnough) {
+          localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+          localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+          worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+          worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You got a high score on your local Alexa leaderboard and made it on the Worldwide score board! What is your first name? ";
+        }
+        else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
+          localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+          localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You got a high score on your local Alexa leaderboard! What is your first name? ";
+        }
+        else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
+          worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+          worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You made it on the Worldwide score board! What is your first name? ";
+        }
+        else {
+          speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
+          speechText += GAME_MENU_PROMPT;
+
+          sessionAttributes.currentScore = 0;
+          sessionAttributes.state = StateEnum.MAIN_MENU;
+        }
       }
+
+
+      sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
+      //save session variable changes
+      handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+      //save DB changes
+      dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+      await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
+
+      persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
+      handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
+      await handlerInput.attributesManager.savePersistentAttributes();
+
     }
 
+    //User answer does not match any of the answer choices
+    else {
 
-    sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
-    //save session variable changes
-    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+      let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-    //save DB changes
-    dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
-    await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
-
-    persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
-    handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
-    await handlerInput.attributesManager.savePersistentAttributes();
-
+      speechText += "Your answer does not match any of the answer choices I have given. ";
+      speechText += "Please respond with one of the search terms I have provided. ";
+      speechText += currentSearchTerms[0] + ". Or. " + currentSearchTerms[1] + ". ";
+      //speechText += "If you are still saying them correctly, there must be something wrong with my system. ";
+      //speechText += "If that is the case I apologize and you can exit the game by saying quit. "
+    }
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      //.withSimpleCard('Which of these two have been searched more?', screenOptions)
       .getResponse();
   },
 };
@@ -501,16 +474,15 @@ const GetUserNameHandler = {
     && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.GAME_OVER;
   },
   async handle(handlerInput) {
-    //setup AnswerHandler text output
+
     let speechText = "";
     let repromptText = "";
 
     //get the user's answer (slot value)
     let userName = handlerInput.requestEnvelope.request.intent.slots.userName.value;
 
-    //get the variables stored in the current session
+    //get the variables stored in the current and persistent session
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-
     const persistentAttributes = handlerInput.attributesManager.getPersistentAttributes();
 
     //get the leaderboards
@@ -520,7 +492,7 @@ const GetUserNameHandler = {
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
     let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
-    //check if the user made it on either score board
+    //check if the user made it on either score board (make sure you check for a unique userID and not a name)
     let localScorePosition = localLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
     let isNameInLocalLeaderboard = (localScorePosition != -1);
 
@@ -549,6 +521,12 @@ const GetUserNameHandler = {
       speechText += sounds.congratulations_sound;
     }
 
+    //Once the names have been officially added a new entry saved, delete the last
+    //entry in order to maintain the length of the leaderboard at LOCAL_LEADERBOARD_LENGTH
+    //or WORLD_LEADERBOARD_LENGTH. (When a new entry is added it is spliced into the middle
+    //of the array, so the size of the array increases by 1)
+    localLeaderboard.removeLastEntry();
+    worldLeaderboard.removeLastEntry();
 
     sessionAttributes.state = StateEnum.MAIN_MENU;
     speechText += "I wish I was that cool. ";
@@ -596,8 +574,11 @@ const CancelAndStopIntentHandler = {
       && (handlerInput.requestEnvelope.request.intent.name === 'AMAZON.CancelIntent'
         || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     const speechText = 'Goodbye!';
+
+    //make sure that a userId is not saved in either of the leaderboards
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -610,8 +591,10 @@ const SessionEndedRequestHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
   },
-  handle(handlerInput) {
+  async handle(handlerInput) {
     console.log(`Session ended with reason: ${handlerInput.requestEnvelope.request.reason}`);
+
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder.getResponse();
   },
@@ -639,8 +622,10 @@ const ErrorHandler = {
   canHandle() {
     return true;
   },
-  handle(handlerInput, error) {
+  async handle(handlerInput, error) {
     console.log(`Error handled: ${error.message}`);
+
+    await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder
       .speak('Sorry, I can\'t understand the command. Please say again.')
@@ -651,12 +636,24 @@ const ErrorHandler = {
 
 
 
-//helper functions
-
+/***********Helper functions************/
 //get a random greeting for when the user opens the skill
 function getRandomGreeting() {
   const greetings = randomGreetings.greetings; //array filled with random greetings
   return greetings[Math.floor(Math.random()*(greetings.length))];
+}
+
+function validateUserAnswer(userAnswer) {
+
+  let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+
+  if((userAnswer.toLowerCase().trim()) == (currentSearchTerms[0].toLowerCase().trim()) ||
+      (userAnswer.toLowerCase().trim()) == (currentSearchTerms[1].toLowerCase().trim())) {
+      return true; //The user has given a valid answer
+  }
+  else {
+      return false; //The user has given an invalid answer
+  }
 }
 
 function checkForActiveGame(handlerInput) {
@@ -693,6 +690,47 @@ function checkForActiveGame(handlerInput) {
 
 }
 
+async function cleanupLeaderboards(handlerInput) {
+
+  let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+  let persistentAttributes = handlerInput.attributesManager.getPersistentAttributes();
+  let currentUserId = handlerInput.requestEnvelope.session.user.userId;
+
+  //grab local leaderboard
+  let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
+  localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
+
+  for(var i = 0; i<LOCAL_LEADERBOARD_LENGTH; i++) {
+    let name = localLeaderboard.getNameFromPosition(i);
+    if(name == currentUserId) {
+      localLeaderboard.removeEntryAtPosition(i);
+    }
+  }
+
+  //grab the World Leaderboard
+  let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+  let worldLeaderboard = new Leaderboard(WORLD_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+
+  for(var i = 0; i<WORLD_LEADERBOARD_LENGTH; i++) {
+    let name = worldLeaderboard.getNameFromPosition(i);
+    if(name == currentUserId) {
+      worldLeaderboard.removeEntryAtPosition(i);
+    }
+  }
+
+  sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
+  //save the boards
+  handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+  //save DB changes
+  dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+  await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
+
+  persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
+  handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
+  await handlerInput.attributesManager.savePersistentAttributes();
+}
+
 //This function will take care of anything that needs to happen before the user
 //begins interracting with the skill. This will be especially useful when
 //dealing with one-shot intents (like if the user skips past the launcher and
@@ -719,10 +757,8 @@ async function setupSkill(handlerInput) {
 
   //Initialize the session attributes.
   sessionAttributes.currentScore = 0;
-  sessionAttributes.gameActive = false;
   sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
   sessionAttributes.state = StateEnum.MAIN_MENU;
-  console.log("setupSkill Leaderboard:" + sessionAttributes.localAlexaLeaderboard);
 
   sessionAttributes.firstTime = persistentAttributes.firstTime;
   attributesManager.setSessionAttributes(sessionAttributes);
@@ -734,7 +770,6 @@ async function setupSkill(handlerInput) {
 /*async function askUserNewQuestion(searchTermsGenerator) {
 
 }*/
-
 
 const skillBuilder = Alexa.SkillBuilders.standard();
 
