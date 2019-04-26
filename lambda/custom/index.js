@@ -583,7 +583,34 @@ const HelpIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   handle(handlerInput) {
-    const speechText = 'You can say hello to me!';
+
+    let speechText = "";
+    let repromptText = "";
+    let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+    if (sessionAttributes.state == StateEnum.MAIN_MENU) {
+      return HowToPlayHandler.handle(handlerInput);
+    }
+    else if(sessionAttributes.state == StateEnum.GAME_ACTIVE) {
+      return RepeatSearchTermsHandler.handle(handlerInput);
+    }
+    else if(sessionAttributes.state == StateEnum.GAME_OVER) {
+      speechText += "You just have to give me a first name so that I can ";
+      speechText += "save your score onto the leaderboard. What is your first name? ";
+      repromptText = "What is your first name?";
+    }
+    else if(sessionAttributes.state == StateEnum.LEADERBOARD_MENU) {
+      return ShowLeaderboardsToUserHandler.handle(handlerInput);
+    }
+    else if(sessionAttributes.state == StateEnum.LOCAL_LEADERBOARD) {
+      return ShowLocalLeaderboardToUserHandler.handle(handlerInput);
+    }
+    else if(sessionAttributes.state == StateEnum.WORLD_LEADERBOARD) {
+      return ShowWorldLeaderboardToUserHandler.handle(handlerInput);
+    }
+    else {
+      return HowToPlayIntent.handle(handlerInput);
+    }
 
     return handlerInput.responseBuilder
       .speak(speechText)
