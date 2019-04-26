@@ -61,8 +61,6 @@ const LaunchRequestHandler = {
     repromptText += GAME_MENU_PROMPT;
 
     let attribs = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
-    console.log("Outputting World");
-    console.log("Worldwide leaderboard in DB: " + JSON.stringify(new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(attribs.leaderboard))));
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -358,103 +356,115 @@ const AnswerHandler = {
 
     let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
     localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
-    console.log("LEADERBOARD:" + localLeaderboard.constructor.name);
 
     //grab the World Leaderboard
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
     let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
-    //log results to double check that user answer is lining up with correct answer
-    console.log("UserAnswer:" + userAnswer);
-    console.log("Winning Answer:" + searchTermsGenerator.getWinningSearchTerm());
+    //The user has provided one of the valid answer choices
+    if(validateUserAnswer(userAnswer)) {
 
-    //check if the user's answer is correct
-    if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
+      //check if the user's answer is correct
+      if((userAnswer.toLowerCase().trim()) == (searchTermsGenerator.getWinningSearchTerm().toLowerCase().trim())) {
 
-      //handler correct answer
-      speechText += sounds.correct_answer_sound;
-      speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
-      sessionAttributes.currentScore += 100; //keep the added score at 100 for now
 
-      //ask the user the next question and update the search terms
-      await searchTermsGenerator.shuffleSearchTerms();
-      let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
-      let currentGrades = searchTermsGenerator.getCurrentGrades();
+        //handler correct answer
+        speechText += sounds.correct_answer_sound;
+        speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
+        sessionAttributes.currentScore += 100; //keep the added score at 100 for now
 
-      speechText += "Your two search terms are " + currentSearchTerms[0];
-      speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
+        //ask the user the next question and update the search terms
+        await searchTermsGenerator.shuffleSearchTerms();
+        let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+        let currentGrades = searchTermsGenerator.getCurrentGrades();
 
-      repromptText += "Which of these two search terms have been searched more? ";
-      repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
+        speechText += "Your two search terms are " + currentSearchTerms[0];
+        speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
-      screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
+        repromptText += "Which of these two search terms have been searched more? ";
+        repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
 
-    }
-    else {
+        screenOptions = "" + currentSearchTerms[0] + " or " + currentSearchTerms[1];
 
-      //handle incorrect answer
-      speechText += sounds.wrong_answer_sound;
-      speechText += "That is incorrect. I'm sorry. Game Over. ";
-      speechText += sounds.game_over_sound;
-      speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
-      repromptText += "I'm sorry. Game Over. ";
-      screenOptions += "Game Over. ";
-
-      //handle game over
-      sessionAttributes.state = StateEnum.GAME_OVER;
-      //check if the user made it on either score board
-      let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
-      let isLocalScoreHighEnough = (localScorePosition != -1);
-
-      let worldScorePosition = worldLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
-      let isWorldScoreHighEnough = (worldScorePosition != -1);
-
-      if(isLocalScoreHighEnough && isWorldScoreHighEnough) {
-        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
-        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
-        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
-        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You got a high score on your Alexa leaderboard and made it on the Worldwide score board! What is your name? ";
-      }
-      else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
-        localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
-        localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
-      }
-      else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
-        worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
-        worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
-
-        speechText += sounds.high_score_sound;
-        speechText += "Congratulations! You made it on the Worldwide score board! What is your name? ";
       }
       else {
-        speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
-        speechText += GAME_MENU_PROMPT;
 
-        sessionAttributes.currentScore = 0;
-        sessionAttributes.state = StateEnum.MAIN_MENU;
-        sessionAttributes.gameActive = false;
+        //handle incorrect answer
+        speechText += sounds.wrong_answer_sound;
+        speechText += "That is incorrect. I'm sorry. Game Over. ";
+        speechText += sounds.game_over_sound;
+        speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
+        repromptText += "I'm sorry. Game Over. ";
+        screenOptions += "Game Over. ";
+
+        //handle game over
+        sessionAttributes.state = StateEnum.GAME_OVER;
+        //check if the user made it on either score board
+        let localScorePosition = localLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+        let isLocalScoreHighEnough = (localScorePosition != -1);
+
+        let worldScorePosition = worldLeaderboard.isScoreHighEnough(sessionAttributes.currentScore);
+        let isWorldScoreHighEnough = (worldScorePosition != -1);
+
+        if(isLocalScoreHighEnough && isWorldScoreHighEnough) {
+          localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+          localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+          worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+          worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You got a high score on your Alexa leaderboard and made it on the Worldwide score board! What is your name? ";
+        }
+        else if(isLocalScoreHighEnough && !isWorldScoreHighEnough) {
+          localLeaderboard.addScoreToPosition(sessionAttributes.currentScore, localScorePosition);
+          localLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, localScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You got a high score on your Alexa leaderboard! What is your name? ";
+        }
+        else if(!isLocalScoreHighEnough && isWorldScoreHighEnough) {
+          worldLeaderboard.addScoreToPosition(sessionAttributes.currentScore, worldScorePosition);
+          worldLeaderboard.addNameToPosition(handlerInput.requestEnvelope.session.user.userId, worldScorePosition);
+
+          speechText += sounds.high_score_sound;
+          speechText += "Congratulations! You made it on the Worldwide score board! What is your name? ";
+        }
+        else {
+          speechText += "I am sorry. But you did not qualify for a high score. Better luck next time! ";
+          speechText += GAME_MENU_PROMPT;
+
+          sessionAttributes.currentScore = 0;
+          sessionAttributes.state = StateEnum.MAIN_MENU;
+          sessionAttributes.gameActive = false;
+        }
       }
+
+
+      sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
+      //save session variable changes
+      handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+
+      //save DB changes
+      dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
+      await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
+
+      persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
+      handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
+      await handlerInput.attributesManager.savePersistentAttributes();
+
     }
 
+    //User answer does not match any of the answer choices
+    else {
 
-    sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
-    //save session variable changes
-    handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+      let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-    //save DB changes
-    dBAttributes.leaderboard = JSON.stringify(worldLeaderboard);
-    await dynamoDbPersistenceAdapter.saveAttributes(handlerInput.requestEnvelope, dBAttributes);
-
-    persistentAttributes.localAlexaLeaderboard = sessionAttributes.localAlexaLeaderboard;
-    handlerInput.attributesManager.setPersistentAttributes(persistentAttributes);
-    await handlerInput.attributesManager.savePersistentAttributes();
-
+      speechText += "Your answer does not match any of the answer choices I have given. ";
+      speechText += "Please respond with one of the search terms I have provided. ";
+      speechText += currentSearchTerms[0] + ". Or. " + currentSearchTerms[1] + ". ";
+      //speechText += "If you are still saying them correctly, there must be something wrong with my system. ";
+      //speechText += "If that is the case I apologize and you can exit the game by saying quit. "
+    }
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
@@ -672,6 +682,23 @@ function getRandomGreeting() {
   return greetings[Math.floor(Math.random()*(greetings.length))];
 }
 
+function validateUserAnswer(userAnswer) {
+
+  let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+
+  if((userAnswer.toLowerCase().trim()) == (currentSearchTerms[0].toLowerCase().trim()) ||
+      (userAnswer.toLowerCase().trim()) == (currentSearchTerms[1].toLowerCase().trim())) {
+
+      return true; //The user has given a valid answer
+  }
+  else {
+
+      return false; //The user has given an invalid answer
+  }
+
+
+}
+
 function checkForActiveGame(handlerInput) {
 
   let speechText = "";
@@ -735,7 +762,6 @@ async function setupSkill(handlerInput) {
   sessionAttributes.gameActive = false;
   sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
   sessionAttributes.state = StateEnum.MAIN_MENU;
-  console.log("setupSkill Leaderboard:" + sessionAttributes.localAlexaLeaderboard);
 
   sessionAttributes.firstTime = persistentAttributes.firstTime;
   attributesManager.setSessionAttributes(sessionAttributes);
