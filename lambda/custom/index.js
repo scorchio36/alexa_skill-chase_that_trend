@@ -460,7 +460,32 @@ const MainMenuHandler = {
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard("Chase that Trend!", GAME_MENU_PROMPT)
+      .withShouldEndSession(false)
+      .getResponse();
+  },
+}
+
+const RepeatSearchTermsHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === 'IntentRequest'
+    && handlerInput.requestEnvelope.request.intent.name === 'RepeatSearchTermsIntent'
+    && handlerInput.attributesManager.getSessionAttributes().state == StateEnum.GAME_ACTIVE
+  },
+  handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+    let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
+
+    speechText += "Your two search terms are " + currentSearchTerms[0] + ". ";
+    speechText += "Or. " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
+
+    repromptText += "Which of these two search terms have been searched more? ";
+    repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(speechText)
       .withShouldEndSession(false)
       .getResponse();
   },
@@ -783,11 +808,12 @@ exports.handler = skillBuilder
     ViewLeaderboardPositionHandler,
     PlayGameHandler,
     AnswerHandler,
+    MainMenuHandler,
+    RepeatSearchTermsHandler,
     GetUserNameHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,
-    MainMenuHandler,
     DefaultHandler
   )
   .addErrorHandlers(ErrorHandler)

@@ -114,6 +114,31 @@
                     ]
                 },
                 {
+                    "name": "RepeatSearchTermsIntent",
+                    "slots": [],
+                    "samples": [
+                        "can you repeat that",
+                        "repeat that",
+                        "can you repeat those",
+                        "repeat those",
+                        "say that again",
+                        "say those again",
+                        "can you say that again",
+                        "can you say those again",
+                        "repeat the search terms",
+                        "can you repeat the search terms",
+                        "can you repeat the answer choices",
+                        "repeat the answer choices",
+                        "give me the answers again",
+                        "give me the search terms again",
+                        "repeat",
+                        "can you say them again",
+                        "can you say the answer choices again",
+                        "what were the answer choices again",
+                        "what were they again"
+                    ]
+                },
+                {
                     "name": "DefaultHandler",
                     "slots": [],
                     "samples": []
