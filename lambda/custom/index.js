@@ -8,7 +8,8 @@ problems since other Alexas will also be writing to this table).
 */
 
 const Alexa = require('ask-sdk');
-const randomGreetings = require('./random_greetings.json');
+const VariedResponse = require('./varied_response.js');
+const variedResponse = new VariedResponse();
 const sounds = require('./sounds.json');
 const SearchTermsGenerator = require('./search_terms_generator.js');
 const searchTermsGenerator = new SearchTermsGenerator();
@@ -62,7 +63,7 @@ const LaunchRequestHandler = {
       speechText += GAME_MENU_PROMPT;
     }
     else {
-      speechText += getRandomGreeting() + GAME_MENU_PROMPT;
+      speechText += variedResponse.getRandomSkillOpenedResponse() + GAME_MENU_PROMPT;
     }
 
     repromptText += GAME_MENU_PROMPT;
@@ -277,7 +278,7 @@ const PlayGameHandler = {
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.state = StateEnum.GAME_ACTIVE;
 
-    speechText += "Alright. Let's play the game! ";
+    speechText += variedResponse.getRandomNewGameResponse();
     speechText += sounds.new_game_sound;
     speechText += "I will give you two random things that were searched on the internet. ";
     speechText += "All you have to do is tell me, over the past month, which of the two ";
@@ -339,7 +340,7 @@ const AnswerHandler = {
 
         //handler correct answer
         speechText += sounds.correct_answer_sound;
-        speechText += "That is correct! Nice guess! "; //Update this later to be random congratz saying
+        speechText += variedResponse.getRandomCorrectAnswerResponse();
         sessionAttributes.currentScore += POINTS_FOR_CORRECT_ANSWER;
 
         //update the search terms and ask the user the next question
@@ -360,6 +361,7 @@ const AnswerHandler = {
         speechText += "That is incorrect. I'm sorry. Game Over. ";
         speechText += sounds.game_over_sound;
         speechText += "Your final score is " + sessionAttributes.currentScore + ". ";
+        speechText += variedResponse.getRandomReactionToScoreResponse(sessionAttributes.currentScore);
         repromptText += "I'm sorry. Game Over. ";
 
         //handle game over
@@ -554,7 +556,7 @@ const GetUserNameHandler = {
     worldLeaderboard.removeLastEntry();
 
     sessionAttributes.state = StateEnum.MAIN_MENU;
-    speechText += "I wish I was that cool. ";
+    speechText += variedResponse.getRandomLeaderboardScoreAchievedResponse();
     speechText += GAME_MENU_PROMPT;
 
     sessionAttributes.localAlexaLeaderboard = JSON.stringify(localLeaderboard);
@@ -627,14 +629,13 @@ const CancelAndStopIntentHandler = {
         || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
   },
   async handle(handlerInput) {
-    const speechText = 'Goodbye!';
+    const speechText = 'Thanks for playing! See you next time!';
 
     //make sure that a userId is not saved in either of the leaderboards
     await cleanupLeaderboards(handlerInput);
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
       .getResponse();
   },
 };
@@ -689,11 +690,6 @@ const ErrorHandler = {
 
 
 /***********Helper functions************/
-//get a random greeting for when the user opens the skill
-function getRandomGreeting() {
-  const greetings = randomGreetings.greetings; //array filled with random greetings
-  return greetings[Math.floor(Math.random()*(greetings.length))];
-}
 
 function validateUserAnswer(userAnswer) {
 
