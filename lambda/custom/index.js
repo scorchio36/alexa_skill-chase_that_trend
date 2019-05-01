@@ -273,16 +273,19 @@ const PlayGameHandler = {
     let repromptText = "";
 
     //handles the case when user skips past Launch Handler
-    await setupSkill(handlerInput);
+    //await setupSkill(handlerInput);
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.state = StateEnum.GAME_ACTIVE;
 
+
     speechText += variedResponse.getRandomNewGameResponse();
     speechText += sounds.new_game_sound;
-    speechText += "I will give you two random things that were searched on the internet. ";
-    speechText += "All you have to do is tell me, over the past month, which of the two ";
-    speechText += "things has been searched more? ";
+    if(!sessionAttributes.playAgain) {
+      speechText += "I will give you two random things that were searched on the internet. ";
+      speechText += "All you have to do is tell me, over the past month, which of the two ";
+      speechText += "things has been searched more? ";
+    }
 
     //Get the new search terms that will be provided to the user
     await searchTermsGenerator.shuffleSearchTerms();
@@ -293,6 +296,8 @@ const PlayGameHandler = {
 
     repromptText += "Which of these two search terms have been searched more? ";
     repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
+
+    sessionAttributes.playAgain = true; //If the user decides to plays again, then the skill will know
 
     //save session changes
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
@@ -805,6 +810,7 @@ async function setupSkill(handlerInput) {
 
   //Initialize the session attributes.
   sessionAttributes.currentScore = 0;
+  sessionAttributes.playAgain = false; //If user plays again, don't explain a buncha stuff again.
   sessionAttributes.localAlexaLeaderboard = persistentAttributes.localAlexaLeaderboard;
   sessionAttributes.state = StateEnum.MAIN_MENU;
 

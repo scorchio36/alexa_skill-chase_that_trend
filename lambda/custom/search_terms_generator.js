@@ -1,6 +1,8 @@
 const fs = require('fs');
 const googleTrends = require('google-trends-api');
 
+const MILLISEC_IN_A_MONTH = 2592000000;
+
 //constructor
 function SearchTermsGenerator() {
 
@@ -45,8 +47,11 @@ function getSearchTermsListFromTextFile() {
 
 async function getSearchTermGrades(searchTermsArray) {
 
-  let startDate = new Date('September 7, 2018 03:24:00');
-  let endDate = new Date('October 7, 2018 03:24:00');
+  let today = new Date(); //used to generate the current time for startDate and endDate
+
+  //These dates will accept a millisecond value for the current date
+  let startDate = new Date(today.getTime() - MILLISEC_IN_A_MONTH);
+  let endDate = new Date(today.getTime());
 
   //get a JSON string containing search information for both search terms over the past 30 days
   let searchResults = await googleTrends.interestOverTime(
@@ -84,6 +89,5 @@ async function getSearchTermGrades(searchTermsArray) {
 
   return [avg1, avg2];
 }
-
 
 module.exports = SearchTermsGenerator;

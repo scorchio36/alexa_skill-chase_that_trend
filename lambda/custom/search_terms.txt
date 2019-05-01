@@ -901,7 +901,7 @@ The Imitation Game
 You Were Never Really Here
 Despicable Me
 Hold the Dark
-Ocean's Eight
+Ocean's 8
 The Matrix
 Insurgent
 The Equalizer
@@ -918,7 +918,6 @@ Hotel Artemis
 Harry Potter and the Deathly Hallows
 A Delicious Flight
 Harry Potter and the Goblet of Fire
-Lifechanger
 Twilight
 The House with a Clock in Its Walls
 Sierra Burgess Is a Loser
@@ -926,7 +925,7 @@ The Shape of Water
 The First Purge
 Bad Samaritan
 Star Wars The Last Jedi
-Ready Player One
+Ready Player 1
 Dunkirk
 Alien Covenant
 Jurassic World
@@ -2293,7 +2292,7 @@ Sylvester
 Speedy Gonzales
 Yosemite Sam
 The Flintstones
-Looney Tunes
+Loony Tunes
 Woody Woodpecker
 Regular Show
 The Legend of Korra
