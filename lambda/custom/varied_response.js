@@ -57,27 +57,40 @@ function VariedResponse() {
                           "Correct. Guess who's moving on! "];
 
 
-    this.leaderboardScoreAchieved = ["What a champ! ",
-                                     "You are too good buddy. ",
-                                     "I wish I was as cool as you. ",
-                                     "I wish I was that cool. ",
-                                     "You are so awesome. Champion! ",
-                                     "Way to make on the leaderboard! ",
-                                     "What a beast. ",
-                                     "That's what I'm talking about. ",
-                                     "You got a high score! Yay! ",
-                                     "That is so crazy. What a beast. ",
-                                     "You are officially on the board. ",
-                                     "Smells like champion in here. ",
-                                     "Nice going buddy. ",
-                                     "Man I wish I was that good. ",
-                                     "I knew you could do it! ",
-                                     "You just rocked Chase that trend! ",
-                                     "You rock! ",
-                                     "What a trend chaser. ",
-                                     "Wow you are amazing. ",
-                                     "Can I have your autograph? ",
-                                     "How are you so good at this game? "];
+    this.leaderboardScoreAchievedResponses = ["What a champ! ",
+                                             "You are too good buddy. ",
+                                             "I wish I was as cool as you. ",
+                                             "I wish I was that cool. ",
+                                             "You are so awesome. Champion! ",
+                                             "Way to make on the leaderboard! ",
+                                             "What a beast. ",
+                                             "That's what I'm talking about. ",
+                                             "You got a high score! Yay! ",
+                                             "That is so crazy. What a beast. ",
+                                             "You are officially on the board. ",
+                                             "Smells like champion in here. ",
+                                             "Nice going buddy. ",
+                                             "Man I wish I was that good. ",
+                                             "I knew you could do it! ",
+                                             "You just rocked Chase that trend! ",
+                                             "You rock! ",
+                                             "What a trend chaser. ",
+                                             "Wow you are amazing. ",
+                                             "Can I have your autograph? ",
+                                             "How are you so good at this game? "];
+
+
+    this.userQuitSkillResponses = ["See you later buddy! ",
+                                   "See you next time! ",
+                                   "Thanks for playing! ",
+                                   "Thanks for playing Chase that trend! ",
+                                   "That was fun. See you later! ",
+                                   "Catch you later. ",
+                                   "Bye! ",
+                                   "Hope to see you back here soon! ",
+                                   "Hope you come back soon. ",
+                                   "Can't wait to see you next time! ",
+                                   "Come back soon! Bye! "];
 
     //Scores from 100 to 300
     this.terribleScoreResponses = ["Jeez that was sad. ",
@@ -172,7 +185,11 @@ VariedResponse.prototype.getRandomCorrectAnswerResponse = function() {
 }
 
 VariedResponse.prototype.getRandomLeaderboardScoreAchievedResponse = function() {
-  return getRandomResponse(this.leaderboardScoreAchieved);
+  return getRandomResponse(this.leaderboardScoreAchievedResponses);
+}
+
+VariedResponse.prototype.getRandomUserQuitSkillResponse = function() {
+  return getRandomResponse(this.userQuitSkillResponses);
 }
 
 VariedResponse.prototype.getRandomReactionToScoreResponse = function(score) {

@@ -31,7 +31,7 @@ const GAME_MENU_PROMPT = "Would you like to play the game, look at the leaderboa
 const LEADERBOARD_SEARCH_PROMPT = `To see a certain position on the board, say show me position
                                    followed by the place number. To see if a name is on the board,
                                    say show me the name followed by the name you want to look up.
-                                   You can also say main menu if you don't want to look at leaderboards anymore. `
+                                   You can also say main menu if you don't want to look at leaderboards anymore. `;
 
 const LOCAL_LEADERBOARD_LENGTH = 10;
 const WORLD_LEADERBOARD_LENGTH = 10;
@@ -634,7 +634,7 @@ const CancelAndStopIntentHandler = {
         || handlerInput.requestEnvelope.request.intent.name === 'AMAZON.StopIntent');
   },
   async handle(handlerInput) {
-    const speechText = 'Thanks for playing! See you next time!';
+    const speechText = variedResponse.getRandomUserQuitSkillResponse();
 
     //make sure that a userId is not saved in either of the leaderboards
     await cleanupLeaderboards(handlerInput);
@@ -665,6 +665,13 @@ const DefaultHandler = {
   },
   handle(handlerInput) {
 
+    //This skill will not support one-shot commands so do a check to make
+    //sure the skills responds appropriately if the user tries to use this feature.
+    let oneShotRequestCheck = checkForOneShotRequest(handlerInput);
+    if(oneShotRequestCheck) {
+      return oneShotRequestCheck;
+    }
+
     //If Alexa doesn't know what to do, then the other handlers might
     //have failed a state protection check because a game is currently
     //active. Check if the game is active here and respond accordingly.
@@ -672,8 +679,13 @@ const DefaultHandler = {
     if(activeGameCheck) {
       return activeGameCheck;
     }
-  },
 
+    //If nothing pans out then Alexa should tell the user that she cannot understand the command
+    return handlerInput.responseBuilder
+      .speak('Sorry, I can\'t understand the command. Please say again.')
+      .reprompt('Sorry, I can\'t understand the command. Please say again.')
+      .getResponse();
+  },
 }
 
 const ErrorHandler = {
@@ -706,6 +718,25 @@ function validateUserAnswer(userAnswer) {
   }
   else {
       return false; //The user has given an invalid answer
+  }
+}
+
+function checkForOneShotRequest(handlerInput) {
+
+  if(handlerInput.attributesManager.getSessionAttributes().state == undefined) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    speechText += "This skill does not support one-shot intents or commands. ";
+    speechText += "You can use this skill by saying. Alexa. Open chase that trend.";
+    repromptText += speechText;
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .withShouldEndSession(true)
+      .getResponse();
   }
 }
 
