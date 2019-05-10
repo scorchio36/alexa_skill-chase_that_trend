@@ -34,7 +34,7 @@ const LEADERBOARD_SEARCH_PROMPT = `To see a certain position on the board, say s
                                    You can also say main menu if you don't want to look at leaderboards anymore. `;
 
 const LOCAL_LEADERBOARD_LENGTH = 10;
-const WORLD_LEADERBOARD_LENGTH = 10;
+const WORLD_LEADERBOARD_LENGTH = 25;
 const POINTS_FOR_CORRECT_ANSWER = 100;
 
 
@@ -205,7 +205,7 @@ const ViewLeaderboardPositionHandler = {
       //handle out of bounds leaderboard position
       if(leaderboardPosition > WORLD_LEADERBOARD_LENGTH || leaderboardPosition < 1) {
         speechText += "I am sorry. The world leaderboard only goes up to position ";
-        speechText += WORLD_LEADERBOARD_LENGTH + ", or 10th place. ";
+        speechText += WORLD_LEADERBOARD_LENGTH + ", or 25th place. ";
       }
       //Handle the case when no score has yet been achieved at the requested position
       else if(worldLeaderboard.getScoreFromPosition(leaderboardPosition-1) == 0) {
@@ -403,7 +403,7 @@ const AnswerHandler = {
 
     //grab the World Leaderboard
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
-    let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+    let worldLeaderboard = new Leaderboard(WORLD_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
 
     //The user has provided one of the valid answer choices
@@ -591,7 +591,7 @@ const GetUserNameHandler = {
     localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
 
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
-    let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+    let worldLeaderboard = new Leaderboard(WORLD_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
     //check if the user made it on either score board (make sure you check for a unique userID and not a name)
     let localScorePosition = localLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
