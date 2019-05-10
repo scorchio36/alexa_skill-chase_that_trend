@@ -75,6 +75,27 @@
                     ]
                 },
                 {
+                    "name": "ViewLeaderboardNameIntent",
+                    "slots": [
+                        {
+                            "name": "leaderboardName",
+                            "type": "AMAZON.US_FIRST_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "show me name {leaderboardName}",
+                        "show me the name {leaderboardName}",
+                        "view the name {leaderboardName}",
+                        "view name {leaderboardName}",
+                        "see name {leaderboardName}",
+                        "see the name {leaderboardName}",
+                        "can I see the name {leaderboardName}",
+                        "can I see {leaderboardName}",
+                        "I would like to see {leaderboardName}",
+                        "Let me see {leaderboardName}"
+                    ]
+                },
+                {
                     "name": "HowToPlayIntent",
                     "slots": [],
                     "samples": [

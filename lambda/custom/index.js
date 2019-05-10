@@ -220,7 +220,75 @@ const ViewLeaderboardPositionHandler = {
 
 
       speechText += LEADERBOARD_SEARCH_PROMPT;
+      repromptText += LEADERBOARD_SEARCH_PROMPT;
     }
+
+    return handlerInput.responseBuilder
+      .speak(speechText)
+      .reprompt(repromptText)
+      .getResponse();
+  },
+}
+
+const ViewLeaderboardNameHandler = {
+  canHandle(handlerInput) {
+    return handlerInput.requestEnvelope.request.type === "IntentRequest"
+    && handlerInput.requestEnvelope.request.intent.name === "ViewLeaderboardNameIntent"
+    && (handlerInput.attributesManager.getSessionAttributes().state == StateEnum.LOCAL_LEADERBOARD ||
+        handlerInput.attributesManager.getSessionAttributes().state == StateEnum.WORLD_LEADERBOARD);
+  },
+  async handle(handlerInput) {
+
+    let speechText = "";
+    let repromptText = "";
+
+    const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+    //get the position that the user wants to see (slot value)
+    let leaderboardName = handlerInput.requestEnvelope.request.intent.slots.leaderboardName.value;
+
+    //Check if the user wants to look at a position within the local or world
+    //leaderboard by looking at the current state.
+    if(sessionAttributes.state == StateEnum.LOCAL_LEADERBOARD) {
+      let localLeaderboard = sessionAttributes.localAlexaLeaderboard;
+      localLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(localLeaderboard));
+
+      let foundNamePositions = localLeaderboard.getPositionFromName(leaderboardName);
+
+      //if foundNamePositions is empty then the name wasn't found
+      if(foundNamePositions.length == 0) {
+        speechText += "I'm sorry. I couldn't find that name in the local leaderboard. ";
+      }
+      //handle the names that were found
+      else {
+        for(var i = 0; i<foundNamePositions.length; i++) {
+          speechText += leaderboardName + " is in position " + (+foundNamePositions[i]+1) + ", ";
+          speechText += "with a score of " + localLeaderboard.getScoreFromPosition(foundNamePositions[i]) + ". ";
+        }
+      }
+
+    }
+    else if(sessionAttributes.state == StateEnum.WORLD_LEADERBOARD) {
+      let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
+      let worldLeaderboard = new Leaderboard(WORLD_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
+
+      let foundNamePositions = worldLeaderboard.getPositionFromName(leaderboardName);
+
+      //if foundNamePositions is empty then the name wasn't found
+      if(foundNamePositions.length == 0) {
+        speechText += "I'm sorry. I couldn't find that name in the world leaderboard. ";
+      }
+      //handle the names that were found
+      else {
+        for(var i = 0; i<foundNamePositions.length; i++) {
+          speechText += leaderboardName + " is in position " + (+foundNamePositions[i]+1) + ", ";
+          speechText += "with a score of " + worldLeaderboard.getScoreFromPosition(foundNamePositions[i]) + ". ";
+        }
+      }
+    }
+
+    speechText += LEADERBOARD_SEARCH_PROMPT;
+    repromptText += LEADERBOARD_SEARCH_PROMPT;
 
     return handlerInput.responseBuilder
       .speak(speechText)
@@ -277,7 +345,7 @@ const PlayGameHandler = {
 
     const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     sessionAttributes.state = StateEnum.GAME_ACTIVE;
-
+    sessionAttributes.currentScore = 0;
 
     speechText += variedResponse.getRandomNewGameResponse();
     speechText += sounds.new_game_sound;
@@ -291,8 +359,8 @@ const PlayGameHandler = {
     await searchTermsGenerator.shuffleSearchTerms();
     let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-    speechText += "Your two search terms are " + currentSearchTerms[0];
-    speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
+    speechText += "Your two search terms are. " + currentSearchTerms[0] + ". ";
+    speechText += "and. " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
     repromptText += "Which of these two search terms have been searched more? ";
     repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + " ?";
@@ -337,6 +405,7 @@ const AnswerHandler = {
     let dBAttributes = await dynamoDbPersistenceAdapter.getAttributes(handlerInput.requestEnvelope);
     let worldLeaderboard = new Leaderboard(LOCAL_LEADERBOARD_LENGTH, JSON.parse(dBAttributes.leaderboard));
 
+
     //The user has provided one of the valid answer choices
     if(validateUserAnswer(userAnswer)) {
 
@@ -352,8 +421,8 @@ const AnswerHandler = {
         await searchTermsGenerator.shuffleSearchTerms();
         let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-        speechText += "Your two search terms are " + currentSearchTerms[0];
-        speechText += " and " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
+        speechText += "Your two search terms are. " + currentSearchTerms[0] + ". ";
+        speechText += "and. " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
         repromptText += "Which of these two search terms have been searched more? ";
         repromptText += currentSearchTerms[0] + " or " + currentSearchTerms[1] + "? ";
@@ -484,7 +553,7 @@ const RepeatSearchTermsHandler = {
     let repromptText = "";
     let currentSearchTerms = searchTermsGenerator.getCurrentSearchTerms();
 
-    speechText += "Your two search terms are " + currentSearchTerms[0] + ". ";
+    speechText += "Your two search terms are. " + currentSearchTerms[0] + ". ";
     speechText += "Or. " + currentSearchTerms[1] + ". Which of these terms has been searched more?";
 
     repromptText += "Which of these two search terms have been searched more? ";
@@ -526,10 +595,10 @@ const GetUserNameHandler = {
 
     //check if the user made it on either score board (make sure you check for a unique userID and not a name)
     let localScorePosition = localLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
-    let isNameInLocalLeaderboard = (localScorePosition != -1);
+    let isNameInLocalLeaderboard = (localScorePosition.length != 0);
 
     let worldScorePosition = worldLeaderboard.getPositionFromName(handlerInput.requestEnvelope.session.user.userId);
-    let isNameInWorldLeaderboard = (worldScorePosition != -1);
+    let isNameInWorldLeaderboard = (worldScorePosition.length != 0);
 
 
     if(isNameInLocalLeaderboard && isNameInWorldLeaderboard) {
@@ -539,26 +608,30 @@ const GetUserNameHandler = {
       speechText += "Great job " + userName + ". Your score made " + (+localScorePosition+1) + "th place on your Alexa. ";
       speechText += "and " + (+worldScorePosition+1) + "th place in the world! ";
       speechText += sounds.congratulations_sound;
+
+      //Once the names have been officially added a new entry saved, delete the last
+      //entry in order to maintain the length of the leaderboard at LOCAL_LEADERBOARD_LENGTH
+      //or WORLD_LEADERBOARD_LENGTH. (When a new entry is added it is spliced into the middle
+      //of the array, so the size of the array increases by 1)
+      localLeaderboard.removeLastEntry();
+      worldLeaderboard.removeLastEntry();
     }
     else if(isNameInLocalLeaderboard && !isNameInWorldLeaderboard) {
       localLeaderboard.addNameToPosition(userName, localScorePosition);
 
       speechText += "Great job " + userName + ". Your score made " + (+localScorePosition+1) + "th place on your Alexa. ";
       speechText += sounds.congratulations_sound;
+
+      localLeaderboard.removeLastEntry();
     }
     else if(!isNameInLocalLeaderboard && isNameInWorldLeaderboard) {
       worldLeaderboard.addNameToPosition(userName, worldScorePosition);
 
       speechText += "Great job " + userName + ". Your score made " + (+worldScorePosition+1) + "th place in the world. ";
       speechText += sounds.congratulations_sound;
-    }
 
-    //Once the names have been officially added a new entry saved, delete the last
-    //entry in order to maintain the length of the leaderboard at LOCAL_LEADERBOARD_LENGTH
-    //or WORLD_LEADERBOARD_LENGTH. (When a new entry is added it is spliced into the middle
-    //of the array, so the size of the array increases by 1)
-    localLeaderboard.removeLastEntry();
-    worldLeaderboard.removeLastEntry();
+      worldLeaderboard.removeLastEntry();
+    }
 
     sessionAttributes.state = StateEnum.MAIN_MENU;
     speechText += variedResponse.getRandomLeaderboardScoreAchievedResponse();
@@ -635,6 +708,7 @@ const CancelAndStopIntentHandler = {
   },
   async handle(handlerInput) {
     const speechText = variedResponse.getRandomUserQuitSkillResponse();
+
 
     //make sure that a userId is not saved in either of the leaderboards
     await cleanupLeaderboards(handlerInput);
@@ -865,12 +939,13 @@ exports.handler = skillBuilder
     ShowLeaderboardsToUserHandler,
     ShowLocalLeaderboardToUserHandler,
     ShowWorldLeaderboardToUserHandler,
-    ViewLeaderboardPositionHandler,
     PlayGameHandler,
     AnswerHandler,
     MainMenuHandler,
     RepeatSearchTermsHandler,
     GetUserNameHandler,
+    ViewLeaderboardPositionHandler,
+    ViewLeaderboardNameHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler,

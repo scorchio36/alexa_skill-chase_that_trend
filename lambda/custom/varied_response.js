@@ -62,7 +62,7 @@ function VariedResponse() {
                                              "I wish I was as cool as you. ",
                                              "I wish I was that cool. ",
                                              "You are so awesome. Champion! ",
-                                             "Way to make on the leaderboard! ",
+                                             "Way to make it on the leaderboard! ",
                                              "What a beast. ",
                                              "That's what I'm talking about. ",
                                              "You got a high score! Yay! ",
