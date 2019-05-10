@@ -1,4 +1,5 @@
 walrus
+manatee
 hippopotamus
 deer
 lemur
@@ -129,7 +130,6 @@ David Pearson
 Xavi
 Ronda Rousey
 Kerri Walsh
-Ekaterina Khomyakova
 Babe Ruth
 Joe Montana
 Maria Sharapova
@@ -596,7 +596,6 @@ Famke Janssen
 Drew Barrymore
 Liv Tyler
 Lea Michele
-Beyonce Knowles
 Jessica Chastain
 Stephanie Meyer
 anchovies
@@ -1040,7 +1039,6 @@ The Baltimore Ravens
 The Cleveland Browns
 The Miami Dolphins
 The Washington Redskins
-The San Francisco 49ers
 The Houston Texans
 The Tampa Bay Bucs
 The Indianapolis Colts
@@ -1251,7 +1249,6 @@ Smokey Bones
 Pei Wei
 Perkins Restaurant
 Benihana
-IHOP
 Dave and Buster's
 Tony Roma's
 Red Robin
@@ -1459,7 +1456,6 @@ Blue Bloods
 Sesame Street
 The Mentalist
 Teen Wolf
-Mr. Robot
 Last Man Standing
 Sword Art Online
 The Office
@@ -1753,7 +1749,6 @@ Night in the Woods
 Fable Fortune
 Overlord
 Naruto
-FIFA
 Tekken
 Resident Evil
 Space Empires
@@ -1924,7 +1919,6 @@ Pinocchio
 Fantasia
 Bayonetta
 Bowser
-Bowser Jr.
 Captain Falcon
 Cloud
 Daisy
@@ -1951,10 +1945,10 @@ Meta Knight
 Mewtwo
 Ness
 Captain Olimar
-PacMan
+Pac Man
 Peach
 Pikachu
-Pokemon Trainer
+Pokemon
 Squirtle
 Samus Aran
 Sheik
@@ -2041,7 +2035,6 @@ Angela Kinsey
 Ed Helms
 Mindy Kaling
 Brian Baumgartner
-B. J. Novak
 Leslie David Baker
 Phyllis Smith
 Creed Bratton
@@ -2333,7 +2326,6 @@ Casper the Friendly Ghost
 Aquaman
 My Little Pony
 Green Lantern
-Mr. Potato Head
 Square Cash
 Angry Birds
 Fruit Ninja
@@ -2348,3 +2340,10 @@ Ulta Beauty
 Apache
 Macy's
 Sears
+Galaga
+Space Invaders
+Atari
+Pinball Machine
+I love Lucy
+Everybody hates Chris
+Everybody loves Raymond

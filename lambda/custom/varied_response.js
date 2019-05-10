@@ -34,10 +34,17 @@ function VariedResponse() {
                             "Let's do this! High scores here we come. ",
                             "This game is easy. Just say all the right answers. ",
                             "You are going to do awesome this round! Let's play. ",
-                            "Let's play smarty pants. ",
+                            "Let's play. Smarty pants. ",
                             "Time to make some good guesses. Let's play. ",
                             "First find the trends. Then start chasing. It's that easy. Let's play! ",
-                            "Alright. Let's play the game! "];
+                            "Alright. Let's play the game! ",
+                            "I believe in you. Guess good out there. ",
+                            "You don't have to be smart. Just a good guesser. Let's play. ",
+                            "Guessing time. Let's play. ",
+                            "I love this game. Let's play ",
+                            "Chase that trend time. Let's play the game. ",
+                            "Let's play again! ",
+                            "Alright. You're the boss. Let's play. "];
 
 
     this.correctAnswerResponses = ["That is correct! Nice guess! ",
@@ -52,18 +59,35 @@ function VariedResponse() {
                           "Awesome guess! ",
                           "Alright! Good guess! ",
                           "That's it. Good job. ",
-                          "Wow you're a natural. ",
+                          "Wow. You're a natural. ",
                           "Correct. You're moving on! ",
-                          "Correct. Guess who's moving on! "];
+                          "Correct. Guess who's moving on! ",
+                          "Wow Einstein. Good guess.",
+                          "Right on! ",
+                          "Onto the next question. You are correct. ",
+                          "How did you know that one? Nice. ",
+                          "Wow I can't believe you got that one. I'm impressed. ",
+                          "That's right. Don't lose focus. ",
+                          "Right answer. Don't let it go to your head, buddy. ",
+                          "Wow. You really wanna win. Good guess. ",
+                          "Adding more points onto that score. Good guess. ",
+                          "Those points are going up because that is right. ",
+                          "Awesome sauce! ",
+                          "What a beast! ",
+                          "Rollin Hard! ",
+                          "Bam! Good guess. ",
+                          "Movin up! ",
+                          "Ding Ding. Right answer! ",
+                          "Good guess smarty pants. "];
 
 
     this.leaderboardScoreAchievedResponses = ["What a champ! ",
-                                             "You are too good buddy. ",
-                                             "I wish I was as cool as you. ",
+                                             "You are too good, buddy. You made it on a leaderboard!",
+                                             "I wish I was as cool as you. You made it on the leaderboard!",
                                              "I wish I was that cool. ",
                                              "You are so awesome. Champion! ",
                                              "Way to make it on the leaderboard! ",
-                                             "What a beast. ",
+                                             "What a beast. Way to make it on that leaderboard.",
                                              "That's what I'm talking about. ",
                                              "You got a high score! Yay! ",
                                              "That is so crazy. What a beast. ",
@@ -75,12 +99,16 @@ function VariedResponse() {
                                              "You just rocked Chase that trend! ",
                                              "You rock! ",
                                              "What a trend chaser. ",
-                                             "Wow you are amazing. ",
+                                             "Wow. you are amazing. ",
                                              "Can I have your autograph? ",
-                                             "How are you so good at this game? "];
+                                             "How are you so good at this game? ",
+                                             "I'm so proud of you. You did it! ",
+                                             "I knew you could do it! You made it on the board! ",
+                                             "Now that is how you do it. ",
+                                             "No high score spot is safe from you. "];
 
 
-    this.userQuitSkillResponses = ["See you later buddy! ",
+    this.userQuitSkillResponses = ["See you later, buddy! ",
                                    "See you next time! ",
                                    "Thanks for playing! ",
                                    "Thanks for playing Chase that trend! ",
@@ -99,7 +127,7 @@ function VariedResponse() {
                                    "Have you even been on the internet?",
                                    "Try spending a little more time on the internet. ",
                                    "No offense but that round was terrible. ",
-                                   "You're looking for the term that was searched the most. Not the least silly. ",
+                                   "You're looking for the term that was searched the most. Not the least. Silly. ",
                                    "That was a rough round. Sorry. ",
                                    "Not going to lie. You didn't do so hot that round. ",
                                    "Not the best guesser, are you?",
@@ -107,21 +135,39 @@ function VariedResponse() {
                                    "It's already over? Jeez you just started the game. ",
                                    "Oh man that was it? How embarrassing. ",
                                    "If you start another round quickly no one will have to hear your terrible score. ",
-                                   "I really think you can do better than that. "];
+                                   "I really think you can do better than that. ",
+                                   "Stop kidding around. Play for real next round. ",
+                                   "You got like no points. That sucks. ",
+                                   "I wouldn't want to be seen walking around with a score like that. Ouch. ",
+                                   "Maybe you could play a little better next time. ",
+                                   "Get to 400 points and maybe I'll be impressed. ",
+                                   "I gotta tell you. I have seen almost everyone do better than that. ",
+                                   "Out so soon? We just started playing. ",
+                                   "I hate when the game ends early. ",
+                                   "It ended before it could even start. Bad round. ",
+                                   "I wouldn't be too proud of that score. ",
+                                   "If your score was an animal. It would be a really small animal. ",
+                                   "Well that wasn't a good round. Ouch. Sorry about that. ",
+                                   "You'll have to do better than that if you want to impress me. ",
+                                   "Brush up on your guessing skills. That wasn't too hot. ",
+                                   "Bummer. You got out so fast. ",
+                                   "I really thought you were going to do a little better. ",
+                                   "If you get some more points next round I won't be as dissapointed. ",
+                                   "Did you even try that round? ",
+                                   "Please tell me you can do better than that. "];
 
     //400 to 800
-    this.mediumScoreResponses = ["Wow that was not a bad round. Nice going. ",
+    this.mediumScoreResponses = ["Wow. that was not a bad round. Nice going. ",
                                  "Not bad bud. Not a bad round at all. ",
                                  "You must have played this game before. You're pretty good. ",
                                  "Nice guessing. You could definitely do better though. ",
                                  "Wow you're better than average. Try guessing a little better and you'll be on top. ",
-                                 "Nobody likes second place. You gotta keep that high score for yourself. ",
                                  "If you keep trying you will definitely be on top. ",
                                  "Nice guessing. That was pretty good. ",
                                  "I've seen better guessing, but that wasn't too bad. ",
-                                 "Most people don't guess this well so nice job. ",
+                                 "Most people don't guess this well, so nice job. ",
                                  "I see you have spent a little time on the internet. ",
-                                 "Guess a little better next time and you can make it to the top of the pack. ",
+                                 "Guess a little better next time and you can make it to the top of the pack. You're so close to first place.",
                                  "You impressed me a little bit. Nice job. I bet you can do even better. ",
                                  "Maybe you have a future career in chasing trends. ",
                                  "You could have a future career in guessing if you wanted. "];
@@ -135,7 +181,7 @@ function VariedResponse() {
                                "That was actually a really good round. ",
                                "That was way higher than so many people in the world. ",
                                "Wow you are terrible at this game. Terribly good. I'm impressed. ",
-                               "That is a dang good score buddy. ",
+                               "That is a dang good score, buddy. ",
                                "You should be proud of that score. It's a good one. ",
                                "Not many people can guess that many trends correctly so many times. ",
                                "That was some really solid guessing on your part. Nice round. ",
@@ -163,7 +209,7 @@ function VariedResponse() {
       //2500 to 3500
       this.legendaryScoreResponses = ["The kid who programmed me didn't even think anyone would make it this far. ",
                                       "You are an absolute chase that trend legend. I can't remember the last person that did this well. ",
-                                      "A god. A guessing god. That is what you are my friend. Your score is untouchable. ",
+                                      "A god. A guessing god. That is what you are. My friend. Your score is untouchable. ",
                                       "I haven't seen a score this good. In like. Ever. You are incredible at this game. ",
                                       "How can you have guess that many trends correctly? That is impossible. Your score is incredible. ",
                                       "I am flabbergasted right now. The kid who programmed me even thought that nobody could get a score as good as yours. "];
@@ -197,16 +243,16 @@ VariedResponse.prototype.getRandomReactionToScoreResponse = function(score) {
   if(score<TERRIBLE_SCORE_LIMIT) {
     return getRandomResponse(this.terribleScoreResponses);
   }
-  else if(score>TERRIBLE_SCORE_LIMIT && score<MEDIUM_SCORE_LIMIT) {
+  else if(score>=TERRIBLE_SCORE_LIMIT && score<MEDIUM_SCORE_LIMIT) {
     return getRandomResponse(this.mediumScoreResponses);
   }
-  else if(score>MEDIUM_SCORE_LIMIT && score<GOOD_SCORE_LIMIT) {
+  else if(score>=MEDIUM_SCORE_LIMIT && score<GOOD_SCORE_LIMIT) {
     return getRandomResponse(this.goodScoreResponses);
   }
-  else if(score>GOOD_SCORE_LIMIT && score<GREAT_SCORE_LIMIT) {
+  else if(score>=GOOD_SCORE_LIMIT && score<GREAT_SCORE_LIMIT) {
     return getRandomResponse(this.greatScoreResponses);
   }
-  else if(score>GREAT_SCORE_LIMIT && score<LEGENDARY_SCORE_LIMIT) {
+  else if(score>=GREAT_SCORE_LIMIT && score<LEGENDARY_SCORE_LIMIT) {
     return getRandomResponse(this.legendaryScoreResponses);
   }
   else {

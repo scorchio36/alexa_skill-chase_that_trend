@@ -194,6 +194,11 @@
                         },
                         {
                             "name": {
+                                "value": "manatee"
+                            }
+                        },
+                        {
+                            "name": {
                                 "value": "hippopotamus"
                             }
                         },
@@ -840,11 +845,6 @@
                         {
                             "name": {
                                 "value": "Kerri Walsh"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Ekaterina Khomyakova"
                             }
                         },
                         {
@@ -3179,11 +3179,6 @@
                         },
                         {
                             "name": {
-                                "value": "Beyonce Knowles"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Jessica Chastain"
                             }
                         },
@@ -5399,11 +5394,6 @@
                         },
                         {
                             "name": {
-                                "value": "The San Francisco 49ers"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "The Houston Texans"
                             }
                         },
@@ -6454,11 +6444,6 @@
                         },
                         {
                             "name": {
-                                "value": "IHOP"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Dave and Buster's"
                             }
                         },
@@ -7490,11 +7475,6 @@
                         {
                             "name": {
                                 "value": "Teen Wolf"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "Mr. Robot"
                             }
                         },
                         {
@@ -8964,11 +8944,6 @@
                         },
                         {
                             "name": {
-                                "value": "FIFA"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Tekken"
                             }
                         },
@@ -9819,11 +9794,6 @@
                         },
                         {
                             "name": {
-                                "value": "Bowser Jr."
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Captain Falcon"
                             }
                         },
@@ -9954,7 +9924,7 @@
                         },
                         {
                             "name": {
-                                "value": "PacMan"
+                                "value": "Pac Man"
                             }
                         },
                         {
@@ -9969,7 +9939,7 @@
                         },
                         {
                             "name": {
-                                "value": "Pokemon Trainer"
+                                "value": "Pokemon"
                             }
                         },
                         {
@@ -10400,11 +10370,6 @@
                         {
                             "name": {
                                 "value": "Brian Baumgartner"
-                            }
-                        },
-                        {
-                            "name": {
-                                "value": "B. J. Novak"
                             }
                         },
                         {
@@ -11864,11 +11829,6 @@
                         },
                         {
                             "name": {
-                                "value": "Mr. Potato Head"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Square Cash"
                             }
                         },
@@ -11935,6 +11895,41 @@
                         {
                             "name": {
                                 "value": "Sears"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Galaga"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Space Invaders"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Atari"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Pinball Machine"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "I love Lucy"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Everybody hates Chris"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Everybody loves Raymond"
                             }
                         }
                     ]
