@@ -14,7 +14,7 @@ function VariedResponse() {
                                "Welcome back. Let's see how far you can get this time. ",
                                "Good thing you're back. I think someone was trying to beat your highscore. ",
                                "Welcome back to Chase that Trend! You've got some highscores to get! ",
-                               "It's time to chase that trend! You got this! ",
+                               "It's time to chase that trend! You've got this! ",
                                "I see you're back for more. Good luck! ",
                                "Chase that Trend! I love this game! ",
                                "You're back! Let's get some highscores. ",

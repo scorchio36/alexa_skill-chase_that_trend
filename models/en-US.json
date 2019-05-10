@@ -31,7 +31,9 @@
                         "look at the leaderboards",
                         "view leaderboards",
                         "show me the leaderboards",
-                        "leaderboards"
+                        "leaderboards",
+                        "leaderboard",
+                        "look at leaderboard"
                     ]
                 },
                 {
@@ -39,8 +41,7 @@
                     "slots": [],
                     "samples": [
                         "view local leaderboard",
-                        "view my leaderboard",
-                        "view my local Alexa leaderboard",
+                        "view local Alexa leaderboard",
                         "local leaderboard",
                         "local Alexa leaderboard",
                         "local"
