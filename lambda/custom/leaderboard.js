@@ -3,8 +3,6 @@ const SCORE_INDEX = 1; //score is stored in index 1 of the board array
 
 function Leaderboard(length, object) {
 
-  console.log("OBJECT:" + object);
-
   if(object==undefined) {
 
     this.board = [];
@@ -26,7 +24,6 @@ function Leaderboard(length, object) {
 
 //returns a position if the score makes the list and -1 if new score is too low
 Leaderboard.prototype.isScoreHighEnough = function(score) {
-  console.log("Is score high enough has been run");
   for(var i = 0; i<this.board.length; i++) {
     if(score>this.board[i][SCORE_INDEX])
       return i;
@@ -85,8 +82,6 @@ Leaderboard.prototype.getPositionFromName = function(name) {
   for(var i = 0; i<this.board.length; i++) {
     names.push(this.board[i][NAME_INDEX]);
   }
-
-  console.log("1:" + JSON.stringify(names));
 
   let startingIndex = 0;
   let foundPositions = [];

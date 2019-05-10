@@ -75,6 +75,27 @@
                     ]
                 },
                 {
+                    "name": "ViewLeaderboardNameIntent",
+                    "slots": [
+                        {
+                            "name": "leaderboardName",
+                            "type": "AMAZON.US_FIRST_NAME"
+                        }
+                    ],
+                    "samples": [
+                        "show me name {leaderboardName}",
+                        "show me the name {leaderboardName}",
+                        "view the name {leaderboardName}",
+                        "view name {leaderboardName}",
+                        "see name {leaderboardName}",
+                        "see the name {leaderboardName}",
+                        "can I see the name {leaderboardName}",
+                        "can I see {leaderboardName}",
+                        "I would like to see {leaderboardName}",
+                        "Let me see {leaderboardName}"
+                    ]
+                },
+                {
                     "name": "HowToPlayIntent",
                     "slots": [],
                     "samples": [
@@ -111,6 +132,31 @@
                         "start",
                         "beginning",
                         "start over"
+                    ]
+                },
+                {
+                    "name": "RepeatSearchTermsIntent",
+                    "slots": [],
+                    "samples": [
+                        "can you repeat that",
+                        "repeat that",
+                        "can you repeat those",
+                        "repeat those",
+                        "say that again",
+                        "say those again",
+                        "can you say that again",
+                        "can you say those again",
+                        "repeat the search terms",
+                        "can you repeat the search terms",
+                        "can you repeat the answer choices",
+                        "repeat the answer choices",
+                        "give me the answers again",
+                        "give me the search terms again",
+                        "repeat",
+                        "can you say them again",
+                        "can you say the answer choices again",
+                        "what were the answer choices again",
+                        "what were they again"
                     ]
                 },
                 {
@@ -4657,7 +4703,7 @@
                         },
                         {
                             "name": {
-                                "value": "Ocean's Eight"
+                                "value": "Ocean's 8"
                             }
                         },
                         {
@@ -4742,11 +4788,6 @@
                         },
                         {
                             "name": {
-                                "value": "Lifechanger"
-                            }
-                        },
-                        {
-                            "name": {
                                 "value": "Twilight"
                             }
                         },
@@ -4782,7 +4823,7 @@
                         },
                         {
                             "name": {
-                                "value": "Ready Player One"
+                                "value": "Ready Player 1"
                             }
                         },
                         {
@@ -11617,7 +11658,7 @@
                         },
                         {
                             "name": {
-                                "value": "Looney Tunes"
+                                "value": "Loony Tunes"
                             }
                         },
                         {
